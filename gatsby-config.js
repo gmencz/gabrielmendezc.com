@@ -68,6 +68,13 @@ module.exports = {
         display: 'standalone',
         icon: 'assets/images/gatsby-icon.png'
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: ['Montserrat'],
+        display: 'swap'
+      }
     }
   ]
 };

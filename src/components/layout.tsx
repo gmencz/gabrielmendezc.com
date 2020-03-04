@@ -8,25 +8,26 @@ import Header from './Header';
 
 interface ThemeProps {
   colorPrimary: string;
+  colorSecondary: string;
 }
 
 const theme: ThemeProps = {
-  colorPrimary: '#663399'
+  colorPrimary: '#1a202c',
+  colorSecondary: '#4a5568'
 };
 
 const MainLayout = styled.main`
-  max-width: 90%;
-  margin: 1rem auto;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-gap: 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
 `;
 
 type LayoutProps = React.ReactNode & RouterProps;
 
-const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { site } = useLayoutQuery();
 
+  console.log(site);
   const { title, description, keywords } = site.siteMetadata;
 
   return (
@@ -40,6 +41,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
           ]}
         >
           <html lang="es" />
+          <noscript>Es necesario JavaScript para ver esta página web.</noscript>
         </Helmet>
         <Header siteTitle={title} />
         <MainLayout>
