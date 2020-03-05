@@ -1,7 +1,7 @@
-import { RouterProps } from '@reach/router';
-import * as React from 'react';
-import { PostQueryData } from '../interfaces/PostQuery.interface';
-import Layout from './layout';
+import { RouterProps } from "@reach/router";
+import * as React from "react";
+import { PostQueryData } from "../interfaces/PostQuery.interface";
+import Layout from "./layout";
 
 type PostLayoutProps = PostQueryData & RouterProps;
 
@@ -10,7 +10,7 @@ const PostLayout: React.FunctionComponent<PostLayoutProps> = ({
   ...props
 }) => {
   if (!data) {
-    return null
+    return null;
   }
 
   const { title, date } = data.mdx.frontmatter;

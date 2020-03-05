@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
   display: flex;
   max-width: 800px;
   justify-content: space-between;
-  padding: 40px;
+  padding: 55px 40px;
   margin: 0 auto;
   align-items: center;
 
-  h1 {
+  & > a {
     color: ${props => props.theme.colorPrimary};
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: "Px Grotesk Bold", sans-serif;
     font-size: 1.1rem;
   }
 `;
@@ -25,7 +25,7 @@ export const NavigationList = styled.ul`
 
   a {
     color: ${props => props.theme.colorSecondary};
-    font-family: 'Px Grotesk Bold', sans-serif;
-    font-size: 0.9rem;
+    font-family: "Px Grotesk Regular", sans-serif;
+    font-size: 1.05rem;
   }
 `;

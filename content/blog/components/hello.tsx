@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 const Hello = () => (
   <div>
@@ -12,7 +12,7 @@ const Hello = () => (
       franzen YOLO gentrify freegan vaporware. Food truck hoodie seitan yuccie.
     </p>
     <p>
-      Franzen vinyl flexitarian readymade literally. IPhone hella gastropub
+      Franzen vixnyl flexitarian readymade literally. IPhone hella gastropub
       flannel, ugh vaporware PBR&B stumptown try-hard swag man braid glossier
       godard. IPhone tilde vice, man braid pinterest humblebrag twee fanny pack
       heirloom iceland migas. Typewriter gochujang ethical helvetica polaroid

@@ -1,10 +1,86 @@
-import { RouterProps } from '@reach/router';
-import * as React from 'react';
-import Layout from '../components/layout';
+import { RouterProps } from "@reach/router";
+import * as React from "react";
+import Layout from "../components/layout";
+import Typist from "react-typist";
+import styled from "styled-components";
+import Listing from "../components/listing";
 
-const IndexPage: React.FunctionComponent<RouterProps> = ({ location }) => (
+const NameHeading = styled.h1`
+  color: rgb(26, 32, 44);
+  letter-spacing: -0.03rem;
+  font-size: 1.45rem;
+  line-height: 1.4;
+  font-weight: bold;
+  display: inline;
+  font-family: "Px Grotesk Bold", sans-serif;
+`;
+
+const DescriptionHeading = styled.div`
+  color: ${props => props.theme.subColor};
+  letter-spacing: -0.03rem;
+  font-size: 1.33rem;
+  display: inline;
+  line-height: 1.45;
+  font-family: "Px Grotesk Regular", sans-serif;
+`;
+
+const StyledTypist = styled(Typist)`
+  margin-bottom: 143px;
+
+  span.Cursor--blinking {
+    animation-name: blinker;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    @keyframes blinker {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+`;
+
+const BlogHeading = styled.h2`
+  color: ${props => props.theme.colorSecondary};
+  font-family: "Px Grotesk Bold", sans-serif;
+  font-size: 0.985rem;
+  line-height: 1.45rem;
+  margin-bottom: 2.65rem;
+  font-weight: bold;
+  color: #4a5568;
+  text-transform: uppercase;
+  -webkit-letter-spacing: 0.12em;
+  -moz-letter-spacing: 0.12em;
+  -ms-letter-spacing: 0.12em;
+  letter-spacing: 0.12em;
+`;
+
+const IndexPage: React.FC<RouterProps> = ({ location }) => (
   <Layout location={location}>
-    <h1>Hello</h1>
+    <section style={{ marginTop: 48 }}>
+      <StyledTypist
+        avgTypingDelay={40}
+        startDelay={1000}
+        cursor={{ hideWhenDone: true, hideWhenDoneDelay: 250 }}
+      >
+        <NameHeading>Hola, soy Gabriel Méndez. </NameHeading>
+        <StyledTypist.Delay ms={300} />
+        <DescriptionHeading>
+          <span>Me gusta desarrollar software de calidad,</span>
+          <StyledTypist.Delay ms={300} />
+          <span> con la finalidad de hacer el mundo un lugar mejor.</span>
+        </DescriptionHeading>
+      </StyledTypist>
+      <BlogHeading>Blog</BlogHeading>
+      <Listing />
+    </section>
   </Layout>
 );
 
