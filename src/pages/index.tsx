@@ -71,11 +71,12 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
         cursor={{ hideWhenDone: true, hideWhenDoneDelay: 250 }}
       >
         <NameHeading>Hola, soy Gabriel Méndez. </NameHeading>
-        <StyledTypist.Delay ms={300} />
+        <StyledTypist.Delay ms={350} />
         <DescriptionHeading>
-          <span>Me gusta desarrollar software de calidad,</span>
-          <StyledTypist.Delay ms={300} />
-          <span> con la finalidad de hacer del mundo un lugar mejor.</span>
+          <span>
+            Desarrollo software de calidad que ayuda a hacer del mundo un lugar
+            mejor.
+          </span>
         </DescriptionHeading>
       </StyledTypist>
       <BlogHeading>Te puede interesar</BlogHeading>

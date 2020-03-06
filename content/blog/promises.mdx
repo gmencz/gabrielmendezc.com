@@ -1,0 +1,130 @@
+---
+path: '/promises-and-async-await'
+title: 'Promesas JavaScript y async await'
+date: '2019-12-21'
+---
+
+import { graphql } from 'gatsby';
+
+export const promisesQuery = graphql`
+  query promisesQuery($pagePath: String!) {
+    mdx(frontmatter: { path: { eq: $pagePath } }) {
+      frontmatter {
+        path
+        title
+        date(formatString: "MMMM DD, YYYY", locale: "es")
+      }
+    }
+  }
+`;
+
+Es hora de reemplazar callbacks por promesas, ofrecen código mas limpio y se deshacen del famoso callback hell.
+
+Para entender cómo realmente funcionan las promesas en JavaScript, debemos tener claros algunos conceptos
+sobre cómo es manejado el código asíncrono en JavaScript vía [Event Loop, Call Stack y Callback Queue](https://www.youtube.com/watch?v=8aGhZQkoFbQ).\
+\
+En el enlace superior se puede encontrar una explicación detallada sobre los términos que he nombrado, recomiendo echar un vistazo a ese enlace y luego volver aquí.\
+\
+En caso de que no hayas visitado el enlace superior o no te haya quedado del todo claro, explicaré como funciona el código asíncrono usando el siguiente ejemplo:
+
+```js
+setTimeout(() => console.log('Hello from setTimeout'), 1000);
+console.log('Hello from outside of setTimeout!');
+```
+
+Si no estás acostumbrado a trabajar con JavaScript y su asincronísmo, puedes pensar que el segundo `console.log()` no será ejecutado hasta que el primera lo sea, pero eso no es cierto! Debemos de tener algo claro, **JavaScript no espera!**, a qué me refiero con esto? En un principio todo el código asíncrono será "enviado" a un stack que se ejecutará en "segundo plano", tomemos como ejemplo el `setTimeout` de el código que he usado como ejemplo,
+en cuanto sea leído ese código, el `setTimeout` será enviado a un stack conocido como el **Call Stack**, este se encargará de esperar los milisegundos especificados (en este caso 1000), y cuando haya pasado ese tiempo, el código pendiente de ejecutarse en el `setTimeout` será enviado por el **Call Stack** a una cola que es conocida como el **Callback Queue** que se comunicará directamente con el **Event Loop**, si este se encuentra "vacío", el elemento que se encuentra en primera posición en el **Callback Queue** pasará a ejecutarse y ahora es cuando finalmente se ejecutaría la función pasada como primer parámetro a `setTimeout()`
+
+<div class="info">
+  <span>i</span>
+  <p>
+    Si no te ha quedado claro o quieres saber más acerca de este tema puedes
+    visitar{' '}
+    <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">este enlace.</a>
+  </p>
+</div>
+
+Bien, ahora que tenemos algo más claro como JavaScript maneja el asincronísmo, veamos un ejemplo de promesa que realizará una solicitud **GET** a la url especificada (example.com).
+
+```js
+fetch('http://example.com').then(res => console.log(res));
+```
+
+Podemos ver una promesa como algo que "va a ocurrir en un futuro", como indica el propio nombre, JavaScript te promete que el código se va a ejecutar y en caso de que todo vaya bien, algo será resuelto/devuelto, en este caso será la respuesta que devuelve el servidor cuando le hacemos una petición **GET**, pero, y sí el servidor no está disponible o ocurre un error que no es necesariamente nuestra culpa? Pues la promesa denegará/descartará la petición y lanzará una excepción, veamos como podemos manejar estas excepciones en promesas.
+
+```js
+fetch('http://example.com')
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+```
+
+Como puedes ver, solo tenemos que añadir un `.catch` a la promesa y ahí podemos manejar la excepción en caso de haber una.\
+\
+Ahora veamos **fallos** que se suelen cometer cuando empezamos a trabajar con promesas.
+
+```js
+let data;
+fetch('http://example.com')
+  .then(res => (data = res))
+  .catch(err => console.log(err));
+
+console.log(data); // undefined
+```
+
+Pero, cómo es posible que data sea _undefined_ si acabamos de asignarle el valor que nos devuelve esa promesa? Por el mismo motivo que hemos comentado antes, **JavaScript NO espera!**. El `console.log(data)` se ejecuta antes de que esa promesa se haya resuelto por lo
+que en el momento en el que usamos data, su valor sigue siendo _undefined_, es lógico porque una solicitud HTTP no ocurre de forma instantánea, entonces hasta que esa solicitud haya finalizado y la promesa haya sido resuelta, el valor de data seguirá siendo _undefined_,
+no debemos depender de lo que devuelva la promesa fuera de la promesa ya que entonces podría ocurrir lo que se conoce como **race conditions**.
+
+<div class="info">
+  <span>i</span>
+  <p>
+    Race condition: cuando el tiempo que tarda en ejecutarse un evento está
+    críticamente ligado a otros eventos que tienen que ocurrir antes de que otro
+    ocurra para que funcione ese otro.
+  </p>
+</div>
+
+## Async / await
+
+Funcionalidad que apareció recientemente como parte de la especificación de ES8 (ECMAScript 2017), nos permite manejar las promesas de una forma que parece síncrona, para conseguir esto, usa **generadores** y **promesas** que nosotros no vemos. Veamos un ejemplo de async/await:
+
+```js
+async function fetchData() {
+  const data = await fetch('http://example.com');
+  console.log(data); // respuesta que haya devuelto el servidor
+}
+```
+
+Si queremos usar `await` es **necesario** marcar la función donde vayamos a usarlo como **async**, actualmente no es posible utilizar `await` fuera de una función que no esté marcada **async**. Cuando JavaScript "lee" ese `await`, la función deja de ejecutarse hasta que la promesa sea resuelta o denegada,por lo que podemos usar promesas de una forma que parece síncrona.
+
+### Manejo de excepciones con async/await
+
+Hay varias formas de manejar estas excepciones, vamos a ver dos de ellas:
+
+- Bloque try/catch
+- Concatenación de `.catch()`
+
+```js
+async function fetchData() {
+  try {
+    const data = await fetch('http://example.com');
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+```js
+async function fetchData() {
+  const data = await fetch('http://example.com');
+  console.log(data);
+}
+
+fetchData().catch(err => console.error(err));
+```
+
+Ambos ejemplos hacen prácticamente lo mismo, personalmente prefiero la primera opción porque el manejo de errores está ubicado directamente en la función por lo que me parece más organizado, es cierto que esto ya son cuestiones de preferencia.
+\
+\
+Enhorabuena! Ahora ya deberías de tener una buena idea sobre como funciona el código asíncrono en JavaScript y funcionalidades como **promesas** y **async / await**.

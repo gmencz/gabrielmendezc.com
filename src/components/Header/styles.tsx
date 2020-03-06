@@ -27,9 +27,13 @@ export const NavigationList = styled.ul`
     color: ${props => props.theme.colorSecondary};
     font-family: 'Px Grotesk Regular', sans-serif;
     font-size: 1.05rem;
+    transition: color 200ms ease-in-out;
+
+    &:hover {
+      color: ${props => props.theme.subColor};
+    }
 
     &.active {
-      transition: all 300ms ease-in-out;
       color: ${props => props.theme.linkColor};
       text-decoration: underline;
     }

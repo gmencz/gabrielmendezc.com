@@ -44,12 +44,12 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
-  background-repeat: no-repeat;
+  background-color: rgb(224, 230, 235);
   background-image: linear-gradient(
     rgb(255, 255, 255) 0%,
-    rgba(23, 62, 94, 0) 100%
+    rgba(224, 230, 235, 0) 100%
   );
+  color: rgb(26, 32, 44);
 }
 
 article,

@@ -32,9 +32,12 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
             options: {
               inlineCodeMarker: {
-                tsx: 'tsx'
+                tsx: 'tsx',
+                js: 'javascript'
               },
-              aliases: {}
+              aliases: {
+                js: 'javascript'
+              }
             }
           }
         ]
@@ -66,6 +69,13 @@ module.exports = {
         theme_color: '#663399',
         display: 'standalone',
         icon: 'assets/images/gatsby-icon.png'
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Source Code Pro`],
+        display: `swap`
       }
     }
   ]

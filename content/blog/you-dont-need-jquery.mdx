@@ -1,0 +1,42 @@
+---
+path: '/you-dont-need-jquery'
+title: 'No necesitas jQuery'
+date: '2020-03-06'
+---
+
+import { graphql } from 'gatsby';
+import Hello from './components/hello.tsx';
+
+export const youDontNeedjQueryQuery = graphql`
+  query youDontNeedjQueryQuery($pagePath: String!) {
+    mdx(frontmatter: { path: { eq: $pagePath } }) {
+      frontmatter {
+        path
+        title
+        date(formatString: "MMMM DD, YYYY", locale: "es")
+      }
+    }
+  }
+`;
+
+Muchos desarrolladores tienden a usar jQuery para muchos de sus proyectos, esto no es solamente innecesario sino que perjudica a nuestra aplicación
+
+<Hello />
+
+```tsx
+import * as React from 'react';
+
+interface PrismTestProps {
+  name: string;
+}
+
+const a = 10;
+
+export const PrismTest: React.FunctionComponent<PrismTestProps> = ({
+  name
+}) => (
+  <div>
+    <p>Hello there {name}!</p>
+  </div>
+);
+```

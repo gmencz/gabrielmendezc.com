@@ -1,1 +1,1 @@
-import './src/theme/shades-of-purple.css';
+import './src/prism_themes/light.css';
