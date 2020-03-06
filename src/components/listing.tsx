@@ -66,7 +66,8 @@ const Listing = () => {
               <div>
                 <time dateTime={date}>{date}</time>
                 <small>
-                  <span>•</span> {node.timeToRead} minuto de lectura ☕☕
+                  <span>•</span> {node.timeToRead}{" "}
+                  {node.timeToRead > 1 ? "minutos" : "minuto"} de lectura
                 </small>
               </div>
               <p>{node.excerpt}</p>

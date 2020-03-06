@@ -66,7 +66,7 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
   <Layout location={location}>
     <section style={{ marginTop: 48 }}>
       <StyledTypist
-        avgTypingDelay={40}
+        avgTypingDelay={35}
         startDelay={1000}
         cursor={{ hideWhenDone: true, hideWhenDoneDelay: 250 }}
       >
@@ -75,7 +75,7 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
         <DescriptionHeading>
           <span>Me gusta desarrollar software de calidad,</span>
           <StyledTypist.Delay ms={300} />
-          <span> con la finalidad de hacer el mundo un lugar mejor.</span>
+          <span> con la finalidad de hacer del mundo un lugar mejor.</span>
         </DescriptionHeading>
       </StyledTypist>
       <BlogHeading>Blog</BlogHeading>
