@@ -66,16 +66,21 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
   <Layout location={location}>
     <section style={{ marginTop: 48 }}>
       <StyledTypist
-        avgTypingDelay={35}
+        avgTypingDelay={40}
         startDelay={1000}
         cursor={{ hideWhenDone: true, hideWhenDoneDelay: 250 }}
       >
         <NameHeading>Hola, soy Gabriel Méndez. </NameHeading>
         <StyledTypist.Delay ms={350} />
         <DescriptionHeading>
+          <span>Arquitecto</span>
+          <StyledTypist.Backspace count={10} delay={350} />
+          <span>Diseño</span>
+          <StyledTypist.Backspace count={6} delay={350} />
+          <span>Desarrollo</span>
           <span>
-            Desarrollo software de calidad que ayuda a hacer del mundo un lugar
-            mejor.
+            {' '}
+            software de calidad que ayuda a hacer del mundo un lugar mejor.
           </span>
         </DescriptionHeading>
       </StyledTypist>

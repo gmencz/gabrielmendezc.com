@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import Layout from '../components/layout';
 import { RouterProps } from '@reach/router';
 
-const AboutPage: React.FC<RouterProps> = ({ location }) => {
+const ContactPage: React.FC<RouterProps> = ({ location }) => {
   return (
     <Layout location={location}>
       <h1>En desarrollo</h1>
@@ -10,4 +10,4 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
   );
 };
 
-export default AboutPage;
+export default ContactPage;

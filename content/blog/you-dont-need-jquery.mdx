@@ -19,22 +19,18 @@ export const youDontNeedjQueryQuery = graphql`
   }
 `;
 
-Muchos desarrolladores tienden a usar jQuery para muchos de sus proyectos, esto no es solamente innecesario sino que perjudica a nuestra aplicación
+Muchos desarrolladores tienden a usar **jQuery** para una gran cantidad de sus proyectos, esto no es solamente innecesario sino que **perjudica a nuestra aplicación**.
 
 <Hello />
 
 ```tsx
-import * as React from 'react';
+import React from 'react';
 
 interface PrismTestProps {
   name: string;
 }
 
-const a = 10;
-
-export const PrismTest: React.FunctionComponent<PrismTestProps> = ({
-  name
-}) => (
+export const PrismTest: React.FC<PrismTestProps> = ({ name }) => (
   <div>
     <p>Hello there {name}!</p>
   </div>

@@ -1,11 +1,10 @@
-import { Link } from "gatsby";
-import React, { Fragment } from "react";
-import styled from "styled-components";
-import { useListingQuery } from "../hooks/useListingQuery";
+import { Link } from 'gatsby';
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
+import { useListingQuery } from '../hooks/useListingQuery';
 
 const Post = styled.article`
-  border-radius: 0.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3.5rem;
 
   a {
     color: black;
@@ -16,7 +15,7 @@ const Post = styled.article`
     margin: 0.65rem 0;
     display: flex;
     align-items: center;
-    font-family: "Px Grotesk Bold", sans-serif;
+    font-family: 'Px Grotesk Bold', sans-serif;
   }
 
   time {
@@ -33,7 +32,7 @@ const Post = styled.article`
   }
 
   p {
-    font-family: "Px Grotesk Regular", sans-serif;
+    font-family: 'Px Grotesk Regular', sans-serif;
     color: ${props => props.theme.colorSecondary};
     font-size: 1.15rem;
     margin-right: 5px;
@@ -43,7 +42,7 @@ const Post = styled.article`
 
 const ReadMoreLink = styled(Link)`
   font-size: 1.15rem;
-  font-family: "Px Grotesk Regular", sans-serif;
+  font-family: 'Px Grotesk Regular', sans-serif;
   color: ${props => props.theme.linkColor} !important;
   border-bottom: 1px dotted #2b6cb0;
   padding-bottom: 0.15rem;
@@ -66,8 +65,8 @@ const Listing = () => {
               <div>
                 <time dateTime={date}>{date}</time>
                 <small>
-                  <span>•</span> {node.timeToRead}{" "}
-                  {node.timeToRead > 1 ? "minutos" : "minuto"} de lectura
+                  <span>•</span> {node.timeToRead}{' '}
+                  {node.timeToRead > 1 ? 'minutos' : 'minuto'} de lectura
                 </small>
               </div>
               <p>{node.excerpt}</p>

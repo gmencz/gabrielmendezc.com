@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = () => (
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/blog">
+            <Link partiallyActive activeClassName="active" to="/blog">
               blog
             </Link>
           </li>

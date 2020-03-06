@@ -18,6 +18,7 @@ export const HeaderWrapper = styled.header`
 export const NavigationList = styled.ul`
   display: flex;
   align-items: center;
+  list-style-type: none;
 
   li:not(:last-of-type) {
     margin-right: 32px;

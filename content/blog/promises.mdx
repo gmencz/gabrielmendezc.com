@@ -21,10 +21,10 @@ export const promisesQuery = graphql`
 Es hora de reemplazar callbacks por promesas, ofrecen código mas limpio y se deshacen del famoso callback hell.
 
 Para entender cómo realmente funcionan las promesas en JavaScript, debemos tener claros algunos conceptos
-sobre cómo es manejado el código asíncrono en JavaScript vía [Event Loop, Call Stack y Callback Queue](https://www.youtube.com/watch?v=8aGhZQkoFbQ).\
-\
-En el enlace superior se puede encontrar una explicación detallada sobre los términos que he nombrado, recomiendo echar un vistazo a ese enlace y luego volver aquí.\
-\
+sobre cómo es manejado el código asíncrono en JavaScript vía [Event Loop, Call Stack y Callback Queue](https://www.youtube.com/watch?v=8aGhZQkoFbQ).
+
+En el enlace superior se puede encontrar una explicación detallada sobre los términos que he nombrado, recomiendo echar un vistazo a ese enlace y luego volver aquí.
+
 En caso de que no hayas visitado el enlace superior o no te haya quedado del todo claro, explicaré como funciona el código asíncrono usando el siguiente ejemplo:
 
 ```js
@@ -58,8 +58,8 @@ fetch('http://example.com')
   .catch(err => console.error(err));
 ```
 
-Como puedes ver, solo tenemos que añadir un `.catch` a la promesa y ahí podemos manejar la excepción en caso de haber una.\
-\
+Como puedes ver, solo tenemos que añadir un `.catch` a la promesa y ahí podemos manejar la excepción en caso de haber una.
+
 Ahora veamos **fallos** que se suelen cometer cuando empezamos a trabajar con promesas.
 
 ```js
@@ -125,6 +125,5 @@ fetchData().catch(err => console.error(err));
 ```
 
 Ambos ejemplos hacen prácticamente lo mismo, personalmente prefiero la primera opción porque el manejo de errores está ubicado directamente en la función por lo que me parece más organizado, es cierto que esto ya son cuestiones de preferencia.
-\
-\
+
 Enhorabuena! Ahora ya deberías de tener una buena idea sobre como funciona el código asíncrono en JavaScript y funcionalidades como **promesas** y **async / await**.
