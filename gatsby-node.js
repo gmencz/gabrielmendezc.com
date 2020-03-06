@@ -23,7 +23,6 @@ exports.createPages = async ({ graphql, actions }) => {
     `);
 
     data.allMdx.edges.forEach(({ node }) => {
-      console.log(node);
       createPage({
         path: `/blog${node.frontmatter.path}`,
         component: node.fileAbsolutePath,

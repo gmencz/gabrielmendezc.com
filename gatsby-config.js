@@ -55,7 +55,14 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/assets/images`
+        path: `${__dirname}/static/images`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'fonts',
+        path: `${__dirname}/static/fonts`
       }
     },
     {
@@ -68,7 +75,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'standalone',
-        icon: 'assets/images/gatsby-icon.png'
+        icon: 'static/images/gatsby-icon.png'
       }
     },
     {
