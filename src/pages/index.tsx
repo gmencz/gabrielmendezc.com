@@ -1,9 +1,9 @@
-import { RouterProps } from "@reach/router";
-import * as React from "react";
-import Layout from "../components/layout";
-import Typist from "react-typist";
-import styled from "styled-components";
-import Listing from "../components/listing";
+import { RouterProps } from '@reach/router';
+import * as React from 'react';
+import Layout from '../components/layout';
+import Typist from 'react-typist';
+import styled from 'styled-components';
+import Listing from '../components/listing';
 
 const NameHeading = styled.h1`
   color: rgb(26, 32, 44);
@@ -12,7 +12,7 @@ const NameHeading = styled.h1`
   line-height: 1.4;
   font-weight: bold;
   display: inline;
-  font-family: "Px Grotesk Bold", sans-serif;
+  font-family: 'Px Grotesk Bold', sans-serif;
 `;
 
 const DescriptionHeading = styled.div`
@@ -21,7 +21,7 @@ const DescriptionHeading = styled.div`
   font-size: 1.33rem;
   display: inline;
   line-height: 1.45;
-  font-family: "Px Grotesk Regular", sans-serif;
+  font-family: 'Px Grotesk Regular', sans-serif;
 `;
 
 const StyledTypist = styled(Typist)`
@@ -49,7 +49,7 @@ const StyledTypist = styled(Typist)`
 
 const BlogHeading = styled.h2`
   color: ${props => props.theme.colorSecondary};
-  font-family: "Px Grotesk Bold", sans-serif;
+  font-family: 'Px Grotesk Bold', sans-serif;
   font-size: 0.985rem;
   line-height: 1.45rem;
   margin-bottom: 2.65rem;
@@ -78,7 +78,7 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
           <span> con la finalidad de hacer del mundo un lugar mejor.</span>
         </DescriptionHeading>
       </StyledTypist>
-      <BlogHeading>Blog</BlogHeading>
+      <BlogHeading>Te puede interesar</BlogHeading>
       <Listing />
     </section>
   </Layout>

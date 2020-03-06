@@ -1,1 +1,1 @@
-require('prismjs/themes/prism-tomorrow.css');
+import './src/theme/shades-of-purple.css';
