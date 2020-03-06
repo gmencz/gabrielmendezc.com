@@ -1,11 +1,10 @@
 import { RouterProps } from '@reach/router';
-import * as React from 'react';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import './layout.css';
-import '../fonts/fonts.css';
 import Header from './Header';
+import { GlobalStyles } from '../globalStyles';
 
 interface ThemeProps {
   colorPrimary: string;
@@ -36,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <Fragment>
         <Helmet
           title={title}
           meta={[
@@ -47,9 +46,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <html lang="es" />
           <noscript>Es necesario JavaScript para ver esta página web.</noscript>
         </Helmet>
+        <GlobalStyles />
         <Header siteTitle={title} />
         <MainLayout>{children}</MainLayout>
-      </>
+      </Fragment>
     </ThemeProvider>
   );
 };

@@ -68,7 +68,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Gabriel M. Cortizo',
+        name: 'Gabriel Méndez',
         short_name: 'gabrielmcortizo',
         start_url: '/',
         lang: 'es',
