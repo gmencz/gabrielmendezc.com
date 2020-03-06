@@ -1,38 +1,32 @@
 @font-face {
   font-family: 'Px Grotesk Bold';
-  src: url('../../static/fonts/175bb37214e59d8e24ee6ea635b2eeff.eot');
-  src: url('../../static/fonts/175bb37214e59d8e24ee6ea635b2eeff.eot?#iefix')
+  src: url('../fonts/175bb37214e59d8e24ee6ea635b2eeff.eot');
+  src: url('../fonts/175bb37214e59d8e24ee6ea635b2eeff.eot?#iefix')
       format('embedded-opentype'),
-    /* IE6-IE8 */
-      url('../../static/fonts/175bb37214e59d8e24ee6ea635b2eeff.woff2')
+    /* IE6-IE8 */ url('../fonts/175bb37214e59d8e24ee6ea635b2eeff.woff2')
       format('woff2'),
-    /* chrome、firefox */
-      url('../../static/fonts/175bb37214e59d8e24ee6ea635b2eeff.woff')
+    /* chrome、firefox */ url('../fonts/175bb37214e59d8e24ee6ea635b2eeff.woff')
       format('woff'),
-    /* chrome、firefox */
-      url('../../static/fonts/175bb37214e59d8e24ee6ea635b2eeff.ttf')
+    /* chrome、firefox */ url('../fonts/175bb37214e59d8e24ee6ea635b2eeff.ttf')
       format('truetype'),
     /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-      url('../../static/fonts/175bb37214e59d8e24ee6ea635b2eeff.svg#Px Grotesk Bold')
+      url('../fonts/175bb37214e59d8e24ee6ea635b2eeff.svg#Px Grotesk Bold')
       format('svg'); /* iOS 4.1- */
 }
 
 @font-face {
   font-family: 'Px Grotesk Regular';
-  src: url('../../static/fonts/9527a4c4f55e8075eb6a60fe577d89c4.eot'); /* IE9*/
-  src: url('../../static/fonts/9527a4c4f55e8075eb6a60fe577d89c4.eot?#iefix')
+  src: url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.eot'); /* IE9*/
+  src: url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.eot?#iefix')
       format('embedded-opentype'),
-    /* IE6-IE8 */
-      url('../../static/fonts/9527a4c4f55e8075eb6a60fe577d89c4.woff2')
+    /* IE6-IE8 */ url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.woff2')
       format('woff2'),
-    /* chrome、firefox */
-      url('../../static/fonts/9527a4c4f55e8075eb6a60fe577d89c4.woff')
+    /* chrome、firefox */ url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.woff')
       format('woff'),
-    /* chrome、firefox */
-      url('../../static/fonts/9527a4c4f55e8075eb6a60fe577d89c4.ttf')
+    /* chrome、firefox */ url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.ttf')
       format('truetype'),
     /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-      url('../../static/fonts/9527a4c4f55e8075eb6a60fe577d89c4.svg#Px Grotesk Regular')
+      url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.svg#Px Grotesk Regular')
       format('svg'); /* iOS 4.1- */
 }
 

@@ -59,13 +59,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'fonts',
-        path: `${__dirname}/static/fonts`
-      }
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Gabriel M. Cortizo',
