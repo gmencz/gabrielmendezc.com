@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import './layout.css';
+import '../fonts/fonts.css';
 import Header from './Header';
 
 interface ThemeProps {
