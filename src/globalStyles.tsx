@@ -1,35 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-    @font-face {
-    font-family: 'Px Grotesk Bold';
-    src: url('/fonts/175bb37214e59d8e24ee6ea635b2eeff.eot');
-    src: url('/fonts/175bb37214e59d8e24ee6ea635b2eeff.eot?#iefix')
-        format('embedded-opentype'),
-        /* IE6-IE8 */ url('/fonts/175bb37214e59d8e24ee6ea635b2eeff.woff2') format('woff2'),
-        /* chrome、firefox */ url('/fonts/175bb37214e59d8e24ee6ea635b2eeff.woff')
-        format('woff'),
-        /* chrome、firefox */ url('/fonts/175bb37214e59d8e24ee6ea635b2eeff.ttf')
-        format('truetype'),
-        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-        url('/fonts/175bb37214e59d8e24ee6ea635b2eeff.svg#Px Grotesk Bold') format('svg'); /* iOS 4.1- */
-    }
-
-    @font-face {
-    font-family: 'Px Grotesk Regular';
-    src: url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.eot'); /* IE9*/
-    src: url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.eot?#iefix')
-        format('embedded-opentype'),
-        /* IE6-IE8 */ url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.woff2') format('woff2'),
-        /* chrome、firefox */ url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.woff')
-        format('woff'),
-        /* chrome、firefox */ url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.ttf')
-        format('truetype'),
-        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-        url('../fonts/9527a4c4f55e8075eb6a60fe577d89c4.svg#Px Grotesk Regular')
-        format('svg'); /* iOS 4.1- */
-    }
-
     html {
   font-family: 'Px Grotesk Bold', sans-serif;
   -ms-text-size-adjust: 100%;
