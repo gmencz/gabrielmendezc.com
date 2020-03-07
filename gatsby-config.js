@@ -32,12 +32,9 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
             options: {
               inlineCodeMarker: {
-                tsx: 'tsx',
-                js: 'javascript'
+                tsx: 'tsx'
               },
-              aliases: {
-                js: 'javascript'
-              }
+              aliases: {}
             }
           }
         ]
@@ -86,6 +83,17 @@ module.exports = {
         fonts: [`Source Code Pro`],
         display: `swap`
       }
+    },
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          '/sw.js': ['Cache-Control: no-cache']
+        }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-netlify-cache`
     }
   ]
 };
