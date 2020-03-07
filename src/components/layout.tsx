@@ -5,7 +5,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../hooks/useLayoutQuery';
 import Header from './Header';
 import { GlobalStyles } from '../shared/css/globalStyles';
-import '../shared/css/fonts/fonts.css';
 
 interface ThemeProps {
   colorPrimary: string;
