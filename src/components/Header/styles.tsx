@@ -10,7 +10,6 @@ export const HeaderWrapper = styled.header`
 
   & > a {
     color: ${props => props.theme.colorPrimary};
-    font-family: 'Px Grotesk Bold', sans-serif;
     font-size: 1.1rem;
   }
 `;
@@ -26,7 +25,6 @@ export const NavigationList = styled.ul`
 
   a {
     color: ${props => props.theme.colorSecondary};
-    font-family: 'Px Grotesk Regular', sans-serif;
     font-size: 1.05rem;
     transition: color 200ms ease-in-out;
 

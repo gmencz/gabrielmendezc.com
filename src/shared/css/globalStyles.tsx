@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyles = createGlobalStyle`
 
     html {
-    font-family: 'Px Grotesk Bold', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     }
@@ -16,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
         rgb(245, 245, 245) 0%,
         rgba(224, 230, 235, 0) 100%
     );
+    font-family: 'Px Grotesk Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(26, 32, 44);
     }
 
@@ -46,8 +46,13 @@ export const GlobalStyles = createGlobalStyle`
     height: 0;
     }
 
+    p {
+    font-family: 'Px Grotesk Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
     a {
     text-decoration: none;
+    font-family: 'Px Grotesk Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     progress {

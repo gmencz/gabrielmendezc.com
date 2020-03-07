@@ -59,7 +59,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'Gabriel Méndez',
-        short_name: 'gabrielmcortizo',
+        short_name: 'gabrielmendez',
         start_url: '/',
         lang: 'es',
         background_color: '#663399',
@@ -68,15 +68,15 @@ module.exports = {
         icon: 'static/images/gatsby-icon.png'
       }
     },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        custom: {
-          families: ['Px Grotesk Regular, Px Grotesk Bold'],
-          urls: ['/fonts/fonts.css']
-        }
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-web-font-loader',
+    //   options: {
+    //     custom: {
+    //       families: ['Px Grotesk Regular, Px Grotesk Bold'],
+    //       urls: ['/fonts/fonts.css']
+    //     }
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -92,7 +92,6 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-netlify-cache`,
-    `gatsby-plugin-preload-fonts`
+    `gatsby-plugin-netlify-cache`
   ]
 };

@@ -16,12 +16,10 @@ export const ParagraphHeading = styled.p<SharedProps>`
   font-size: ${props =>
     props.fontSizeRem ? `${props.fontSizeRem}rem` : `1.33rem`};
   line-height: 1.45;
-  font-family: 'Px Grotesk Regular', sans-serif;
 `;
 
 export const InternalLink = styled(Link)`
   font-size: 1.15rem;
-  font-family: 'Px Grotesk Regular', sans-serif;
   color: ${props => props.theme.linkColor} !important;
   border-bottom: 1px dotted #2b6cb0;
   padding-bottom: 0.15rem;

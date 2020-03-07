@@ -12,7 +12,6 @@ export const Post = styled.article`
     margin: 0.65rem 0;
     display: flex;
     align-items: center;
-    font-family: 'Px Grotesk Bold', sans-serif;
   }
 
   time {
@@ -29,7 +28,6 @@ export const Post = styled.article`
   }
 
   p {
-    font-family: 'Px Grotesk Regular', sans-serif;
     color: ${props => props.theme.colorSecondary};
     font-size: 1.15rem;
     margin-right: 5px;

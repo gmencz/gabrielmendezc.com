@@ -12,7 +12,6 @@ export const NameHeading = styled.h1`
   line-height: 1.4;
   font-weight: bold;
   display: inline;
-  font-family: 'Px Grotesk Bold', sans-serif;
 `;
 
 export const DescriptionHeading = styled.div`
@@ -21,7 +20,6 @@ export const DescriptionHeading = styled.div`
   font-size: 1.33rem;
   display: inline;
   line-height: 1.45;
-  font-family: 'Px Grotesk Bold', sans-serif;
 `;
 
 const StyledTypist = styled(Typist)`
@@ -49,7 +47,6 @@ const StyledTypist = styled(Typist)`
 
 const BlogHeading = styled.h2`
   color: ${props => props.theme.colorSecondary};
-  font-family: 'Px Grotesk Bold', sans-serif;
   font-size: 0.985rem;
   line-height: 1.45rem;
   margin-bottom: 2.65rem;
