@@ -2,7 +2,7 @@
   "name": "gabrielmcortizo",
   "description": "Página web personal de Gabriel M. Cortizo",
   "version": "1.0.0",
-  "author": "Gabriel M. Cortizo <gabrielmendez.dev@gmail.com>",
+  "author": "Gabriel Méndez Cortizo <gabrielmendez.dev@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.1.31",
@@ -13,9 +13,10 @@
     "gatsby-plugin-netlify": "^2.1.34",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-preload-fonts": "^1.0.31",
     "gatsby-plugin-react-helmet": "^3.0.9",
     "gatsby-plugin-sharp": "^2.0.28",
-    "gatsby-plugin-styled-components": "^3.0.7",
+    "gatsby-plugin-styled-components": "^3.1.20",
     "gatsby-plugin-typescript": "^2.0.11",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-prismjs": "^3.2.5",
@@ -31,7 +32,7 @@
     "react-testing-library": "^6.0.0",
     "react-typing-animation": "^1.6.2",
     "react-typist": "^2.0.5",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.4.1"
   },
   "keywords": [
     "gatsby",
@@ -45,7 +46,8 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "test": "jest",
-    "gen-gql": "graphql-codegen --config codegen.yml"
+    "gen-gql": "graphql-codegen --config codegen.yml",
+    "pre-fonts": "gatsby-preload-fonts"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.12.2",

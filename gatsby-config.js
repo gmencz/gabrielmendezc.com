@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://gabrielmcortizo.com',
-    title: 'Gabriel M. Cortizo',
+    siteUrl: 'https://gabrielmendezc.com',
+    title: 'Gabriel Méndez',
     description: 'Página web personal de Gabriel M. Cortizo',
     keywords: ['Desarrollador', 'Desarrollador web', 'React', 'JavaScript'],
-    canonicalUrl: 'https://gabrielmcortizo.com',
+    canonicalUrl: 'https://gabrielmendezc.com',
     author: 'Gabriel M. Cortizo',
     social: {
       github: 'gabrielmendezc'
@@ -92,6 +92,7 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-netlify-cache`
+    `gatsby-plugin-netlify-cache`,
+    `gatsby-plugin-preload-fonts`
   ]
 };
