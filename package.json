@@ -44,9 +44,13 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "test": "jest"
+    "test": "jest",
+    "gen-gql": "graphql-codegen --config codegen.yml"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.12.2",
+    "@graphql-codegen/typescript": "^1.12.2",
+    "@graphql-codegen/typescript-operations": "^1.12.2",
     "@mdx-js/loader": "^0.20.3",
     "@mdx-js/mdx": "^0.20.3",
     "@mdx-js/tag": "^0.20.3",
