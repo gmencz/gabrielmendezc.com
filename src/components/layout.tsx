@@ -23,7 +23,7 @@ const theme: ThemeProps = {
 const MainLayout = styled.main`
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 35px;
 `;
 
 type LayoutProps = React.ReactNode & RouterProps;

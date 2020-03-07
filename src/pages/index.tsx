@@ -5,7 +5,7 @@ import Typist from 'react-typist';
 import styled from 'styled-components';
 import Listing from '../components/listing';
 
-const NameHeading = styled.h1`
+export const NameHeading = styled.h1`
   color: rgb(26, 32, 44);
   letter-spacing: -0.03rem;
   font-size: 1.45rem;
@@ -15,13 +15,13 @@ const NameHeading = styled.h1`
   font-family: 'Px Grotesk Bold', sans-serif;
 `;
 
-const DescriptionHeading = styled.div`
+export const DescriptionHeading = styled.div`
   color: ${props => props.theme.subColor};
   letter-spacing: -0.03rem;
   font-size: 1.33rem;
   display: inline;
   line-height: 1.45;
-  font-family: 'Px Grotesk Regular', sans-serif;
+  font-family: 'Px Grotesk Bold', sans-serif;
 `;
 
 const StyledTypist = styled(Typist)`
@@ -73,11 +73,13 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
         <NameHeading>Hola, soy Gabriel Méndez. </NameHeading>
         <StyledTypist.Delay ms={350} />
         <DescriptionHeading>
-          <span>Arquitecto</span>
-          <StyledTypist.Backspace count={10} delay={350} />
           <span>Diseño</span>
           <StyledTypist.Backspace count={6} delay={350} />
+          <span>Arquitecto</span>
+          <StyledTypist.Backspace count={10} delay={350} />
           <span>Desarrollo</span>
+          <StyledTypist.Backspace count={10} delay={350} />
+          <span>Creo</span>
           <span>
             {' '}
             software de calidad que ayuda a hacer del mundo un lugar mejor.
