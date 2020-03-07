@@ -68,19 +68,10 @@ module.exports = {
         icon: 'static/images/gatsby-icon.png'
       }
     },
-    // {
-    //   resolve: 'gatsby-plugin-web-font-loader',
-    //   options: {
-    //     custom: {
-    //       families: ['Px Grotesk Regular, Px Grotesk Bold'],
-    //       urls: ['/fonts/fonts.css']
-    //     }
-    //   }
-    // },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Source Code Pro`],
+        fonts: [`Source Code Pro`, `Oxanium\:400,700`],
         display: `swap`
       }
     },

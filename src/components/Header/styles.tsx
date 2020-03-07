@@ -11,6 +11,7 @@ export const HeaderWrapper = styled.header`
   & > a {
     color: ${props => props.theme.colorPrimary};
     font-size: 1.1rem;
+    font-weight: bold;
   }
 `;
 

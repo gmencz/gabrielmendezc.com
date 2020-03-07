@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
         rgb(245, 245, 245) 0%,
         rgba(224, 230, 235, 0) 100%
     );
-    font-family: 'Px Grotesk Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Oxanium', cursive;
     color: rgb(26, 32, 44);
     }
 
@@ -46,12 +46,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     p {
-    font-family: 'Px Grotesk Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Oxanium', cursive;
     }
 
     a {
     text-decoration: none;
-    font-family: 'Px Grotesk Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Oxanium', cursive;
     }
 
     progress {
@@ -291,7 +291,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 2.25rem;
@@ -308,7 +308,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.62671rem;
