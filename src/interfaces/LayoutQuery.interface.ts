@@ -4,7 +4,7 @@ export interface Site {
     description: string;
     keywords: string;
     image: string;
-    url: string;
+    siteUrl: string;
     author: string;
     social: {
       twitter: string;

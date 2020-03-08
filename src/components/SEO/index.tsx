@@ -9,7 +9,7 @@ interface InitialSEOProps {
     description: string;
     keywords: string;
     image: string;
-    url: string;
+    siteUrl: string;
     author: string;
     social: {
       twitter: string;
@@ -36,8 +36,8 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
 }) => {
   const meta = isBlogPost ? postMeta : siteMetadata;
   const url = isBlogPost
-    ? siteMetadata.url
-    : `${siteMetadata.url}/blog/${postMeta?.path}`;
+    ? `${siteMetadata.siteUrl}/blog/${postMeta?.path}`
+    : siteMetadata.siteUrl;
 
   return (
     <Fragment>
@@ -81,7 +81,7 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
       </Helmet>
       <SchemaOrg
         author={siteMetadata.author}
-        canonicalUrl={siteMetadata.url}
+        canonicalUrl={siteMetadata.siteUrl}
         defaultTitle={siteMetadata.title}
         description={customDescription ? customDescription : meta!.description}
         image={meta!.image}

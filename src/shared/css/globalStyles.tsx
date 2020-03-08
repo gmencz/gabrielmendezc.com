@@ -294,7 +294,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 1.1;
     }
 
