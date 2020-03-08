@@ -9,7 +9,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = () => (
   <Fragment>
     <SC.HeaderWrapper>
-      <Link to="/">@gabrielmendez</Link>
+      <Link to="/">@gabrielmendezc</Link>
       <nav>
         <SC.NavigationList>
           <li>

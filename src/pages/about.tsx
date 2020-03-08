@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import { RouterProps } from '@reach/router';
 
 const AboutPage: React.FC<RouterProps> = ({ location }) => {

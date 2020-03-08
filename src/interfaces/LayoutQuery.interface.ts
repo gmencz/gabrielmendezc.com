@@ -1,8 +1,14 @@
-interface Site {
+export interface Site {
   siteMetadata: {
     title: string;
     description: string;
-    keywords: string | undefined;
+    keywords: string;
+    image: string;
+    url: string;
+    author: string;
+    social: {
+      twitter: string;
+    };
   };
 }
 

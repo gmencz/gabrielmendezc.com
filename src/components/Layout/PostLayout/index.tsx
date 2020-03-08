@@ -1,12 +1,12 @@
 import { RouterProps } from '@reach/router';
 import React from 'react';
-import { PostQueryData } from '../interfaces/PostQuery.interface';
-import Layout from './layout';
+import { PostQueryData } from '../../../interfaces/PostQuery.interface';
+import Layout from '../index';
 import styled from 'styled-components';
 
 type PostLayoutProps = PostQueryData & RouterProps;
 
-const Post = styled.section`
+const IndividualPost = styled.section`
   & > h1 {
     margin-bottom: 1.5rem;
     color: rgb(26, 32, 44);
@@ -14,7 +14,7 @@ const Post = styled.section`
   }
 `;
 
-const PostBody = styled.article`
+const IndividualPostBody = styled.article`
   h2,
   h3,
   h4,
@@ -52,10 +52,7 @@ const PostBody = styled.article`
   }
 `;
 
-const PostLayout: React.FunctionComponent<PostLayoutProps> = ({
-  data,
-  ...props
-}) => {
+const PostLayout: React.FC<PostLayoutProps> = ({ data, ...props }) => {
   if (!data) {
     return null;
   }
@@ -65,10 +62,10 @@ const PostLayout: React.FunctionComponent<PostLayoutProps> = ({
 
   return (
     <Layout location={location}>
-      <Post>
+      <IndividualPost>
         <h1>{title}</h1>
-        <PostBody>{children}</PostBody>
-      </Post>
+        <IndividualPostBody>{children}</IndividualPostBody>
+      </IndividualPost>
     </Layout>
   );
 };

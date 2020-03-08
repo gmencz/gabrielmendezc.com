@@ -1,6 +1,6 @@
 import { RouterProps } from '@reach/router';
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Typist from 'react-typist';
 import styled from 'styled-components';
 import Listing from '../components/listing';
@@ -67,9 +67,10 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
         startDelay={1000}
         cursor={{ hideWhenDone: true, hideWhenDoneDelay: 250 }}
       >
-        <NameHeading>Hola, soy Gabriel Méndez. </NameHeading>
+        <NameHeading>Hola, soy Gabriel Méndez.</NameHeading>
         <StyledTypist.Delay ms={350} />
         <DescriptionHeading>
+          {' '}
           <span>Diseño</span>
           <StyledTypist.Backspace count={6} delay={350} />
           <span>Arquitecto</span>

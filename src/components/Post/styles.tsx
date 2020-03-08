@@ -6,6 +6,10 @@ export const Post = styled.article`
   a {
     color: black;
     text-decoration: none;
+
+    &:first-of-type:hover {
+      text-decoration: underline;
+    }
   }
 
   & > div:first-of-type {
@@ -31,6 +35,5 @@ export const Post = styled.article`
     color: ${props => props.theme.colorSecondary};
     font-size: 1.15rem;
     margin-right: 5px;
-    display: inline;
   }
 `;

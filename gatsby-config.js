@@ -1,13 +1,18 @@
+const config = require('./config/website');
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://gabrielmendezc.com',
-    title: 'Gabriel Méndez',
-    description: 'Página web personal de Gabriel M. Cortizo',
-    keywords: ['Desarrollador', 'Desarrollador web', 'React', 'JavaScript'],
-    canonicalUrl: 'https://gabrielmendezc.com',
-    author: 'Gabriel M. Cortizo',
+    siteUrl: config.siteUrl,
+    title: config.siteTitle,
+    description: config.siteDescription,
+    keywords:
+      'Desarrollo de aplicaciones, Desarrollo web, React, JavaScript, Node.js, Programación, GraphQL, TypeScript, HTML, CSS',
+    canonicalUrl: config.siteUrl,
+    author: config.author,
+    image: config.siteLogo,
     social: {
-      github: 'gabrielmendezc'
+      github: config.github,
+      twitter: config.twitter
     }
   },
   plugins: [
@@ -24,7 +29,9 @@ module.exports = {
       options: {
         decks: [],
         defaultLayouts: {
-          default: require.resolve('./src/components/postLayout.tsx')
+          default: require.resolve(
+            './src/components/Layout/PostLayout/index.tsx'
+          )
         },
         extensions: ['.mdx', '.md'],
         gatsbyRemarkPlugins: [
@@ -58,8 +65,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Gabriel Méndez',
-        short_name: 'gabrielmendez',
+        name: 'Gabriel Méndez C.',
+        short_name: 'gabrielmendezc',
         start_url: '/',
         lang: 'es',
         background_color: '#663399',

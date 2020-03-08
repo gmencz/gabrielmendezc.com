@@ -325,7 +325,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.38316rem;
@@ -342,7 +342,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1rem;
@@ -359,7 +359,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.85028rem;
@@ -376,7 +376,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Px Grotesk Bold', sans-serif;
+    font-family: 'Oxanium', cursive;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.78405rem;

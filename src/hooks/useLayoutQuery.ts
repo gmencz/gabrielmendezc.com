@@ -6,10 +6,14 @@ export const useLayoutQuery = () => {
     query SiteTitleQuery {
       site {
         siteMetadata {
-          # change siteMetaData in 'gatsby-config.js'
+          siteUrl
           title
           description
           keywords
+          image
+          social {
+            twitter
+          }
         }
       }
     }

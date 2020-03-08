@@ -2,9 +2,9 @@ import { RouterProps } from '@reach/router';
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
-import { useLayoutQuery } from '../hooks/useLayoutQuery';
-import Header from './Header';
-import { GlobalStyles } from '../shared/css/globalStyles';
+import { useLayoutQuery } from '../../hooks/useLayoutQuery';
+import Header from '../Header';
+import { GlobalStyles } from '../../shared/css/globalStyles';
 
 interface ThemeProps {
   colorPrimary: string;
