@@ -8,9 +8,14 @@ export const Burger: React.FC = () => {
   return (
     <SC.BurgerWrapper>
       <SC.Burger
+        aria-haspopup="true"
+        aria-controls="menu"
+        aria-expanded={isNavigationOpen ? 'true' : 'false'}
         className={isNavigationOpen ? 'open' : undefined}
         onClick={() => setIsNavigationOpen(!isNavigationOpen)}
-      />
+      >
+        <span>Close Menu</span>
+      </SC.Burger>
       <SC.BurgerNavigationWrapper
         className={isNavigationOpen ? 'open' : undefined}
       >

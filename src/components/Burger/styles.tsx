@@ -75,8 +75,8 @@ export const BurgerNavigationWrapper = styled.nav`
 `;
 
 export const Burger = styled.button`
-  height: 10px;
-  width: 25px;
+  height: 8px;
+  width: 22px;
   position: relative;
   background: none;
   background-color: transparent;
@@ -84,13 +84,21 @@ export const Burger = styled.button`
   border: none;
   z-index: 11;
 
+  & > span {
+    outline: none;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    position: absolute;
+  }
+
   &::before {
     content: '';
     height: 2px;
     width: 100%;
     position: absolute;
     background-color: ${props => props.theme.colorPrimary};
-    top: 0;
+    top: -2px;
     left: 0;
     transition: transform 300ms cubic-bezier(0.36, 0.19, 0.41, 0.97);
     border: none;
@@ -102,7 +110,7 @@ export const Burger = styled.button`
     width: 100%;
     position: absolute;
     background-color: ${props => props.theme.colorPrimary};
-    bottom: 0;
+    bottom: 1px;
     left: 0;
     border: none;
     transition: transform 300ms cubic-bezier(0.36, 0.19, 0.41, 0.97);
