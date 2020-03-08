@@ -1,6 +1,5 @@
 import { RouterProps } from '@reach/router';
-import React, { Fragment } from 'react';
-import Helmet from 'react-helmet';
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import Header from '../Header';
@@ -31,25 +30,13 @@ type LayoutProps = React.ReactNode & RouterProps;
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { site } = useLayoutQuery();
 
-  const { title, description, keywords } = site.siteMetadata;
+  const { title } = site.siteMetadata;
 
   return (
     <ThemeProvider theme={theme}>
-      <Fragment>
-        <Helmet
-          title={title}
-          meta={[
-            { name: 'description', content: description },
-            { name: 'keywords', content: keywords || undefined }
-          ]}
-        >
-          <html lang="es" />
-          <noscript>Es necesario JavaScript para ver esta página web.</noscript>
-        </Helmet>
-        <GlobalStyles />
-        <Header siteTitle={title} />
-        <MainLayout>{children}</MainLayout>
-      </Fragment>
+      <GlobalStyles />
+      <Header siteTitle={title} />
+      <MainLayout>{children}</MainLayout>
     </ThemeProvider>
   );
 };

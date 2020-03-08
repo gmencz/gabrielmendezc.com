@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import Typist from 'react-typist';
 import styled from 'styled-components';
 import Listing from '../components/listing';
+import { SEO } from '../components/SEO';
 
 export const NameHeading = styled.h1`
   color: rgb(26, 32, 44);
@@ -61,6 +62,7 @@ const BlogHeading = styled.h2`
 
 const IndexPage: React.FC<RouterProps> = ({ location }) => (
   <Layout location={location}>
+    <SEO />
     <section style={{ marginTop: 48 }}>
       <StyledTypist
         avgTypingDelay={40}

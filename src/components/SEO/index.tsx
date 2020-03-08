@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import { SchemaOrg } from './SchemaOrg';
 
-interface SEOProps {
+interface InitialSEOProps {
   siteMetadata: {
     title: string;
     description: string;
@@ -15,7 +15,9 @@ interface SEOProps {
       twitter: string;
     };
   };
-  isBlogPost: boolean;
+  customTitle?: string;
+  customDescription?: string;
+  isBlogPost?: boolean;
   postMeta: {
     description: string;
     title: string;
@@ -25,10 +27,12 @@ interface SEOProps {
   } | null;
 }
 
-export const SEO: React.FC<SEOProps> = ({
+const InitialSEO: React.FC<InitialSEOProps> = ({
   siteMetadata,
   postMeta,
-  isBlogPost
+  isBlogPost,
+  customTitle,
+  customDescription
 }) => {
   const meta = isBlogPost ? postMeta : siteMetadata;
   const url = isBlogPost
@@ -39,41 +43,60 @@ export const SEO: React.FC<SEOProps> = ({
     <Fragment>
       <Helmet>
         {/* General tags */}
-        <title>{meta?.title}</title>
-        <meta name="description" content={meta?.description} />
+        <html lang="es" />
+        <title>{customTitle ? customTitle : meta?.title}</title>
+        <meta
+          name="description"
+          content={customDescription ? customDescription : meta?.description}
+        />
         <meta name="image" content={meta?.image} />
         <meta name="keywords" content={meta?.keywords} />
 
         {/* OpenGraph tags */}
         <meta property="og:url" content={url} />
         {isBlogPost ? <meta property="og:type" content="article" /> : null}
-        <meta property="og:title" content={meta?.title} />
-        <meta property="og:description" content={meta?.description} />
+        <meta
+          property="og:title"
+          content={customTitle ? customTitle : meta?.title}
+        />
+        <meta
+          property="og:description"
+          content={customDescription ? customDescription : meta?.description}
+        />
         <meta property="og:image" content={meta?.image} />
 
         {/* Twitter card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={siteMetadata.social.twitter} />
-        <meta name="twitter:title" content={meta?.title} />
-        <meta name="twitter:description" content={meta?.description} />
+        <meta
+          name="twitter:title"
+          content={customTitle ? customTitle : meta?.title}
+        />
+        <meta
+          name="twitter:description"
+          content={customDescription ? customDescription : meta?.description}
+        />
+        <noscript>Es necesario JavaScript para ver esta página web.</noscript>
         <meta name="twitter:image" content={meta?.image} />
       </Helmet>
       <SchemaOrg
         author={siteMetadata.author}
         canonicalUrl={siteMetadata.url}
         defaultTitle={siteMetadata.title}
-        description={meta!.description}
+        description={customDescription ? customDescription : meta!.description}
         image={meta!.image}
-        isBlogPost={isBlogPost}
-        title={meta!.title}
+        isBlogPost={!!isBlogPost}
+        title={customTitle ? customTitle : meta!.title}
         url={url}
       />
     </Fragment>
   );
 };
 
-interface SEOWithQueryProps {
-  isBlogPost: boolean;
+interface SEOProps {
+  isBlogPost?: boolean;
+  customTitle?: string;
+  customDescription?: string;
   postMeta?: {
     description: string;
     title: string;
@@ -83,21 +106,23 @@ interface SEOWithQueryProps {
   };
 }
 
-const SEOWithQuery: React.FC<SEOWithQueryProps> = ({
+export const SEO: React.FC<SEOProps> = ({
   isBlogPost,
-  postMeta
+  postMeta,
+  customTitle,
+  customDescription
 }) => {
   const {
     site: { siteMetadata }
   } = useLayoutQuery();
 
   return (
-    <SEO
+    <InitialSEO
+      customTitle={customTitle}
       siteMetadata={siteMetadata}
+      customDescription={customDescription}
       isBlogPost={isBlogPost}
       postMeta={postMeta ? postMeta : null}
     />
   );
 };
-
-export default SEOWithQuery;
