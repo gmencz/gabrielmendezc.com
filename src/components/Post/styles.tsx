@@ -16,6 +16,15 @@ export const Post = styled.article`
     margin: 0.65rem 0;
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 460px) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      small > span {
+        display: none;
+      }
+    }
   }
 
   time {

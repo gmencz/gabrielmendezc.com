@@ -73,13 +73,7 @@ const IndexPage: React.FC<RouterProps> = ({ location }) => (
         <StyledTypist.Delay ms={350} />
         <DescriptionHeading>
           {' '}
-          <span>Diseño</span>
-          <StyledTypist.Backspace count={6} delay={350} />
-          <span>Arquitecto</span>
-          <StyledTypist.Backspace count={10} delay={350} />
           <span>Desarrollo</span>
-          <StyledTypist.Backspace count={10} delay={350} />
-          <span>Creo</span>
           <span>
             {' '}
             software de calidad que ayuda a hacer del mundo un lugar mejor.

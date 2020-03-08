@@ -38,4 +38,8 @@ export const NavigationList = styled.ul`
       text-decoration: underline;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;

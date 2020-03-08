@@ -13,5 +13,5 @@ module.exports = {
   themeColor: '#2b6cb0',
   backgroundColor: '#f5f5f5',
   siteDescription:
-    'Ven a ver cómo Gabriel Méndez C. puede ayudarte a ser un experto en tu carrera como ingeniero de software.'
+    'Descubre cómo Gabriel Méndez C. puede ayudarte a ser un experto en tu carrera como ingeniero de software.'
 };
