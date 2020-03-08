@@ -3,7 +3,7 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 import Typist from 'react-typist';
 import styled from 'styled-components';
-import Listing from '../components/listing';
+import Listing from '../components/Listing';
 import { SEO } from '../components/SEO';
 
 export const NameHeading = styled.h1`
