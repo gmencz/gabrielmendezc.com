@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import * as SC from './styles';
 import { Link } from 'gatsby';
 
@@ -6,7 +6,7 @@ export const Burger: React.FC = () => {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
   return (
-    <Fragment>
+    <SC.BurgerWrapper>
       <SC.Burger
         className={isNavigationOpen ? 'open' : undefined}
         onClick={() => setIsNavigationOpen(!isNavigationOpen)}
@@ -37,6 +37,6 @@ export const Burger: React.FC = () => {
           </li>
         </SC.BurgerNavigation>
       </SC.BurgerNavigationWrapper>
-    </Fragment>
+    </SC.BurgerWrapper>
   );
 };

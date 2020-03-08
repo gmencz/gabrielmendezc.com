@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const BurgerWrapper = styled.div`
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+`;
+
 export const BurgerNavigation = styled.ul`
   list-style-type: none;
   margin-top: 96px;
