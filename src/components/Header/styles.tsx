@@ -13,6 +13,10 @@ export const HeaderWrapper = styled.header`
     font-size: 1.1rem;
     font-weight: bold;
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 55px 20px;
+  }
 `;
 
 export const NavigationList = styled.ul`
