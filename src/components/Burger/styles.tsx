@@ -85,14 +85,7 @@ export const Burger = styled.button`
   z-index: 11;
 
   & > span {
-    outline: none;
-    overflow: hidden;
-    text-indent: 100%;
-    white-space: nowrap;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 22px;
+    display: none;
   }
 
   &::before {

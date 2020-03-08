@@ -39,6 +39,15 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
     ? `${siteMetadata.siteUrl}/blog/${postMeta?.path}`
     : siteMetadata.siteUrl;
 
+  const nonPostImageUrl = meta?.image
+    .split('/')
+    .filter((_, index) => index > 0)
+    .join('/');
+
+  const validImageUrl = isBlogPost
+    ? `${siteMetadata.siteUrl}${meta?.image}`
+    : `${siteMetadata.siteUrl}/${nonPostImageUrl}`;
+
   return (
     <Fragment>
       <Helmet>
@@ -49,7 +58,7 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
           name="description"
           content={customDescription ? customDescription : meta?.description}
         />
-        <meta name="image" content={meta?.image} />
+        <meta name="image" content={validImageUrl} />
         <meta name="keywords" content={meta?.keywords} />
 
         {/* OpenGraph tags */}
@@ -63,7 +72,7 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
           property="og:description"
           content={customDescription ? customDescription : meta?.description}
         />
-        <meta property="og:image" content={meta?.image} />
+        <meta property="og:image" content={validImageUrl} />
 
         {/* Twitter card tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -77,14 +86,14 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
           content={customDescription ? customDescription : meta?.description}
         />
         <noscript>Es necesario JavaScript para ver esta página web.</noscript>
-        <meta name="twitter:image" content={meta?.image} />
+        <meta name="twitter:image" content={validImageUrl} />
       </Helmet>
       <SchemaOrg
         author={siteMetadata.author}
         canonicalUrl={siteMetadata.siteUrl}
         defaultTitle={siteMetadata.title}
         description={customDescription ? customDescription : meta!.description}
-        image={meta!.image}
+        image={validImageUrl}
         isBlogPost={!!isBlogPost}
         title={customTitle ? customTitle : meta!.title}
         url={url}
