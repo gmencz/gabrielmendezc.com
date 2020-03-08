@@ -90,6 +90,8 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-netlify-cache`
+    `gatsby-plugin-netlify-cache`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`
   ]
 };
