@@ -69,17 +69,10 @@ module.exports = {
         short_name: 'gabrielmendezc',
         start_url: '/',
         lang: 'es',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
         display: 'standalone',
         icon: 'static/images/gatsby-icon.png'
-      }
-    },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`Source Code Pro`, `Oxanium\:400,700`],
-        display: `swap`
       }
     },
     {

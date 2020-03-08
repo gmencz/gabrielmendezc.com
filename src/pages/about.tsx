@@ -63,7 +63,12 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
         <InternalLink to="/contact">tengamos una conversación!</InternalLink>
       </Paragraph>
       <UnrelatedContent>
-        <p>P.D. Aquí están algunas de mis tecnologías favoritas 👇</p>
+        <p>
+          P.D. Aquí están algunas de mis tecnologías favoritas{' '}
+          <span role="img" aria-label="apuntando hacia abajo">
+            👇
+          </span>
+        </p>
         <ul>
           <li>
             <ExternalLink href="https://www.typescriptlang.org/">
