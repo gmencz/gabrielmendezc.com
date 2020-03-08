@@ -29,7 +29,10 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
       </h2>
       <Paragraph style={{ marginBottom: '1.5rem' }}>
         Graduado en sistemas microinformáticos y redes en el centro de fomento{' '}
-        <ExternalLink href="https://www.fomento.edu/montecastelo/">
+        <ExternalLink
+          style={{ lineHeight: 1 }}
+          href="https://www.fomento.edu/montecastelo/"
+        >
           Montecastelo
         </ExternalLink>{' '}
         con un enfásis en el <strong>desarrollo de software</strong>, aunque es
