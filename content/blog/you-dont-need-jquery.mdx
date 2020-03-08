@@ -2,6 +2,9 @@
 path: '/you-dont-need-jquery'
 title: 'No necesitas jQuery'
 date: '2020-03-06'
+description: 'Entiende por qué jQuery no es necesario, cómo perjudica a nuestras aplicaciones web y como se puede reemplazar con simple Javascript.'
+image: '/images/gatsby-astronaut.png'
+keywords: 'jQuery, Javascript, Vanilla JS, Web Development, JS, Software development'
 ---
 
 import { graphql } from 'gatsby';
@@ -14,6 +17,9 @@ export const youDontNeedjQueryQuery = graphql`
         path
         title
         date(formatString: "MMMM DD, YYYY", locale: "es")
+        description
+        keywords
+        image
       }
     }
   }

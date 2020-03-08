@@ -3,6 +3,7 @@ import React from 'react';
 import { PostQueryData } from '../../../interfaces/PostQuery.interface';
 import Layout from '../index';
 import styled from 'styled-components';
+import { SEO } from '../../SEO';
 
 type PostLayoutProps = PostQueryData & RouterProps;
 
@@ -57,11 +58,15 @@ const PostLayout: React.FC<PostLayoutProps> = ({ data, ...props }) => {
     return null;
   }
 
-  const { title } = data.mdx.frontmatter;
+  const { title, description, image, keywords, path } = data.mdx.frontmatter;
   const { location, children } = props;
 
   return (
     <Layout location={location}>
+      <SEO
+        isBlogPost
+        postMeta={{ description, image, keywords, path, title }}
+      />
       <IndividualPost>
         <h1>{title}</h1>
         <IndividualPostBody>{children}</IndividualPostBody>

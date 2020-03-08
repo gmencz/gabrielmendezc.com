@@ -90,6 +90,9 @@ export const Burger = styled.button`
     text-indent: 100%;
     white-space: nowrap;
     position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
   }
 
   &::before {

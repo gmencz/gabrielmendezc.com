@@ -5,7 +5,10 @@ export interface PostQueryData {
         path: string;
         title: string;
         date: string;
+        description: string;
+        image: string;
+        keywords: string;
       };
     };
   };
-};
+}
