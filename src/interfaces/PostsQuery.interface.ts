@@ -1,8 +1,11 @@
-import { EdgeNode } from "./EdgeNode.interface";
+import { EdgeNode } from './EdgeNode.interface';
 
-interface Post {
+export interface Post {
   path: string;
   title: string;
+  description: string;
+  image: string;
+  keywords: string;
   date: string;
 }
 
