@@ -1,4 +1,5 @@
 const config = require('./config/website');
+const { resolve } = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -25,15 +26,12 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-offline',
     {
-      resolve: `gatsby-mdx`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        decks: [],
         defaultLayouts: {
-          default: require.resolve(
-            './src/components/Layout/PostLayout/index.tsx'
-          )
+          default: resolve('./src/components/Layout/BlogLayout/index.tsx')
         },
-        extensions: ['.mdx', '.md'],
+        extensions: ['.mdx', '.md', '.markdown'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-prismjs',

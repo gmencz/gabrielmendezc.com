@@ -1,11 +1,30 @@
-import { RouterProps } from '@reach/router';
 import React from 'react';
-import { PostQueryData } from '../../../interfaces/PostQuery.interface';
-import Layout from '../index';
-import styled from 'styled-components';
+import { RouterProps } from '@reach/router';
+import Layout from '..';
 import { SEO } from '../../SEO';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
-type PostLayoutProps = PostQueryData & RouterProps;
+type PostLayoutProps = {
+  data: {
+    mdx: {
+      excerpt: string;
+      timeToRead: number;
+      html: string;
+      code: {
+        body: string;
+      };
+      frontmatter: {
+        path: string;
+        title: string;
+        date: string;
+        description: string;
+        image: string;
+        keywords: string;
+      };
+    };
+  };
+} & RouterProps;
 
 const IndividualPost = styled.section`
   & > h1 {
@@ -23,56 +42,78 @@ const IndividualPostBody = styled.article`
   h6 {
     margin-bottom: 1.5rem;
   }
-
   p {
     font-size: 1.15rem;
     margin-bottom: 1.5rem;
     line-height: 1.7;
   }
-
   pre[class*='language-'] {
     margin: 0 0 1.5rem 0;
   }
-
   a {
     font-size: 1.15rem;
     color: ${props => props.theme.linkColor} !important;
     border-bottom: 1px dotted #2b6cb0;
     padding-bottom: 0.15rem;
   }
-
   ul,
   ol {
     margin-left: 1.85rem;
     margin-bottom: 1.5rem;
     font-size: 1.15rem;
-
     li {
       margin-bottom: 0.35rem;
     }
   }
 `;
 
-const PostLayout: React.FC<PostLayoutProps> = ({ data, ...props }) => {
-  if (!data) {
-    return null;
-  }
+const PostLayout: React.FC<PostLayoutProps> = ({
+  data,
+  location,
+  ...props
+}) => {
+  if (!data) return null;
 
-  const { title, description, image, keywords, path } = data.mdx.frontmatter;
-  const { location, children } = props;
+  const {
+    mdx: {
+      frontmatter: { date, path, title, description, image, keywords },
+      timeToRead,
+      code: { body }
+    }
+  } = data;
+
+  console.log(body);
 
   return (
     <Layout location={location}>
       <SEO
         isBlogPost
-        postMeta={{ description, image, keywords, path, title }}
+        postMeta={{ path, title, description, image, keywords }}
       />
       <IndividualPost>
         <h1>{title}</h1>
-        <IndividualPostBody>{children}</IndividualPostBody>
+        <IndividualPostBody></IndividualPostBody>
       </IndividualPost>
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+  query BlogPost($slug: String!) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      excerpt
+      timeToRead
+      body
+      frontmatter {
+        path
+        title
+        date(formatString: "MMMM DD, YYYY", locale: "es")
+        description
+        image
+        keywords
+      }
+    }
+  }
+`;
 
 export default PostLayout;
