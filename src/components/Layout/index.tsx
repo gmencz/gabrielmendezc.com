@@ -33,7 +33,6 @@ type LayoutProps = React.ReactNode & RouterProps;
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { site } = useLayoutQuery();
-
   const { title } = site.siteMetadata;
 
   return (
