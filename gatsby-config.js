@@ -25,15 +25,40 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-offline',
     {
-      resolve: `gatsby-mdx`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        decks: [],
+        name: 'pages',
+        path: `${__dirname}/src/pages`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/content/blog`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/static/images`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: `${__dirname}/src`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
         defaultLayouts: {
-          default: require.resolve(
-            './src/components/Layout/PostLayout/index.tsx'
-          )
+          default: require.resolve('./src/templates/post.tsx')
         },
-        extensions: ['.mdx', '.md'],
+        extensions: ['.mdx', '.md', '.markdown'],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-prismjs',
@@ -45,21 +70,6 @@ module.exports = {
             }
           }
         ]
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'posts',
-        path: `${__dirname}/content/blog`,
-        ignore: ['**/.tsx*']
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/static/images`
       }
     },
     {

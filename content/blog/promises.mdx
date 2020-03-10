@@ -5,24 +5,8 @@ date: '2019-12-21'
 description: 'Aprende cómo funciona internamente el código asíncrono en Javascript y como manejarlo con funcionalidades modernas como promesas y async await.'
 image: '/images/js-promises.png'
 keywords: 'Javascript, JS, Software development, Web development, Promises, Promises Javascript, ES6 Promises, async await'
+published: true
 ---
-
-import { graphql } from 'gatsby';
-
-export const promisesQuery = graphql`
-  query promisesQuery($pagePath: String!) {
-    mdx(frontmatter: { path: { eq: $pagePath } }) {
-      frontmatter {
-        path
-        title
-        date(formatString: "MMMM DD, YYYY", locale: "es")
-        description
-        keywords
-        image
-      }
-    }
-  }
-`;
 
 Es hora de reemplazar callbacks por promesas, ofrecen código mas limpio y se deshacen del famoso callback hell.
 
