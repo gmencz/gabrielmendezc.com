@@ -58,6 +58,7 @@
     "@graphql-codegen/typescript": "^1.13.0",
     "@graphql-codegen/typescript-operations": "^1.13.0",
     "@types/jest": "^25.1.4",
+    "@types/mdx-js__react": "^1.5.1",
     "@types/react-helmet": "^5.0.15",
     "@types/react-typist": "^2.0.1",
     "@types/styled-components": "^5.0.1",
@@ -70,7 +71,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tylergreulich/gatsby-typescript-mdx-prismjs-starter"
+    "url": "https://github.com/gabrielmendezc/gabrielmcortizo.com"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./jest.setup.js",

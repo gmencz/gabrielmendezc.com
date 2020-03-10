@@ -4,6 +4,8 @@ import Layout from '..';
 import { SEO } from '../../SEO';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
+// @ts-ignore
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
 type PostLayoutProps = {
   data: {
@@ -11,9 +13,7 @@ type PostLayoutProps = {
       excerpt: string;
       timeToRead: number;
       html: string;
-      code: {
-        body: string;
-      };
+      body: string;
       frontmatter: {
         path: string;
         title: string;
@@ -67,22 +67,16 @@ const IndividualPostBody = styled.article`
   }
 `;
 
-const PostLayout: React.FC<PostLayoutProps> = ({
-  data,
-  location,
-  ...props
-}) => {
+const PostLayout: React.FC<PostLayoutProps> = ({ data, location }) => {
   if (!data) return null;
 
   const {
+    mdx,
     mdx: {
       frontmatter: { date, path, title, description, image, keywords },
-      timeToRead,
-      code: { body }
+      timeToRead
     }
   } = data;
-
-  console.log(body);
 
   return (
     <Layout location={location}>
@@ -92,7 +86,9 @@ const PostLayout: React.FC<PostLayoutProps> = ({
       />
       <IndividualPost>
         <h1>{title}</h1>
-        <IndividualPostBody></IndividualPostBody>
+        <IndividualPostBody>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </IndividualPostBody>
       </IndividualPost>
     </Layout>
   );
