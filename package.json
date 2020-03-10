@@ -35,6 +35,7 @@
     "react-testing-library": "^8.0.1",
     "react-typing-animation": "^1.6.2",
     "react-typist": "^2.0.5",
+    "styled-components": "^5.0.1",
     "typeface-oxanium": "^1.1.4",
     "typeface-source-code-pro": "^1.1.3"
   },
