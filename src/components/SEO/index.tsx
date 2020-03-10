@@ -36,7 +36,7 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
 }) => {
   const meta = isBlogPost ? postMeta : siteMetadata;
   const url = isBlogPost
-    ? `${siteMetadata.siteUrl}/blog/${postMeta?.path}`
+    ? `${siteMetadata.siteUrl}/blog${postMeta?.path}`
     : siteMetadata.siteUrl;
 
   const nonPostImageUrl = meta?.image
