@@ -4,6 +4,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import Header from '../Header';
 import { GlobalStyles } from '../../shared/css/globalStyles';
+import { MDXProvider } from '@mdx-js/react';
+import { CodeIndicatorTitle } from '../mdx/code-indicator-title/code-indicator-title.styles';
 
 interface ThemeProps {
   colorPrimary: string;
@@ -34,12 +36,15 @@ type LayoutProps = React.ReactNode & RouterProps;
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { site } = useLayoutQuery();
   const { title } = site.siteMetadata;
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Header siteTitle={title} />
-      <MainLayout>{children}</MainLayout>
+      <MainLayout>
+        <MDXProvider components={{ CodeIndicatorTitle }}>
+          {children}
+        </MDXProvider>
+      </MainLayout>
     </ThemeProvider>
   );
 };

@@ -81,6 +81,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       skip: $skip
       limit: $limit
+      filter: { frontmatter: { published: { ne: false } } }
     ) {
       edges {
         node {

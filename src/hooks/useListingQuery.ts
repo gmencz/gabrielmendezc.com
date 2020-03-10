@@ -4,7 +4,11 @@ import { PostsQueryData } from '../interfaces/PostsQuery.interface';
 export const useListingQuery = () => {
   const { allMdx }: PostsQueryData = useStaticQuery(graphql`
     query LISTING_QUERY {
-      allMdx(limit: 5, sort: { fields: [frontmatter___date], order: DESC }) {
+      allMdx(
+        limit: 5
+        sort: { fields: [frontmatter___date], order: DESC }
+        filter: { frontmatter: { published: { ne: false } } }
+      ) {
         edges {
           node {
             excerpt

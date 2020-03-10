@@ -47,15 +47,18 @@ const IndividualPostBody = styled.article`
     margin-bottom: 1.5rem;
     line-height: 1.7;
   }
+
   pre[class*='language-'] {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 3rem 0;
   }
+
   a {
     font-size: 1.15rem;
     color: ${props => props.theme.linkColor} !important;
     border-bottom: 1px dotted #2b6cb0;
     padding-bottom: 0.15rem;
   }
+
   ul,
   ol {
     margin-left: 1.85rem;
@@ -64,6 +67,10 @@ const IndividualPostBody = styled.article`
     li {
       margin-bottom: 0.35rem;
     }
+  }
+
+  #jquery-alternatives ~ h3 {
+    text-decoration: underline;
   }
 `;
 
