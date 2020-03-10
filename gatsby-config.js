@@ -93,6 +93,12 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-158733701-3'
+      }
+    },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`
