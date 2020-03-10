@@ -4,9 +4,6 @@ import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
 import Header from '../Header';
 import { GlobalStyles } from '../../shared/css/globalStyles';
-import { MDXProvider } from '@mdx-js/react';
-// @ts-ignore
-import mdxComponents from 'components/mdx';
 
 interface ThemeProps {
   colorPrimary: string;
@@ -42,9 +39,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Header siteTitle={title} />
-      <MainLayout>
-        <MDXProvider components={mdxComponents}>{children}</MDXProvider>
-      </MainLayout>
+      <MainLayout>{children}</MainLayout>
     </ThemeProvider>
   );
 };

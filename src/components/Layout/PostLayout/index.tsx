@@ -5,7 +5,7 @@ import { SEO } from '../../SEO';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 // @ts-ignore
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 type PostLayoutProps = {
   data: {
@@ -73,8 +73,7 @@ const PostLayout: React.FC<PostLayoutProps> = ({ data, location }) => {
   const {
     mdx,
     mdx: {
-      frontmatter: { date, path, title, description, image, keywords },
-      timeToRead
+      frontmatter: { path, title, description, image, keywords }
     }
   } = data;
 

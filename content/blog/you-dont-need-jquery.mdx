@@ -7,23 +7,7 @@ image: '/images/you-dont-need-jquery.jpg'
 keywords: 'jQuery, Javascript, Vanilla JS, Web Development, JS, Software development'
 ---
 
-import { graphql } from 'gatsby';
-import Hello from './components/hello.tsx';
-
-export const youDontNeedjQueryQuery = graphql`
-  query youDontNeedjQueryQuery($pagePath: String!) {
-    mdx(frontmatter: { path: { eq: $pagePath } }) {
-      frontmatter {
-        path
-        title
-        date(formatString: "MMMM DD, YYYY", locale: "es")
-        description
-        keywords
-        image
-      }
-    }
-  }
-`;
+import Hello from '../../src/components/mdx/hello.tsx';
 
 Muchos desarrolladores tienden a usar **jQuery** para una gran cantidad de sus proyectos, esto no es solamente innecesario sino que **perjudica a nuestra aplicación**.
 

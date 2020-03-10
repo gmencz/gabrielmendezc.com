@@ -1,5 +1,4 @@
 const config = require('./config/website');
-const { resolve } = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -36,8 +35,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: `${__dirname}/content/blog`,
-        ignore: ['**/.tsx*']
+        path: `${__dirname}/content/blog`
       }
     },
     {
@@ -58,7 +56,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: resolve('./src/components/Layout/BlogLayout/index.tsx')
+          default: require.resolve(
+            './src/components/Layout/PostLayout/index.tsx'
+          )
         },
         extensions: ['.mdx', '.md', '.markdown'],
         gatsbyRemarkPlugins: [

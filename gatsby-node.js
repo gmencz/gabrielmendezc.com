@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
     paginate({
       createPage,
       items: posts,
-      itemsPerPage: 10,
+      itemsPerPage: 6,
       pathPrefix: '/blog',
       component: resolve('src/components/Layout/BlogLayout/index.tsx')
     });

@@ -2,22 +2,29 @@ import { RouterProps } from '@reach/router';
 import React from 'react';
 import Layout from '../index';
 import { SEO } from '../../SEO';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { EdgeNode } from '../../../interfaces/EdgeNode.interface';
 import { Post as PostInterface } from '../../../interfaces/PostsQuery.interface';
 import { Post } from '../../Post';
 import { ParagraphHeading, InternalLink } from '../../SharedStyles';
+import { Footer, ChangePageLink } from './styles';
 
 type BlogLayoutProps = {
   data: { allMdx: { edges?: [EdgeNode<PostInterface>] } };
-} & RouterProps;
+} & RouterProps & {
+    pageContext: { previousPagePath: string; nextPagePath: string };
+  };
 
-const PostLayout: React.FC<BlogLayoutProps> = ({ data, location }) => {
+const PostLayout: React.FC<BlogLayoutProps> = ({
+  data,
+  location,
+  pageContext
+}) => {
   if (!data) {
     return null;
   }
 
-  console.log(data);
+  console.log(pageContext);
 
   const postsJSX = data.allMdx.edges!.map(
     ({
@@ -54,6 +61,18 @@ const PostLayout: React.FC<BlogLayoutProps> = ({ data, location }) => {
         para no perderte ninguna novedad.
       </ParagraphHeading>
       <section>{postsJSX}</section>
+      <Footer>
+        {pageContext.previousPagePath && (
+          <ChangePageLink to={pageContext.previousPagePath}>
+            ← Página anterior
+          </ChangePageLink>
+        )}
+        {pageContext.nextPagePath && (
+          <ChangePageLink to={pageContext.nextPagePath}>
+            Página siguiente →
+          </ChangePageLink>
+        )}
+      </Footer>
     </Layout>
   );
 };
