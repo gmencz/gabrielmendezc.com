@@ -1,3 +1,10 @@
+/* pre[class*='language-'] {
+  border: 4px dotted #2b6cb0;
+} */
+div.gatsby-highlight + h3 {
+  margin-top: 3rem;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
   text-align: left;
