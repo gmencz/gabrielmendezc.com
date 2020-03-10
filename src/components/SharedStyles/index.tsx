@@ -58,3 +58,9 @@ export const UnrelatedContent = styled.aside`
     }
   }
 `;
+
+export const Input = styled.input``;
+
+export const Label = styled.label``;
+
+export const Button = styled.button``;
