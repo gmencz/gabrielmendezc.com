@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 export const Footer = styled.footer`
   max-width: 800px;
@@ -18,13 +19,40 @@ export const SubscribeFormGroup = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin-right: 12px;
 
   &:not(:last-of-type) {
+    margin-right: 12px;
     flex-grow: 1;
   }
 
   & > label {
     margin-bottom: 0.45rem;
+  }
+`;
+
+export const FooterInternalLink = styled(Link)`
+  color: ${props => props.theme.colorSecondary};
+`;
+
+export const FooterMedia = styled.div`
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+
+  & > div {
+    a:not(:last-of-type) {
+      margin-right: 16px;
+      color: ${props => props.theme.colorSecondary};
+      transition: color 300ms ease-in-out;
+
+      &:hover {
+        color: ${props => props.theme.linkColor};
+      }
+    }
+  }
+
+  small {
+    font-size: 1rem;
+    color: ${props => props.theme.colorSecondary};
   }
 `;

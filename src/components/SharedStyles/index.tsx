@@ -60,7 +60,7 @@ export const UnrelatedContent = styled.aside`
 `;
 
 export const Input = styled.input`
-  padding: 0.55rem;
+  padding: 0.4rem 0.55rem;
   border: 2px solid rgb(237, 242, 247);
   border-radius: 4px;
   font-size: 1.1rem;
@@ -79,7 +79,7 @@ export const Label = styled.label`
 `;
 
 export const Button = styled.button`
-  padding: 0.55rem;
+  padding: 0.4rem 1rem;
   cursor: pointer;
   border: 2px solid ${props => props.theme.linkColor};
   background-color: ${props => props.theme.linkColor};
