@@ -20,5 +20,9 @@ export const CodeIndicatorTitle = styled.h4`
     &.no__polyfill {
       border-bottom: 5px dotted #37e325;
     }
+
+    @media screen and (max-width: 345px) {
+      font-size: 0.8rem !important;
+    }
   }
 `;

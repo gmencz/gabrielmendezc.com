@@ -114,7 +114,7 @@ export const Burger = styled.button`
 
   &.open {
     &::before {
-      transform: translateY(3.5px) rotate(135deg);
+      transform: translateY(2.65px) rotate(135deg);
     }
 
     &::after {
