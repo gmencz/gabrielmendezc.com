@@ -96,7 +96,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-158733701-3'
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'none'
       }
     },
     `gatsby-plugin-netlify-cache`,
