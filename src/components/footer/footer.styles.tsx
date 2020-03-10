@@ -10,6 +10,21 @@ export const Footer = styled.footer`
   }
 `;
 
-export const SubscribeForm = styled.form``;
+export const SubscribeForm = styled.form`
+  display: flex;
+`;
 
-export const SubscribeFormGroup = styled.div``;
+export const SubscribeFormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-right: 12px;
+
+  &:not(:last-of-type) {
+    flex-grow: 1;
+  }
+
+  & > label {
+    margin-bottom: 0.45rem;
+  }
+`;
