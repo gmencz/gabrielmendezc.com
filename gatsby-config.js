@@ -56,9 +56,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve(
-            './src/components/Layout/PostLayout/index.tsx'
-          )
+          default: require.resolve('./src/templates/post.tsx')
         },
         extensions: ['.mdx', '.md', '.markdown'],
         gatsbyRemarkPlugins: [

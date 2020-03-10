@@ -1,11 +1,11 @@
 import React from 'react';
 import { RouterProps } from '@reach/router';
-import Layout from '..';
-import { SEO } from '../../SEO';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 // @ts-ignore
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from '../components/Layout';
+import { SEO } from '../components/SEO';
 
 type PostLayoutProps = {
   data: {

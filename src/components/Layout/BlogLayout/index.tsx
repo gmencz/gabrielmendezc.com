@@ -2,7 +2,7 @@ import { RouterProps } from '@reach/router';
 import React from 'react';
 import Layout from '../index';
 import { SEO } from '../../SEO';
-import { graphql, PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
 import { EdgeNode } from '../../../interfaces/EdgeNode.interface';
 import { Post as PostInterface } from '../../../interfaces/PostsQuery.interface';
 import { Post } from '../../Post';
@@ -23,8 +23,6 @@ const PostLayout: React.FC<BlogLayoutProps> = ({
   if (!data) {
     return null;
   }
-
-  console.log(pageContext);
 
   const postsJSX = data.allMdx.edges!.map(
     ({
