@@ -13,6 +13,10 @@ export const Footer = styled.footer`
 
 export const SubscribeForm = styled.form`
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const SubscribeFormGroup = styled.div`
@@ -27,6 +31,10 @@ export const SubscribeFormGroup = styled.div`
 
   & > label {
     margin-bottom: 0.45rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 1rem;
   }
 `;
 
