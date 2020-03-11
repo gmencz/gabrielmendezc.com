@@ -111,8 +111,8 @@ module.exports = {
             filePathRegex: `//content/blog//`,
             blogUrl: 'https://gabrielmendezc.com/blog',
             output: '/blog/rss.xml',
-						title: 'Feed RSS de Gabriel Méndez C.',
-						prefixUrl: '/blog'
+            title: 'Feed RSS de Gabriel Méndez C.',
+            prefixUrl: '/blog'
           })
         ]
       }
@@ -138,9 +138,11 @@ function getBlogFeed({ filePathRegex, blogUrl, prefixUrl, ...overrides }) {
     serialize: ({ query: { allMdx } }) => {
       const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
       return allMdx.edges.map(edge => {
-				const url = prefixUrl
-				? `${siteUrl}/${stripSlash(prefixUrl)}/${stripSlash(edge.node.fields.slug)}`
-				: `${siteUrl}/${stripSlash(edge.node.fields.slug)}`;
+        const url = prefixUrl
+          ? `${siteUrl}/${stripSlash(prefixUrl)}/${stripSlash(
+              edge.node.frontmatter.path
+            )}`
+          : `${siteUrl}/${stripSlash(edge.node.frontmatter.path)}`;
 
         return {
           ...edge.node.frontmatter,
@@ -174,12 +176,10 @@ function getBlogFeed({ filePathRegex, blogUrl, prefixUrl, ...overrides }) {
          ) {
            edges {
              node {
-               fields {
-                 slug
-               }
                frontmatter {
 								 title
 								 date
+								 path
 								 description
                }
              }
