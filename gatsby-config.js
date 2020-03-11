@@ -103,7 +103,19 @@ module.exports = {
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          getBlogFeed({
+            filePathRegex: `//content//blog`,
+            blogUrl: 'https://gabrielmendezc.com/blog',
+            output: '/blog/rss.xml',
+            title: 'Feed RSS de Gabriel Méndez C.'
+          })
+        ]
+      }
+    },
     {
       resolve: `gatsby-plugin-mailchimp`,
       options: {
@@ -113,3 +125,64 @@ module.exports = {
     }
   ]
 };
+
+function getBlogFeed({ filePathRegex, blogUrl, ...overrides }) {
+  /**
+   * These RSS feeds can be quite expensive to generate. Limiting the number of
+   * posts and keeping each item's template lightweight (only using frontmatter,
+   * avoiding the html/excerpt fields) helps negate this.
+   */
+  return {
+    serialize: ({ query: { allMdx } }) => {
+      const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
+      return allMdx.edges.map(edge => {
+        const url = `${siteUrl}/${stripSlash(edge.node.fields.slug)}`;
+
+        return {
+          ...edge.node.frontmatter,
+          url,
+          guid: url,
+          custom_elements: [
+            {
+              'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+                  <p>
+                    I've posted a new article <em>"${edge.node.frontmatter.title}"</em> and you can <a href="${url}">read it online</a>.
+                    <br>
+                    ${edge.node.frontmatter.description}
+                    <br>
+                    You can also <a href="${siteUrl}/subscribe">subscribe</a> for weekly emails on what I'm learning, working on, and writing about.
+                  </p>
+                </div>`
+            }
+          ]
+        };
+      });
+    },
+    query: `
+       {
+         allMdx(
+           limit: 25,
+           filter: {
+             frontmatter: {published: {ne: false}}
+             fileAbsolutePath: {regex: "${filePathRegex}"}
+           }
+           sort: { order: DESC, fields: [frontmatter___date] }
+         ) {
+           edges {
+             node {
+               fields {
+                 slug
+               }
+               frontmatter {
+								 title
+								 date
+								 description
+               }
+             }
+           }
+         }
+       }
+     `,
+    ...overrides
+  };
+}
