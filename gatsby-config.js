@@ -108,7 +108,7 @@ module.exports = {
       options: {
         feeds: [
           getBlogFeed({
-            filePathRegex: `//content//blog`,
+            filePathRegex: `//content/blog//`,
             blogUrl: 'https://gabrielmendezc.com/blog',
             output: '/blog/rss.xml',
             title: 'Feed RSS de Gabriel Méndez C.'
@@ -132,6 +132,7 @@ function getBlogFeed({ filePathRegex, blogUrl, ...overrides }) {
    * posts and keeping each item's template lightweight (only using frontmatter,
    * avoiding the html/excerpt fields) helps negate this.
    */
+  const { siteUrl } = config;
   return {
     serialize: ({ query: { allMdx } }) => {
       const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
