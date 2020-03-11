@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
             type="email"
             aria-label="tu email"
             aria-required="true"
-            placeholder="juan@example.com"
+            placeholder="juan@ejemplo.com"
           />
         </SC.SubscribeFormGroup>
         <SC.SubscribeFormGroup>

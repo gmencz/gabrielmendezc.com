@@ -6,9 +6,13 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-text-size-adjust: 100%;
     }
 
+		div#gatsby-focus-wrapper {
+			min-height: 100vh;
+		}
+
     body {
+			min-height: 100vh;
     margin: 0;
-    min-height: 100vh;
     background-color: rgb(224, 230, 235);
     background-image: linear-gradient(
         rgb(245, 245, 245) 0%,
