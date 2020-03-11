@@ -6,6 +6,7 @@ import Header from '../Header';
 import { GlobalStyles } from '../../shared/css/globalStyles';
 import { MDXProvider } from '@mdx-js/react';
 import { CodeIndicatorTitle } from '../mdx/code-indicator-title/code-indicator-title.styles';
+import { Footer } from '../footer/footer.component';
 
 interface ThemeProps {
   colorPrimary: string;
@@ -45,6 +46,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {children}
         </MDXProvider>
       </MainLayout>
+      <Footer />
     </ThemeProvider>
   );
 };

@@ -58,3 +58,39 @@ export const UnrelatedContent = styled.aside`
     }
   }
 `;
+
+export const Input = styled.input`
+  padding: 0.4rem 0.55rem;
+  border: 2px solid rgb(237, 242, 247);
+  border-radius: 4px;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border-color 300ms ease-in-out;
+  color: ${props => props.theme.colorPrimary};
+
+  &:focus {
+    border-color: ${props => props.theme.subColor};
+  }
+`;
+
+export const Label = styled.label`
+  color: ${props => props.theme.colorPrimary};
+  font-size: 1.15rem;
+`;
+
+export const Button = styled.button`
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  border: 2px solid ${props => props.theme.linkColor};
+  background-color: ${props => props.theme.linkColor};
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: border-color 300ms ease-in-out, background-color 300ms ease-in-out;
+
+  &:hover {
+    background-color: #0e457f;
+    border-color: #0e457f;
+  }
+`;
