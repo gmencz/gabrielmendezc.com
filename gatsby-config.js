@@ -111,8 +111,8 @@ module.exports = {
             filePathRegex: `//content/blog//`,
             blogUrl: 'https://gabrielmendezc.com/blog',
             output: '/blog/rss.xml',
-            title: 'Feed RSS de Gabriel Méndez C.',
-            prefixUrl: '/blog'
+						title: 'Feed RSS de Gabriel Méndez C.',
+						prefixUrl: '/blog'
           })
         ]
       }
@@ -127,26 +127,28 @@ module.exports = {
   ]
 };
 
-/**
- */
-const { siteUrl } = config;
-return {
-  serialize: ({ query: { allMdx } }) => {
-    const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
-    return allMdx.edges.map(edge => {
-      const url = prefixUrl
-        ? `${siteUrl}/${stripSlash(prefixUrl)}/${stripSlash(
-            edge.node.fields.slug
-          )}`
-        : `${siteUrl}/${stripSlash(edge.node.fields.slug)}`;
+function getBlogFeed({ filePathRegex, blogUrl, ...overrides, prefixUrl }) {
+  /**
+   * These RSS feeds can be quite expensive to generate. Limiting the number of
+   * posts and keeping each item's template lightweight (only using frontmatter,
+   * avoiding the html/excerpt fields) helps negate this.
+   */
+  const { siteUrl } = config;
+  return {
+    serialize: ({ query: { allMdx } }) => {
+      const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
+      return allMdx.edges.map(edge => {
+				const url = prefixUrl
+				? `${siteUrl}/${stripSlash(prefixUrl)}/${stripSlash(edge.node.fields.slug)}`
+				: `${siteUrl}/${stripSlash(edge.node.fields.slug)}`;
 
-      return {
-        ...edge.node.frontmatter,
-        url,
-        guid: url,
-        custom_elements: [
-          {
-            'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+        return {
+          ...edge.node.frontmatter,
+          url,
+          guid: url,
+          custom_elements: [
+            {
+              'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
                   <p>
                     He escrito un nuevo artículo <em>"${edge.node.frontmatter.title}"</em> y puedes <a href="${url}">leerlo online</a>.
                     <br>
@@ -155,12 +157,12 @@ return {
                     También puedes <a href="${siteUrl}/subscribe">suscribirte</a> para recibir emails de desarrollo de software y nuevas tecnologías.
                   </p>
                 </div>`
-          }
-        ]
-      };
-    });
-  },
-  query: `
+            }
+          ]
+        };
+      });
+    },
+    query: `
        {
          allMdx(
            limit: 25,
@@ -185,5 +187,6 @@ return {
          }
        }
      `,
-  ...overrides
-};
+    ...overrides
+  };
+}
