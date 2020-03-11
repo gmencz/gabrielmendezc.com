@@ -12,38 +12,11 @@ import { CodeIndicatorTitle } from '../../src/components/mdx/code-indicator-titl
 
 Muchos desarrolladores tienden a usar **jQuery** para una gran cantidad de sus proyectos, esto no es solamente innecesario sino que **perjudica a nuestra aplicación**.
 
-Uno de los motivos por los que perjudica a nuestra aplicación es porque el tamaño de **jQuery** es de 249KB y 30KB minificado, y esto es solamente la librería en sí, en TODOS los proyectos con una mínima complejidad en los que se usa **jQuery**, se incluyen <em>plugins</em> de **jQuery** para añadir funcionalidades algo más específicas, entre el tamaño de estos <em>plugins</em> y **jQuery** en sí, estamos aumentando el tamaño final del <em>bundle</em> de nuestra aplicación de forma innecesaria. A lo mejor esto a ti no te afecta, pero y a tus usuarios con conexiones más lentas? Nos olvidamos de ellos?
+Uno de los motivos por los que perjudica a nuestra aplicación es porque el tamaño de **jQuery** es de 249KB y 30KB minificado, y esto es solamente la librería en sí, en TODOS los proyectos con una mínima complejidad en los que se usa **jQuery**, se incluyen <em>plugins</em> de **jQuery** para añadir funcionalidades algo más específicas, entre el tamaño de estos <em>plugins</em> y **jQuery** en sí, estamos aumentando el tamaño final del <em>bundle</em> de nuestra aplicación de forma innecesaria. A lo mejor esto a ti no te afecta, pero, ¿y a tus usuarios con conexiones más lentas? ¿Nos olvidamos de ellos?
 
 Es cierto que hace tiempo, la manipulación del <em>DOM</em> no tenía la misma complejidad ni compatibilidad que actualmente, por ello, muchos desarrolladores siguen usando **jQuery**, pero esto ya no es así, si no contamos a Internet Explorer (< IE11), el resto de navegadores son compatibles entre sí, y en el caso de que se diera alguna incompatibilidad, podemos arreglarlo con [polyfills](https://developer.mozilla.org/es/docs/Glossary/Polyfill), ¿qué es preferible, escribir 10 líneas más de código o aumentar el tamaño de nuestro proyecto?
 
 <h2 id="jquery-alternatives">Alternativas a funcionalidades de jQuery</h2>
-
-### AJAX
-
-<CodeIndicatorTitle>
-  <p>jQuery</p>
-</CodeIndicatorTitle>
-
-```js
-$.getJSON('/api/v1/users', (data, error) => {
-  if (error) {
-    console.error(error);
-    return;
-  }
-  console.log(data);
-});
-```
-
-<CodeIndicatorTitle>
-  <p>Vanilla JS</p>
-  <p class="polyfill">Requiere polyfill (IE)</p>
-</CodeIndicatorTitle>
-
-```js
-fetch('/api/v1/users')
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
-```
 
 ### Animación Fade Out
 
@@ -76,6 +49,33 @@ el.classList.remove('show');
   opacity: 0;
   transition: opacity 400ms ease-out;
 }
+```
+
+### AJAX
+
+<CodeIndicatorTitle>
+  <p>jQuery</p>
+</CodeIndicatorTitle>
+
+```js
+$.getJSON('/api/v1/users', (data, error) => {
+  if (error) {
+    console.error(error);
+    return;
+  }
+  console.log(data);
+});
+```
+
+<CodeIndicatorTitle>
+  <p>Vanilla JS</p>
+  <p class="polyfill">Requiere polyfill (IE)</p>
+</CodeIndicatorTitle>
+
+```js
+fetch('/api/v1/users')
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 ```
 
 ### Esconder elemento (Hide)
