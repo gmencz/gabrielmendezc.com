@@ -127,7 +127,7 @@ module.exports = {
   ]
 };
 
-function getBlogFeed({ filePathRegex, blogUrl, ...overrides, prefixUrl }) {
+function getBlogFeed({ filePathRegex, blogUrl, prefixUrl, ...overrides }) {
   /**
    * These RSS feeds can be quite expensive to generate. Limiting the number of
    * posts and keeping each item's template lightweight (only using frontmatter,
