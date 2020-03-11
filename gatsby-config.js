@@ -111,7 +111,8 @@ module.exports = {
             filePathRegex: `//content/blog//`,
             blogUrl: 'https://gabrielmendezc.com/blog',
             output: '/blog/rss.xml',
-            title: 'Feed RSS de Gabriel Méndez C.'
+            title: 'Feed RSS de Gabriel Méndez C.',
+            prefixUrl: '/blog'
           })
         ]
       }
@@ -126,40 +127,40 @@ module.exports = {
   ]
 };
 
-function getBlogFeed({ filePathRegex, blogUrl, ...overrides }) {
-  /**
-   * These RSS feeds can be quite expensive to generate. Limiting the number of
-   * posts and keeping each item's template lightweight (only using frontmatter,
-   * avoiding the html/excerpt fields) helps negate this.
-   */
-  const { siteUrl } = config;
-  return {
-    serialize: ({ query: { allMdx } }) => {
-      const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
-      return allMdx.edges.map(edge => {
-        const url = `${siteUrl}/${stripSlash(edge.node.fields.slug)}`;
+/**
+ */
+const { siteUrl } = config;
+return {
+  serialize: ({ query: { allMdx } }) => {
+    const stripSlash = slug => (slug.startsWith('/') ? slug.slice(1) : slug);
+    return allMdx.edges.map(edge => {
+      const url = prefixUrl
+        ? `${siteUrl}/${stripSlash(prefixUrl)}/${stripSlash(
+            edge.node.fields.slug
+          )}`
+        : `${siteUrl}/${stripSlash(edge.node.fields.slug)}`;
 
-        return {
-          ...edge.node.frontmatter,
-          url,
-          guid: url,
-          custom_elements: [
-            {
-              'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+      return {
+        ...edge.node.frontmatter,
+        url,
+        guid: url,
+        custom_elements: [
+          {
+            'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
                   <p>
-                    I've posted a new article <em>"${edge.node.frontmatter.title}"</em> and you can <a href="${url}">read it online</a>.
+                    He escrito un nuevo artículo <em>"${edge.node.frontmatter.title}"</em> y puedes <a href="${url}">leerlo online</a>.
                     <br>
                     ${edge.node.frontmatter.description}
                     <br>
-                    You can also <a href="${siteUrl}/subscribe">subscribe</a> for weekly emails on what I'm learning, working on, and writing about.
+                    También puedes <a href="${siteUrl}/subscribe">suscribirte</a> para recibir emails de desarrollo de software y nuevas tecnologías.
                   </p>
                 </div>`
-            }
-          ]
-        };
-      });
-    },
-    query: `
+          }
+        ]
+      };
+    });
+  },
+  query: `
        {
          allMdx(
            limit: 25,
@@ -184,6 +185,5 @@ function getBlogFeed({ filePathRegex, blogUrl, ...overrides }) {
          }
        }
      `,
-    ...overrides
-  };
-}
+  ...overrides
+};
