@@ -102,6 +102,13 @@ module.exports = {
     },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-robots-txt`
+    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-mailchimp`,
+      options: {
+        endpoint:
+          'https://gabrielmendezc.us19.list-manage.com/subscribe/post?u=6e9d575c5d30a7cdff9e550fb&amp;id=1b4c0bf9f7'
+      }
+    }
   ]
 };

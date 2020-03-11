@@ -35,6 +35,10 @@ export const SubscribeFormGroup = styled.div`
 
   @media screen and (max-width: 768px) {
     margin-bottom: 1rem;
+
+    &:not(:last-of-type) {
+      margin-right: 0;
+    }
   }
 `;
 
