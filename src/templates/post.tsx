@@ -113,7 +113,6 @@ export const pageQuery = graphql`
         description
         image
         keywords
-        date
       }
     }
   }
