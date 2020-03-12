@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 export const Footer = styled.footer`
-  max-width: 800px;
+  max-width: 900px;
   margin: auto auto 0 auto;
   width: 100%;
   padding: 40px;

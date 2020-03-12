@@ -23,7 +23,7 @@ const theme: ThemeProps = {
 };
 
 const MainLayout = styled.main`
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
   padding: 40px;

@@ -30,7 +30,7 @@ const IndividualPost = styled.section`
   & > h1 {
     margin-bottom: 1.5rem;
     color: rgb(26, 32, 44);
-    font-size: 2.15rem;
+    font-size: 2rem;
   }
 `;
 

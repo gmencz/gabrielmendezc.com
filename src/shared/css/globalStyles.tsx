@@ -715,7 +715,6 @@ export const GlobalStyles = createGlobalStyle`
     tt:before,
     tt:after {
     letter-spacing: -0.2em;
-    content: ' ';
     }
 
     pre code:before,

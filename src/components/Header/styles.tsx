@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
   display: flex;
-  max-width: 800px;
+  max-width: 900px;
   justify-content: space-between;
   padding: 55px 40px;
   width: 100%;
