@@ -8,6 +8,8 @@ export const GlobalStyles = createGlobalStyle`
 
 		div#gatsby-focus-wrapper {
 			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
 		}
 
     body {
