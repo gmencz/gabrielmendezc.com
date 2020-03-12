@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const BurgerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @media screen and (min-width: 769px) {
     display: none;
   }
@@ -75,14 +79,19 @@ export const BurgerNavigationWrapper = styled.nav`
 `;
 
 export const Burger = styled.button`
-  height: 8px;
-  width: 22px;
+  height: 50px;
+  width: 50px;
   position: relative;
   background: none;
   background-color: transparent;
   outline: none;
   border: none;
   z-index: 11;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  flex-direction: column;
 
   & > span {
     display: none;
@@ -90,24 +99,21 @@ export const Burger = styled.button`
 
   &::before {
     content: '';
+    display: block;
     height: 2px;
-    width: 100%;
-    position: absolute;
+    width: 22px;
     background-color: ${props => props.theme.colorPrimary};
-    top: -2px;
-    left: 0;
     transition: transform 300ms cubic-bezier(0.36, 0.19, 0.41, 0.97);
+    margin-bottom: 5px;
     border: none;
   }
 
   &::after {
     content: '';
+    display: block;
     height: 2px;
-    width: 100%;
-    position: absolute;
+    width: 22px;
     background-color: ${props => props.theme.colorPrimary};
-    bottom: 1px;
-    left: 0;
     border: none;
     transition: transform 300ms cubic-bezier(0.36, 0.19, 0.41, 0.97);
   }

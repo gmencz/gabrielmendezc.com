@@ -15,7 +15,7 @@ export const HeaderWrapper = styled.header`
   }
 
   @media screen and (max-width: 768px) {
-    padding: 55px 20px;
+    padding: 44px 6px 44px 20px;
   }
 `;
 
