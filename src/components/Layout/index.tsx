@@ -25,6 +25,7 @@ const theme: ThemeProps = {
 const MainLayout = styled.main`
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
   padding: 40px;
 
   @media screen and (max-width: 768px) {
