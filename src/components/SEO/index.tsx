@@ -63,7 +63,11 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
 
         {/* OpenGraph tags */}
         <meta property="og:url" content={url} />
-        {isBlogPost ? <meta property="og:type" content="article" /> : null}
+        {isBlogPost ? (
+          <meta property="og:type" content="article" />
+        ) : (
+          <meta property="og:type" content="profile" />
+        )}
         <meta
           property="og:title"
           content={customTitle ? customTitle : meta?.title}

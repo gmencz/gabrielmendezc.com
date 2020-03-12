@@ -26,17 +26,9 @@ export const SchemaOrg: React.FC<SchemaOrgProps> = ({
     {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          item: {
-            '@id': url,
-            name: title,
-            image
-          }
-        }
-      ]
+      url,
+      name: title,
+      alternateName: defaultTitle
     }
   ];
 
