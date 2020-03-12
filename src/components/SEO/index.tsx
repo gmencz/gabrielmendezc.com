@@ -23,6 +23,7 @@ interface InitialSEOProps {
     title: string;
     keywords: string;
     image: string;
+    date: string;
     path: string;
   } | null;
 }
@@ -101,6 +102,7 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
         isBlogPost={!!isBlogPost}
         title={customTitle ? customTitle : meta!.title}
         url={url}
+        datePublished={postMeta!.date}
       />
     </Fragment>
   );
@@ -116,6 +118,7 @@ interface SEOProps {
     keywords: string;
     image: string;
     path: string;
+    date: string;
   };
 }
 

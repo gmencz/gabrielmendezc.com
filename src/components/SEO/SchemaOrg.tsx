@@ -1,4 +1,5 @@
 import React from 'react';
+import websiteConfig from '../../../config/website';
 import Helmet from 'react-helmet';
 
 interface SchemaOrgProps {
@@ -10,6 +11,7 @@ interface SchemaOrgProps {
   image: string;
   isBlogPost: boolean;
   url: string;
+  datePublished?: string;
 }
 
 export const SchemaOrg: React.FC<SchemaOrgProps> = ({
@@ -20,7 +22,8 @@ export const SchemaOrg: React.FC<SchemaOrgProps> = ({
   isBlogPost,
   description,
   author,
-  canonicalUrl
+  canonicalUrl,
+  datePublished
 }) => {
   const baseSchema = [
     {
@@ -64,7 +67,7 @@ export const SchemaOrg: React.FC<SchemaOrgProps> = ({
           description,
           author: {
             '@type': 'Person',
-            name: author
+            name: author || websiteConfig.author
           },
           publisher: {
             '@type': 'Person',
@@ -73,7 +76,9 @@ export const SchemaOrg: React.FC<SchemaOrgProps> = ({
           mainEntityOfPage: {
             '@type': 'WebSite',
             '@id': canonicalUrl
-          }
+          },
+          datePublished,
+          dateModified: datePublished
         }
       ]
     : baseSchema;

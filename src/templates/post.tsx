@@ -80,7 +80,7 @@ const PostLayout: React.FC<PostLayoutProps> = ({ data, location }) => {
   const {
     mdx,
     mdx: {
-      frontmatter: { path, title, description, image, keywords }
+      frontmatter: { path, title, description, image, keywords, date }
     }
   } = data;
 
@@ -88,7 +88,7 @@ const PostLayout: React.FC<PostLayoutProps> = ({ data, location }) => {
     <Layout location={location}>
       <SEO
         isBlogPost
-        postMeta={{ path, title, description, image, keywords }}
+        postMeta={{ path, title, description, image, keywords, date }}
       />
       <IndividualPost>
         <h1>{title}</h1>
@@ -113,6 +113,7 @@ export const pageQuery = graphql`
         description
         image
         keywords
+        date
       }
     }
   }
