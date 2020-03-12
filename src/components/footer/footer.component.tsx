@@ -136,10 +136,7 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
               ></path>
             </svg>
           </a>
-          <SC.FooterInternalLink
-            aria-label="Accede al rss del blog"
-            to="/blog/rss.xml"
-          >
+          <a aria-label="Accede al rss del blog" href="/blog/rss.xml">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="23"
@@ -156,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
                 fill="currentColor"
               ></path>
             </svg>
-          </SC.FooterInternalLink>
+          </a>
         </div>
       </SC.FooterMedia>
     </SC.Footer>
