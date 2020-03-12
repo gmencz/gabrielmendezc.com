@@ -4,7 +4,11 @@ import * as SC from './footer.styles';
 import addToMailChimp from 'gatsby-plugin-mailchimp';
 import { Label, Input, Button } from '../SharedStyles';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  noSubscribeForm?: boolean;
+}
+
+export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
   // AÑADIR COMPONENTE DE "EN DESARROLLO" PARA PÁGINAS QUE ESTEAN EN DESARROLLO.
   // REFACTORIZAR CARPETAS Y ARCHIVOS PARA QUE LOS NOMBREN NO USEN MAYÚSCULAS Y LOS
   // COMPONENTES ESTÉN BASADOS EN LA NOMENCLATURA DE ANGULAR (nombre.component.tsx)
@@ -38,53 +42,51 @@ export const Footer: React.FC = () => {
 
   return (
     <SC.Footer>
-      {sentEmailSuccessfully ? (
-        <h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
-          Gracias por subscribirte, comprueba tu email para verificar que te has
-          suscrito.
-        </h2>
-      ) : (
-        <Fragment>
-          <h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
-            Recibe emails de mí acerca del desarrollo de software y nuevas
-            tecnologías.
-          </h2>
-          <SC.SubscribeForm onSubmit={evt => submitHandler(evt)}>
-            <SC.SubscribeFormGroup>
-              <Label htmlFor="name">Nombre</Label>
-              <Input
-                name="name"
-                id="name"
-                type="text"
-                aria-label="tu nombre"
-                aria-required="false"
-                placeholder="Juan"
-                onChange={evt => handleChange(evt)}
-              />
-            </SC.SubscribeFormGroup>
-            <SC.SubscribeFormGroup>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                name="email"
-                id="email"
-                type="email"
-                aria-label="tu email"
-                aria-required="true"
-                placeholder="juan@ejemplo.com"
-                onChange={evt => handleChange(evt)}
-              />
-            </SC.SubscribeFormGroup>
-            <SC.SubscribeFormGroup>
-              <Button aria-label="enviar" type="submit">
-                Enviar
-              </Button>
-            </SC.SubscribeFormGroup>
-          </SC.SubscribeForm>
-          <strong style={{ color: 'red', marginTop: '1rem', display: 'block' }}>
-            {errorOnMail && errorOnMail}
-          </strong>
-        </Fragment>
-      )}
+			{!noSubscribeForm && (
+				<h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
+					{sentEmailSuccessfully ? 'Gracias por subscribirte, comprueba tu email para verificar que te has suscrito.' : 'Recibe emails de mí acerca del desarrollo de software y nuevas tecnologías'}
+				</h2>
+				{!sentEmailSuccessfully && (
+					<Fragment>
+					<SC.SubscribeForm onSubmit={evt => submitHandler(evt)}>
+					<SC.SubscribeFormGroup>
+						<Label htmlFor="name">Nombre</Label>
+						<Input
+							name="name"
+							id="name"
+							type="text"
+							aria-label="tu nombre"
+							aria-required="false"
+							placeholder="Juan"
+							onChange={evt => handleChange(evt)}
+						/>
+					</SC.SubscribeFormGroup>
+					<SC.SubscribeFormGroup>
+						<Label htmlFor="email">Email</Label>
+						<Input
+							name="email"
+							id="email"
+							type="email"
+							aria-label="tu email"
+							aria-required="true"
+							placeholder="juan@ejemplo.com"
+							onChange={evt => handleChange(evt)}
+						/>
+					</SC.SubscribeFormGroup>
+					<SC.SubscribeFormGroup>
+						<Button aria-label="enviar" type="submit">
+							Enviar
+						</Button>
+					</SC.SubscribeFormGroup>
+				</SC.SubscribeForm>
+				<strong style={{ color: 'red', marginTop: '1rem', display: 'block' }}>
+				{errorOnMail && errorOnMail}
+			</strong>
+					</Fragment>
+				)}
+			)}
+
+
       <SC.FooterMedia>
         <small>Gabriel Méndez &copy; {new Date().getFullYear()}</small>
         <div>

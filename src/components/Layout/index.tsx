@@ -32,7 +32,8 @@ const MainLayout = styled.main`
   }
 `;
 
-type LayoutProps = React.ReactNode & RouterProps;
+type LayoutProps = React.ReactNode &
+  RouterProps & { noSubscribeForm?: boolean };
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { site } = useLayoutQuery();
@@ -46,7 +47,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {children}
         </MDXProvider>
       </MainLayout>
-      <Footer />
+      <Footer noSu />
     </ThemeProvider>
   );
 };

@@ -75,7 +75,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Gabriel Méndez C.',
+        name: 'Gabriel Méndez C',
         short_name: 'gabrielmendezc',
         start_url: '/',
         lang: 'es',
@@ -111,7 +111,7 @@ module.exports = {
             filePathRegex: `//content/blog//`,
             blogUrl: 'https://gabrielmendezc.com/blog',
             output: '/blog/rss.xml',
-            title: 'Feed RSS de Gabriel Méndez C.',
+            title: 'Blog de Gabriel Méndez C.',
             prefixUrl: '/blog'
           })
         ]
