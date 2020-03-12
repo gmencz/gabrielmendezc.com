@@ -53,14 +53,16 @@ export const FooterMedia = styled.div`
   justify-content: space-between;
 
   & > div {
-    a:not(:last-of-type) {
-      margin-right: 16px;
+    a:visited {
       color: ${props => props.theme.colorSecondary};
       transition: color 300ms ease-in-out;
-
       &:hover {
         color: ${props => props.theme.linkColor};
       }
+    }
+
+    a:not(:last-of-type) {
+      margin-right: 16px;
     }
   }
 

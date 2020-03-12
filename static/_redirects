@@ -1,2 +1,9 @@
 # Redirect default Netlify subdomain to primary domain
 https://gabrielmendezc.netlify.com/* https://gabrielmendezc.com/:splat 301!
+/home 			/
+/acerca-de 	/about
+/acerca 		/about
+/sobre			/about
+/contacto 	/contact
+/hablar			/contact
+/news				/blog
