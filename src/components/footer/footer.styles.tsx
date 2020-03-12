@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 export const Footer = styled.footer`
   max-width: 800px;
   margin: auto auto 0 auto;
+  width: 100%;
   padding: 40px;
 
   @media screen and (max-width: 768px) {

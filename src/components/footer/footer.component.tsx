@@ -1,10 +1,13 @@
 import React, { useState, Fragment } from 'react';
 import * as SC from './footer.styles';
-// @ts-ignore
 import addToMailChimp from 'gatsby-plugin-mailchimp';
 import { Label, Input, Button } from '../SharedStyles';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  noSubscribeForm?: boolean;
+}
+
+export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
   // AÑADIR COMPONENTE DE "EN DESARROLLO" PARA PÁGINAS QUE ESTEAN EN DESARROLLO.
   // REFACTORIZAR CARPETAS Y ARCHIVOS PARA QUE LOS NOMBREN NO USEN MAYÚSCULAS Y LOS
   // COMPONENTES ESTÉN BASADOS EN LA NOMENCLATURA DE ANGULAR (nombre.component.tsx)
@@ -22,7 +25,6 @@ export const Footer: React.FC = () => {
       FNAME: formData.name || 'Desconocido'
     });
 
-    console.log(res.result);
     if (res.result === 'error') {
       res.msg.includes('already subscribed')
         ? setErrorOnMail('Ya estás suscrito a mi boletín')
@@ -38,16 +40,12 @@ export const Footer: React.FC = () => {
 
   return (
     <SC.Footer>
-      {sentEmailSuccessfully ? (
-        <h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
-          Gracias por subscribirte, comprueba tu email para verificar que te has
-          suscrito.
-        </h2>
-      ) : (
+      {!noSubscribeForm && (
         <Fragment>
           <h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
-            Recibe emails de mí acerca del desarrollo de software y nuevas
-            tecnologías.
+            {sentEmailSuccessfully
+              ? 'Gracias por subscribirte, comprueba tu email para verificar que te has suscrito.'
+              : 'Recibe emails de mí acerca del desarrollo de software y nuevas tecnologías'}
           </h2>
           <SC.SubscribeForm onSubmit={evt => submitHandler(evt)}>
             <SC.SubscribeFormGroup>
@@ -138,7 +136,10 @@ export const Footer: React.FC = () => {
               ></path>
             </svg>
           </a>
-          <SC.FooterInternalLink aria-label="Accede al rss" to="/rss.xml">
+          <SC.FooterInternalLink
+            aria-label="Accede al rss del blog"
+            to="/blog/rss.xml"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="23"

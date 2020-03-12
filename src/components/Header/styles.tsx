@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.header`
   max-width: 800px;
   justify-content: space-between;
   padding: 55px 40px;
+  width: 100%;
   margin: 0 auto;
   align-items: center;
 
