@@ -35,7 +35,7 @@ const MainLayout = styled.main`
 type LayoutProps = React.ReactNode &
   RouterProps & { noSubscribeForm?: boolean };
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, noSubscribeForm }) => {
   const { site } = useLayoutQuery();
   const { title } = site.siteMetadata;
   return (
@@ -47,7 +47,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {children}
         </MDXProvider>
       </MainLayout>
-      <Footer noSu />
+      <Footer noSubscribeForm={noSubscribeForm} />
     </ThemeProvider>
   );
 };

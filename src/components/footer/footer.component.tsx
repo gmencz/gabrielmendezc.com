@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react';
 import * as SC from './footer.styles';
-// @ts-ignore
 import addToMailChimp from 'gatsby-plugin-mailchimp';
 import { Label, Input, Button } from '../SharedStyles';
 
@@ -26,7 +25,6 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
       FNAME: formData.name || 'Desconocido'
     });
 
-    console.log(res.result);
     if (res.result === 'error') {
       res.msg.includes('already subscribed')
         ? setErrorOnMail('Ya estás suscrito a mi boletín')
@@ -42,51 +40,49 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
 
   return (
     <SC.Footer>
-			{!noSubscribeForm && (
-				<h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
-					{sentEmailSuccessfully ? 'Gracias por subscribirte, comprueba tu email para verificar que te has suscrito.' : 'Recibe emails de mí acerca del desarrollo de software y nuevas tecnologías'}
-				</h2>
-				{!sentEmailSuccessfully && (
-					<Fragment>
-					<SC.SubscribeForm onSubmit={evt => submitHandler(evt)}>
-					<SC.SubscribeFormGroup>
-						<Label htmlFor="name">Nombre</Label>
-						<Input
-							name="name"
-							id="name"
-							type="text"
-							aria-label="tu nombre"
-							aria-required="false"
-							placeholder="Juan"
-							onChange={evt => handleChange(evt)}
-						/>
-					</SC.SubscribeFormGroup>
-					<SC.SubscribeFormGroup>
-						<Label htmlFor="email">Email</Label>
-						<Input
-							name="email"
-							id="email"
-							type="email"
-							aria-label="tu email"
-							aria-required="true"
-							placeholder="juan@ejemplo.com"
-							onChange={evt => handleChange(evt)}
-						/>
-					</SC.SubscribeFormGroup>
-					<SC.SubscribeFormGroup>
-						<Button aria-label="enviar" type="submit">
-							Enviar
-						</Button>
-					</SC.SubscribeFormGroup>
-				</SC.SubscribeForm>
-				<strong style={{ color: 'red', marginTop: '1rem', display: 'block' }}>
-				{errorOnMail && errorOnMail}
-			</strong>
-					</Fragment>
-				)}
-			)}
-
-
+      {!noSubscribeForm && (
+        <Fragment>
+          <h2 style={{ fontSize: '1.4rem', marginBottom: '2rem' }}>
+            {sentEmailSuccessfully
+              ? 'Gracias por subscribirte, comprueba tu email para verificar que te has suscrito.'
+              : 'Recibe emails de mí acerca del desarrollo de software y nuevas tecnologías'}
+          </h2>
+          <SC.SubscribeForm onSubmit={evt => submitHandler(evt)}>
+            <SC.SubscribeFormGroup>
+              <Label htmlFor="name">Nombre</Label>
+              <Input
+                name="name"
+                id="name"
+                type="text"
+                aria-label="tu nombre"
+                aria-required="false"
+                placeholder="Juan"
+                onChange={evt => handleChange(evt)}
+              />
+            </SC.SubscribeFormGroup>
+            <SC.SubscribeFormGroup>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                name="email"
+                id="email"
+                type="email"
+                aria-label="tu email"
+                aria-required="true"
+                placeholder="juan@ejemplo.com"
+                onChange={evt => handleChange(evt)}
+              />
+            </SC.SubscribeFormGroup>
+            <SC.SubscribeFormGroup>
+              <Button aria-label="enviar" type="submit">
+                Enviar
+              </Button>
+            </SC.SubscribeFormGroup>
+          </SC.SubscribeForm>
+          <strong style={{ color: 'red', marginTop: '1rem', display: 'block' }}>
+            {errorOnMail && errorOnMail}
+          </strong>
+        </Fragment>
+      )}
       <SC.FooterMedia>
         <small>Gabriel Méndez &copy; {new Date().getFullYear()}</small>
         <div>
@@ -140,7 +136,10 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
               ></path>
             </svg>
           </a>
-          <SC.FooterInternalLink aria-label="Accede al rss" to="/rss.xml">
+          <SC.FooterInternalLink
+            aria-label="Accede al rss del blog"
+            to="/blog/rss.xml"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="23"

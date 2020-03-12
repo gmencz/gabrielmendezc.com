@@ -121,7 +121,7 @@ module.exports = {
       resolve: `gatsby-plugin-mailchimp`,
       options: {
         endpoint:
-          'https://gabrielmendezc.us19.list-manage.com/subscribe/post?u=6e9d575c5d30a7cdff9e550fb&amp;id=1b4c0bf9f7'
+          'https://gabrielmendezc.us19.list-manage.com/subscribe/post?u=9fb00bdc2df2e2dd96fe110d8&amp;id=34044d28a4'
       }
     }
   ]

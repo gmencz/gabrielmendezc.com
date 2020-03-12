@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
 interface SharedProps {
   fontSizeRem?: number;
   margin?: string;
+}
+
+interface ButtonProps {
+  loading?: boolean;
 }
 
 export const ParagraphHeading = styled.p<SharedProps>`
@@ -78,7 +82,7 @@ export const Label = styled.label`
   font-size: 1.15rem;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
   padding: 0.4rem 1rem;
   cursor: pointer;
   border: 2px solid ${props => props.theme.linkColor};
@@ -86,6 +90,10 @@ export const Button = styled.button`
   color: white;
   border-radius: 4px;
   font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   transition: border-color 300ms ease-in-out, background-color 300ms ease-in-out;
 
@@ -93,4 +101,29 @@ export const Button = styled.button`
     background-color: #0e457f;
     border-color: #0e457f;
   }
+
+  ${props =>
+    props.loading &&
+    css`
+      background-color: ${props => props.theme.subColor} !important;
+      pointer-events: none;
+
+      &::after {
+        content: '';
+        box-sizing: border-box;
+        margin-left: 12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        border-top-color: ${props => props.theme.linkColor};
+        animation: spinner 0.6s linear infinite;
+      }
+
+      @keyframes spinner {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    `}
 `;
