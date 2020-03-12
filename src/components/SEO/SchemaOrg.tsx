@@ -35,6 +35,13 @@ export const SchemaOrg: React.FC<SchemaOrgProps> = ({
     }
   ];
 
+  let ISODate: undefined | string;
+  if (isBlogPost) {
+    const dateObject = new Date(datePublished!);
+    ISODate = `${dateObject.getFullYear()}-${dateObject.getMonth() +
+      1}-${dateObject.getDate()}`;
+  }
+
   const schema = isBlogPost
     ? [
         ...baseSchema,
@@ -77,8 +84,8 @@ export const SchemaOrg: React.FC<SchemaOrgProps> = ({
             '@type': 'WebSite',
             '@id': canonicalUrl
           },
-          datePublished,
-          dateModified: datePublished
+          datePublished: ISODate,
+          dateModified: ISODate
         }
       ]
     : baseSchema;
