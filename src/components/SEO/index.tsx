@@ -93,17 +93,34 @@ const InitialSEO: React.FC<InitialSEOProps> = ({
         <noscript>Es necesario JavaScript para ver esta página web.</noscript>
         <meta name="twitter:image" content={validImageUrl} />
       </Helmet>
-      <SchemaOrg
-        author={siteMetadata.author}
-        canonicalUrl={siteMetadata.siteUrl}
-        defaultTitle={siteMetadata.title}
-        description={customDescription ? customDescription : meta!.description}
-        image={validImageUrl}
-        isBlogPost={!!isBlogPost}
-        title={customTitle ? customTitle : meta!.title}
-        url={url}
-        datePublished={postMeta!.date}
-      />
+      {isBlogPost ? (
+        <SchemaOrg
+          author={siteMetadata.author}
+          canonicalUrl={siteMetadata.siteUrl}
+          defaultTitle={siteMetadata.title}
+          description={
+            customDescription ? customDescription : meta!.description
+          }
+          image={validImageUrl}
+          isBlogPost={!!isBlogPost}
+          title={customTitle ? customTitle : meta!.title}
+          url={url}
+          datePublished={postMeta?.date}
+        />
+      ) : (
+        <SchemaOrg
+          author={siteMetadata.author}
+          canonicalUrl={siteMetadata.siteUrl}
+          defaultTitle={siteMetadata.title}
+          description={
+            customDescription ? customDescription : meta!.description
+          }
+          image={validImageUrl}
+          isBlogPost={!!isBlogPost}
+          title={customTitle ? customTitle : meta!.title}
+          url={url}
+        />
+      )}
     </Fragment>
   );
 };
