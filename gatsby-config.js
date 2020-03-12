@@ -128,11 +128,6 @@ module.exports = {
 };
 
 function getBlogFeed({ filePathRegex, blogUrl, prefixUrl, ...overrides }) {
-  /**
-   * These RSS feeds can be quite expensive to generate. Limiting the number of
-   * posts and keeping each item's template lightweight (only using frontmatter,
-   * avoiding the html/excerpt fields) helps negate this.
-   */
   const { siteUrl } = config;
   return {
     serialize: ({ query: { allMdx } }) => {
