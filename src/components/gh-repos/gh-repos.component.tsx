@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Paragraph, ExternalLink } from '../SharedStyles';
 import { GhRepo } from '../gh-repo/gh-repo.component';
+import { Spinner } from '../spinner/spinner.component';
 
 export const GhRepos: React.FC = () => {
   const [repos, setRepos] = useState([]);
@@ -24,7 +25,7 @@ export const GhRepos: React.FC = () => {
     })();
   }, []);
 
-  if (loading) return <p>Cargando repositorios...</p>;
+  if (loading) return <Spinner />;
   if (error) return <Paragraph style={{ color: 'red' }}>{error}</Paragraph>;
 
   return (

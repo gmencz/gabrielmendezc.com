@@ -31,5 +31,6 @@ export const RepoLink = styled.a`
 
   & > p {
     margin-right: 48px;
+    color: ${props => props.theme.colorSecondary};
   }
 `;
