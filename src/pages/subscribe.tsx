@@ -22,16 +22,15 @@ const SubscribePage: React.FC<RouterProps> = ({ location }) => {
     const res = await addToMailChimp(formData.email, {
       FNAME: formData.name || 'Desconocido'
     });
+    setLoading(false);
 
     if (res.result === 'error') {
-      setLoading(false);
       res.msg.includes('already subscribed')
         ? setErrorOnMail('Ya estás suscrito a mi boletín')
         : setErrorOnMail('Ha ocurrido un error inesperado');
       return;
     }
 
-    setLoading(false);
     setSentEmailSuccessfully(true);
   };
 
@@ -81,7 +80,7 @@ const SubscribePage: React.FC<RouterProps> = ({ location }) => {
               <SC.SubscribeFormGroup>
                 <Button
                   disabled={loading}
-                  loading={loading}
+                  loading={loading ? 'true' : 'false'}
                   aria-label="enviar"
                   type="submit"
                 >

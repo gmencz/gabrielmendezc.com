@@ -7,7 +7,7 @@ interface SharedProps {
 }
 
 interface ButtonProps {
-  loading?: boolean;
+  loading?: 'true' | 'false';
 }
 
 export const ParagraphHeading = styled.p<SharedProps>`
@@ -103,7 +103,7 @@ export const Button = styled.button<ButtonProps>`
   }
 
   ${props =>
-    props.loading &&
+    props.loading === 'true' &&
     css`
       background-color: ${props => props.theme.subColor} !important;
       pointer-events: none;

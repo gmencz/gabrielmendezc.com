@@ -13,6 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
   // COMPONENTES ESTÉN BASADOS EN LA NOMENCLATURA DE ANGULAR (nombre.component.tsx)
   const [sentEmailSuccessfully, setSentEmailSuccessfully] = useState(false);
   const [errorOnMail, setErrorOnMail] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: ''
@@ -21,9 +22,11 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
   const submitHandler = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
+    setLoading(true);
     const res = await addToMailChimp(formData.email, {
       FNAME: formData.name || 'Desconocido'
     });
+    setLoading(false);
 
     if (res.result === 'error') {
       res.msg.includes('already subscribed')
@@ -73,7 +76,11 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
               />
             </SC.SubscribeFormGroup>
             <SC.SubscribeFormGroup>
-              <Button aria-label="enviar" type="submit">
+              <Button
+                aria-label="enviar"
+                loading={loading ? 'true' : 'false'}
+                type="submit"
+              >
                 Enviar
               </Button>
             </SC.SubscribeFormGroup>
