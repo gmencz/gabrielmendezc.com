@@ -63,7 +63,7 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
       <Paragraph style={{ marginBottom: '1.5rem' }}>
         Actualmente trabajo como <strong>desarrollador web autónomo</strong>,
         pero estoy interesado en ofertas y desafíos, no te cortes y{' '}
-        <InternalLink to="/contact">tengamos una conversación!</InternalLink>
+        <InternalLink to="/lets-talk">tengamos una conversación!</InternalLink>
       </Paragraph>
       <UnrelatedContent>
         <p>

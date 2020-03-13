@@ -35,7 +35,7 @@ export const Burger: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link activeClassName="active" to="/contact">
+            <Link activeClassName="active" to="/lets-talk">
               háblame
             </Link>
           </li>

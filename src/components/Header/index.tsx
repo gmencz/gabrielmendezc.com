@@ -30,8 +30,8 @@ const Header: React.FC<HeaderProps> = () => {
               </Link>
             </li>
             <li>
-              <Link activeClassName="active" to="/contact">
-                háblame
+              <Link activeClassName="active" to="/lets-talk">
+                hablemos
               </Link>
             </li>
           </SC.NavigationList>
