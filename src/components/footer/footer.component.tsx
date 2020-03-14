@@ -54,6 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
             <SC.SubscribeFormGroup>
               <Label htmlFor="name">Nombre</Label>
               <Input
+                fullWidth
                 name="name"
                 id="name"
                 type="text"
@@ -66,6 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
             <SC.SubscribeFormGroup>
               <Label htmlFor="email">Email</Label>
               <Input
+                fullWidth
                 name="email"
                 id="email"
                 type="email"

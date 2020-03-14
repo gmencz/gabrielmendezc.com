@@ -10,6 +10,10 @@ interface ButtonProps {
   loading?: 'true' | 'false';
 }
 
+interface InputProps {
+  fullWidth?: boolean;
+}
+
 export const ParagraphHeading = styled.p<SharedProps>`
   color: rgb(113, 128, 150);
   -webkit-letter-spacing: -0.03rem;
@@ -63,12 +67,27 @@ export const UnrelatedContent = styled.aside`
   }
 `;
 
-export const Input = styled.input`
+export const TextArea = styled.textarea`
+  padding: 0.4rem 0.55rem;
+  border: 2px solid rgb(237, 242, 247);
+  border-radius: 4px;
+  font-size: 1.1rem;
+  transition: border-color 300ms ease-in-out;
+  color: ${props => props.theme.colorPrimary};
+  outline: none;
+  &:focus {
+    border-color: ${props => props.theme.subColor};
+  }
+`;
+
+export const Input = styled.input<InputProps>`
   padding: 0.4rem 0.55rem;
   border: 2px solid rgb(237, 242, 247);
   border-radius: 4px;
   font-size: 1.1rem;
   outline: none;
+  width: 100%;
+  max-width: ${props => (props.fullWidth ? '100%' : '400px')};
   transition: border-color 300ms ease-in-out;
   color: ${props => props.theme.colorPrimary};
 

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+interface SubscribeFormGroupProps {
+  marginBottom?: number;
+}
+
 export const Footer = styled.footer`
   max-width: 900px;
   margin: auto auto 0 auto;
@@ -20,10 +24,12 @@ export const SubscribeForm = styled.form`
   }
 `;
 
-export const SubscribeFormGroup = styled.div`
+export const SubscribeFormGroup = styled.div<SubscribeFormGroupProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin-bottom: ${props =>
+    props.marginBottom ? `${props.marginBottom}px` : 0};
 
   &:not(:last-of-type) {
     margin-right: 12px;
@@ -35,7 +41,8 @@ export const SubscribeFormGroup = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    margin-bottom: 1rem;
+    margin-bottom: ${props =>
+      props.marginBottom ? `${props.marginBottom}px` : '1rem'};
 
     &:not(:last-of-type) {
       margin-right: 0;
