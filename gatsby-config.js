@@ -82,7 +82,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
-        icon: 'static/images/gatsby-icon.png'
+        icon: 'static/images/site-logo.jpg'
       }
     },
     {
