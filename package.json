@@ -68,6 +68,7 @@
     "@types/react-helmet": "^5.0.15",
     "@types/react-typist": "^2.0.1",
     "@types/styled-components": "^5.0.1",
+    "@types/yup": "^0.26.32",
     "jest": "^25.1.0",
     "jest-dom": "^4.0.0",
     "loader-utils": "^1.4.0",
