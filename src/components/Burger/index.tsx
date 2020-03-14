@@ -13,7 +13,14 @@ export const Burger: React.FC = () => {
         aria-controls="menu"
         aria-expanded={isNavigationOpen ? 'true' : 'false'}
         className={isNavigationOpen ? 'open' : undefined}
-        onClick={() => setIsNavigationOpen(!isNavigationOpen)}
+        onClick={() => {
+          if (!isNavigationOpen) {
+            document.documentElement.style.overflow = 'hidden';
+          } else {
+            document.documentElement.style.overflow = '';
+          }
+          setIsNavigationOpen(!isNavigationOpen);
+        }}
       ></SC.Burger>
       <SC.BurgerNavigationWrapper
         className={isNavigationOpen ? 'open' : undefined}

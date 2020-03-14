@@ -15,7 +15,7 @@ export const RepoLink = styled.a`
   padding: 1.5rem 0;
   display: block;
 
-  &:hover > h2 {
+  &:hover h2 {
     text-decoration: underline;
   }
 
