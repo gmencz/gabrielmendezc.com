@@ -1,7 +1,7 @@
 import React from 'react';
-import * as SC from './styles';
+import * as SC from './post.styles';
 import { Link } from 'gatsby';
-import { InternalLink } from '../SharedStyles';
+import { InternalLink } from '../shared-styles/shared-styles.component';
 
 interface PostProps {
   path: string;

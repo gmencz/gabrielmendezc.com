@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/layout.component';
 import { RouterProps } from '@reach/router';
-import { SEO } from '../components/SEO';
+import { SEO } from '../components/seo/seo.component';
 import { UnderDevelopment } from '../components/under-development/under-development.component';
 
 const ContactPage: React.FC<RouterProps> = ({ location }) => {

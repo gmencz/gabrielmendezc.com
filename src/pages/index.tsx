@@ -1,10 +1,10 @@
 import { RouterProps } from '@reach/router';
 import * as React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/layout.component';
 import Typist from 'react-typist';
 import styled from 'styled-components';
-import Listing from '../components/Listing';
-import { SEO } from '../components/SEO';
+import Listing from '../components/listing/listing.component';
+import { SEO } from '../components/seo/seo.component';
 
 export const NameHeading = styled.h1`
   color: rgb(26, 32, 44);

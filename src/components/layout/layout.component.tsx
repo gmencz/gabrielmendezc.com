@@ -2,7 +2,7 @@ import { RouterProps } from '@reach/router';
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
-import Header from '../Header';
+import Header from '../header/header.component';
 import { GlobalStyles } from '../../shared/css/globalStyles';
 import { MDXProvider } from '@mdx-js/react';
 import { CodeIndicatorTitle } from '../mdx/code-indicator-title/code-indicator-title.styles';

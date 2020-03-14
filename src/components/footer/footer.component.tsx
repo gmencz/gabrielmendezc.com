@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import * as SC from './footer.styles';
 import addToMailChimp from 'gatsby-plugin-mailchimp';
-import { Label, Input, Button } from '../SharedStyles';
+import { Label, Input, Button } from '../shared-styles/shared-styles.component';
 
 interface FooterProps {
   noSubscribeForm?: boolean;

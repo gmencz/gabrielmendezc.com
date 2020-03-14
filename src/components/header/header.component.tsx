@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import * as SC from './styles';
+import * as SC from './header.styles';
 import { Link } from 'gatsby';
-import { Burger } from '../Burger';
+import { Burger } from '../burger/burger.component';
 
 interface HeaderProps {
   siteTitle: string;

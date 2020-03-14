@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import { useLayoutQuery } from '../../hooks/useLayoutQuery';
-import { SchemaOrg } from './SchemaOrg';
+import { SchemaOrg } from './schema-org.component';
 
 interface InitialSEOProps {
   siteMetadata: {

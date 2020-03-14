@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Paragraph, ExternalLink } from '../SharedStyles';
+import {
+  Paragraph,
+  ExternalLink
+} from '../shared-styles/shared-styles.component';
 import { GhRepo } from '../gh-repo/gh-repo.component';
 import { Spinner } from '../spinner/spinner.component';
 

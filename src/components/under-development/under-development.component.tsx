@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
-import { InternalLink, ParagraphHeading } from '../SharedStyles';
+import {
+  InternalLink,
+  ParagraphHeading
+} from '../shared-styles/shared-styles.component';
 
 export const UnderDevelopment: React.FC = () => (
   <Fragment>

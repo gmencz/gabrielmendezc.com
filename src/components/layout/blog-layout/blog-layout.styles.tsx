@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { InternalLink } from '../../SharedStyles';
+import { InternalLink } from '../../shared-styles/shared-styles.component';
 
 export const Footer = styled.footer``;
 
