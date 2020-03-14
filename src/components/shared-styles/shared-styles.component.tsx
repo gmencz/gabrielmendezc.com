@@ -8,10 +8,16 @@ interface SharedProps {
 
 interface ButtonProps {
   loading?: 'true' | 'false';
+  fullWidth?: boolean;
 }
 
 interface InputProps {
   fullWidth?: boolean;
+  error?: boolean;
+}
+
+interface TextAreaProps {
+  error?: boolean;
 }
 
 export const ParagraphHeading = styled.p<SharedProps>`
@@ -67,12 +73,12 @@ export const UnrelatedContent = styled.aside`
   }
 `;
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea<TextAreaProps>`
   padding: 0.4rem 0.55rem;
-  border: 2px solid rgb(237, 242, 247);
+  border: ${props =>
+    props.error ? '2px solid red' : '2px solid rgb(237, 242, 247)'};
   border-radius: 4px;
   font-size: 1.1rem;
-  transition: border-color 300ms ease-in-out;
   color: ${props => props.theme.colorPrimary};
   outline: none;
   &:focus {
@@ -80,15 +86,21 @@ export const TextArea = styled.textarea`
   }
 `;
 
+export const ErrorAtInput = styled.strong`
+  color: red;
+  margin-top: 0.5rem;
+  font-weight: 400;
+`;
+
 export const Input = styled.input<InputProps>`
   padding: 0.4rem 0.55rem;
-  border: 2px solid rgb(237, 242, 247);
+  border: ${props =>
+    props.error ? '2px solid red' : '2px solid rgb(237, 242, 247)'};
   border-radius: 4px;
   font-size: 1.1rem;
   outline: none;
   width: 100%;
   max-width: ${props => (props.fullWidth ? '100%' : '400px')};
-  transition: border-color 300ms ease-in-out;
   color: ${props => props.theme.colorPrimary};
 
   &:focus {
@@ -99,6 +111,7 @@ export const Input = styled.input<InputProps>`
 export const Label = styled.label`
   color: ${props => props.theme.colorPrimary};
   font-size: 1.15rem;
+  font-weight: 500;
 `;
 
 export const Button = styled.button<ButtonProps>`
@@ -107,6 +120,8 @@ export const Button = styled.button<ButtonProps>`
   border: 2px solid ${props => props.theme.linkColor};
   background-color: ${props => props.theme.linkColor};
   color: white;
+  width: 100%;
+  max-width: ${props => (props.fullWidth ? '100%' : '225px')};
   border-radius: 4px;
   font-weight: 600;
   position: relative;
@@ -129,7 +144,6 @@ export const Button = styled.button<ButtonProps>`
 
       &::after {
         content: '';
-        box-sizing: border-box;
         margin-left: 12px;
         width: 20px;
         height: 20px;
@@ -145,4 +159,8 @@ export const Button = styled.button<ButtonProps>`
         }
       }
     `}
+
+  @media screen and (max-width: 440px) {
+    max-width: 100%;
+  }
 `;
