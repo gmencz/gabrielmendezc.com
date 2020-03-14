@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { useListingQuery } from '../../hooks/useListingQuery';
-import { Post } from '../Post';
+import { Post } from '../post/post.component';
 
 const Listing = () => {
   const { allMdx } = useListingQuery();

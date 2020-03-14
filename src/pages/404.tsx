@@ -1,7 +1,10 @@
 import * as React from 'react';
-import Layout from '../components/Layout';
-import { SEO } from '../components/SEO';
-import { InternalLink, ParagraphHeading } from '../components/SharedStyles';
+import Layout from '../components/layout/layout.component';
+import { SEO } from '../components/seo/seo.component';
+import {
+  InternalLink,
+  ParagraphHeading
+} from '../components/shared-styles/shared-styles.component';
 
 const NotFoundPage = () => (
   <Layout>

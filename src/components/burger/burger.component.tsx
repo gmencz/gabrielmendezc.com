@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as SC from './styles';
+import * as SC from './burger.styles';
 import { Link } from 'gatsby';
 
 export const Burger: React.FC = () => {

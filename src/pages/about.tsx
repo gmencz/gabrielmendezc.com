@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/layout.component';
 import { RouterProps } from '@reach/router';
-import { SEO } from '../components/SEO';
+import { SEO } from '../components/seo/seo.component';
 import {
   Paragraph,
   ExternalLink,
   InternalLink,
   UnrelatedContent
-} from '../components/SharedStyles';
+} from '../components/shared-styles/shared-styles.component';
 
 const AboutPage: React.FC<RouterProps> = ({ location }) => {
   return (

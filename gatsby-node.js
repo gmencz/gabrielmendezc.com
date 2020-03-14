@@ -5,7 +5,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const blogPost = resolve('src/templates/post.tsx');
+  const blogPost = resolve('src/templates/post.template.tsx');
   try {
     const { data } = await graphql(`
       {
@@ -55,7 +55,9 @@ exports.createPages = async ({ graphql, actions }) => {
       items: posts,
       itemsPerPage: 6,
       pathPrefix: '/blog',
-      component: resolve('src/components/Layout/BlogLayout/index.tsx')
+      component: resolve(
+        'src/components/layout/blog-layout/blog-layout.component.tsx'
+      )
     });
   } catch (error) {
     console.error(error);

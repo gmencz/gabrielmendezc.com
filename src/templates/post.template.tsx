@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 // @ts-ignore
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from '../components/Layout';
-import { SEO } from '../components/SEO';
+import Layout from '../components/layout/layout.component';
+import { SEO } from '../components/seo/seo.component';
 
 type PostLayoutProps = {
   data: {

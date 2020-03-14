@@ -1,9 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/layout.component';
 import { RouterProps } from '@reach/router';
-import { SEO } from '../components/SEO';
+import { SEO } from '../components/seo/seo.component';
 import * as SC from '../components/footer/footer.styles';
-import { Label, Input, Button } from '../components/SharedStyles';
+import {
+  Label,
+  Input,
+  Button
+} from '../components/shared-styles/shared-styles.component';
 import addToMailChimp from 'gatsby-plugin-mailchimp';
 
 const SubscribePage: React.FC<RouterProps> = ({ location }) => {

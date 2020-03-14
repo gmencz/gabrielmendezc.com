@@ -1,13 +1,16 @@
 import { RouterProps } from '@reach/router';
 import React from 'react';
-import Layout from '../index';
-import { SEO } from '../../SEO';
+import Layout from '../layout.component';
+import { SEO } from '../../seo/seo.component';
 import { graphql } from 'gatsby';
 import { EdgeNode } from '../../../interfaces/EdgeNode.interface';
 import { Post as PostInterface } from '../../../interfaces/PostsQuery.interface';
-import { Post } from '../../Post';
-import { ParagraphHeading, InternalLink } from '../../SharedStyles';
-import { Footer, ChangePageLink } from './styles';
+import { Post } from '../../post/post.component';
+import {
+  ParagraphHeading,
+  InternalLink
+} from '../../shared-styles/shared-styles.component';
+import { Footer, ChangePageLink } from './blog-layout.styles';
 
 type BlogLayoutProps = {
   data: { allMdx: { edges?: [EdgeNode<PostInterface>] } };
