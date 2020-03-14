@@ -82,6 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ noSubscribeForm }) => {
                 aria-label="enviar"
                 loading={loading ? 'true' : 'false'}
                 type="submit"
+                fullWidth
               >
                 Enviar
               </Button>
