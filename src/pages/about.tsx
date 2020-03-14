@@ -35,10 +35,10 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
         >
           Montecastelo
         </ExternalLink>{' '}
-        con un enfásis en el <strong>desarrollo de software</strong>, aunque es
+        con un énfasis en el <strong>desarrollo de software</strong>, aunque es
         cierto que la mayor parte del tiempo se lo dedico al desarrollo de
         software, las <strong>redes</strong> también me apasionan, es más, tengo
-        pensado combinar estás dos pasiones e idear algo interesante!{' '}
+        pensado combinar estas dos pasiones e idear algo interesante!{' '}
         <span role="img" aria-label="guiño de ojo">
           😉
         </span>
@@ -55,7 +55,7 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
         Aún recuerdo cuando hice mi primera página web, ningún tipo de{' '}
         <strong>accessibilidad, ingresos, tráfico, SEO</strong>... Nada de eso
         me importaba, la idea de publicar una web me fascinaba, descubrir como
-        el despliegue de software funcionaba, como apuntar un dominio a mi
+        el despliegue de aplicaciones funcionaba, como apuntar un dominio a mi
         página web, etc... fue el comienzo de todo, me llevó a hacer un blog, mi
         propia red social, empezar como autónomo y más importante, me ha llevado
         hasta aquí!

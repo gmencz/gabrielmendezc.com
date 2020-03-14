@@ -54,7 +54,7 @@ const PostLayout: React.FC<BlogLayoutProps> = ({
         Escribo artículos sobre resolución de problemas con código, novedades y
         mejores prácticas acerca del desarrollo de software.{' '}
         <InternalLink style={{ fontSize: '1.33rem' }} to="/subscribe">
-          Subscríbete al boletín
+          Suscríbete al boletín
         </InternalLink>{' '}
         para no perderte ninguna novedad.
       </ParagraphHeading>
