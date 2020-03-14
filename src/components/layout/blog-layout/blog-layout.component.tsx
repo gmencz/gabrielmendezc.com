@@ -64,12 +64,12 @@ const PostLayout: React.FC<BlogLayoutProps> = ({
       <section>{postsJSX}</section>
       <Footer>
         {pageContext.previousPagePath && (
-          <ChangePageLink to={pageContext.previousPagePath}>
+          <ChangePageLink rel="prev" to={pageContext.previousPagePath}>
             ← Página anterior
           </ChangePageLink>
         )}
         {pageContext.nextPagePath && (
-          <ChangePageLink to={pageContext.nextPagePath}>
+          <ChangePageLink rel="next" to={pageContext.nextPagePath}>
             Página siguiente →
           </ChangePageLink>
         )}

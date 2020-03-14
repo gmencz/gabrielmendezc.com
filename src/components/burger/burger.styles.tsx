@@ -36,6 +36,10 @@ export const BurgerNavigation = styled.ul`
     &:nth-of-type(4) {
       transition-delay: 500ms;
     }
+
+    &:nth-of-type(5) {
+      transition-delay: 600ms;
+    }
   }
 
   &.open li {

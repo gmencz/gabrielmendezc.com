@@ -6,6 +6,8 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../components/layout/layout.component';
 import { SEO } from '../components/seo/seo.component';
+import { SitePageContext } from '../graphqlTypes';
+import { InternalLink } from '../components/shared-styles/shared-styles.component';
 
 type PostLayoutProps = {
   data: {
@@ -24,7 +26,9 @@ type PostLayoutProps = {
       };
     };
   };
-} & RouterProps;
+} & RouterProps & {
+    pageContext: { previous: SitePageContext; next: SitePageContext };
+  };
 
 const IndividualPost = styled.section`
   & > h1 {
@@ -74,7 +78,25 @@ const IndividualPostBody = styled.article`
   }
 `;
 
-const PostLayout: React.FC<PostLayoutProps> = ({ data, location }) => {
+const BottomNavigation = styled.nav`
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+
+    li:first-of-type {
+      margin-bottom: 1.5rem;
+    }
+  }
+`;
+
+const PostLayout: React.FC<PostLayoutProps> = ({
+  data,
+  location,
+  pageContext
+}) => {
   if (!data) return null;
 
   const {
@@ -96,6 +118,32 @@ const PostLayout: React.FC<PostLayoutProps> = ({ data, location }) => {
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </IndividualPostBody>
       </IndividualPost>
+      <aside>
+        <BottomNavigation>
+          <ul>
+            {pageContext.previous && (
+              <li>
+                <InternalLink
+                  rel="prev"
+                  to={`/blog/${pageContext.previous.frontmatter!.path!}`}
+                >
+                  ← {pageContext.previous.frontmatter!.title}
+                </InternalLink>
+              </li>
+            )}
+            {pageContext.next && (
+              <li>
+                <InternalLink
+                  rel="next"
+                  to={`/blog/${pageContext.next.frontmatter!.path!}`}
+                >
+                  {pageContext.next.frontmatter!.title} →
+                </InternalLink>
+              </li>
+            )}
+          </ul>
+        </BottomNavigation>
+      </aside>
     </Layout>
   );
 };

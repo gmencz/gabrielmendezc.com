@@ -27,6 +27,11 @@ export const Burger: React.FC = () => {
       >
         <SC.BurgerNavigation className={isNavigationOpen ? 'open' : undefined}>
           <li>
+            <Link activeClassName="active" to="/">
+              inicio
+            </Link>
+          </li>
+          <li>
             <Link activeClassName="active" to="/about">
               sobre mí
             </Link>

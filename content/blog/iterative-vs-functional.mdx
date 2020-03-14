@@ -1,0 +1,24 @@
+---
+path: '/iterative-vs-functional'
+title: 'Manipulación de arrays iterativa vs funcional'
+date: '2020-03-15'
+description: 'Manipular arrays en Javascript es una operación común, se puede realizar de forma iterativa o funcional, aprende cual es mejor y porqué.'
+image: '/images/iterative-vs-functional.png'
+keywords: 'Aprender, Javascript, Desarrollo Web, Iterativo, Funcional, Arrays, .map, .filter, .find, .every, .some, mutar array'
+published: true
+---
+
+Debemos tener cuidado con la manipulación de **arrays** debido a qué los arrays se almacenan en memoria por referencia, esto significa que si igualamos dos arrays y modificamos uno de ellos, "ambos" serán cambiados ya que ambos apuntan a la misma referencia.
+
+```js
+const numbers = [1, 4, 2, 9];
+const moreNumbers = numbers;
+
+// Eliminamos la primera posición de moreNumbers
+moreNumbers.shift();
+
+console.log(numbers); // [4, 2, 9]
+console.log(moreNumbers); // [4, 2, 9]
+```
+
+...
