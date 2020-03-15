@@ -79,7 +79,7 @@ const ContactPage: React.FC<RouterProps> = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO
-        customTitle="Háblame | Gabriel Méndez C."
+        customTitle="Hablemos | Gabriel Méndez C."
         customDescription="Habla con Gabriel Méndez C. acerca de cualquier tema relacionado con el desarrollo de software."
       />
       {sendMailStatus.sent &&
