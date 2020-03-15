@@ -145,14 +145,17 @@ function getBlogFeed({ filePathRegex, blogUrl, prefixUrl, ...overrides }) {
           guid: url,
           custom_elements: [
             {
-              'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+              'content:encoded': `
+								<div>
                   <p>
                     He escrito un nuevo artículo <em>"${edge.node.frontmatter.title}"</em> y puedes <a href="${url}">leerlo online</a>.
-                    <br>
-                    ${edge.node.frontmatter.description}
-                    <br>
-                    También puedes <a href="${siteUrl}/subscribe">suscribirte</a> para recibir emails de desarrollo de software y nuevas tecnologías.
-                  </p>
+									</p>
+									<br>
+									<p>
+										${edge.node.frontmatter.description}
+									</p>
+									<br>
+									<p>También puedes echarle un vistazo a mi <a href="https://gabrielmendezc.com/blog">blog</a> para leer más artículos</p>
                 </div>`
             }
           ]
