@@ -46,7 +46,7 @@ const ContactPage: React.FC<RouterProps> = ({ location }) => {
           sent: false
         });
         const { name, email, subject, body } = values;
-        const mailEndpoint = `${apiEndpoint}/v1/mail`;
+        const mailEndpoint = `${apiEndpoint}/v1/mail/send`;
 
         const response = await axios.post(mailEndpoint, {
           name,
