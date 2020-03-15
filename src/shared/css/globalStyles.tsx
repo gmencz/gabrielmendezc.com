@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
 			min-height: 100vh;
+			overflow-y: scroll;
     margin: 0;
     background-color: rgb(224, 230, 235);
     background-image: linear-gradient(
