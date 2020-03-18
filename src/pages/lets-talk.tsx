@@ -48,14 +48,13 @@ const ContactPage: React.FC<RouterProps> = ({ location }) => {
         const { name, email, subject, body } = values;
         const mailEndpoint = `${apiEndpoint}/v1/mail/send`;
 
-        const response = await axios.post(mailEndpoint, {
+        await axios.post(mailEndpoint, {
           name,
           email,
           subject,
           body
         });
 
-        console.log(response.data);
         setSendMailStatus({
           ...sendMailStatus,
           loading: false,
@@ -63,7 +62,6 @@ const ContactPage: React.FC<RouterProps> = ({ location }) => {
           sent: true
         });
       } catch (error) {
-        console.log(error.response);
         setSendMailStatus({
           ...sendMailStatus,
           loading: false,
