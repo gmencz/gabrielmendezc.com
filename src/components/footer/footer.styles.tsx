@@ -38,6 +38,7 @@ export const SubscribeFormGroup = styled.div<SubscribeFormGroupProps>`
 
   & > label {
     margin-bottom: 0.45rem;
+    color: ${props => props.theme.vape};
   }
 
   @media screen and (max-width: 768px) {
@@ -60,21 +61,17 @@ export const FooterMedia = styled.div`
   justify-content: space-between;
 
   & > div {
-    a:visited {
-      color: ${props => props.theme.colorSecondary};
-      transition: color 300ms ease-in-out;
-      &:hover {
-        color: ${props => props.theme.linkColor};
-      }
-    }
+    a {
+      color: ${props => props.theme.yellow};
 
-    a:not(:last-of-type) {
-      margin-right: 16px;
+      &:not(:last-of-type) {
+        margin-right: 16px;
+      }
     }
   }
 
   small {
     font-size: 1rem;
-    color: ${props => props.theme.colorSecondary};
+    color: ${props => props.theme.vape};
   }
 `;

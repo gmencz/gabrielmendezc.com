@@ -16,10 +16,10 @@ const AboutPage: React.FC<RouterProps> = ({ location }) => {
         customTitle="Sobre Gabriel Méndez C."
         customDescription="Todo sobre Gabriel Méndez C."
       />
-      <h1>Hola! soy Gabriel</h1>
+      <h1>Hola! soy Gabriel.</h1>
       <h2
         style={{
-          color: 'rgb(113, 128, 150)',
+          color: '#d7d7d7',
           fontWeight: 400,
           fontSize: '1.33rem',
           margin: '1.5rem 0'

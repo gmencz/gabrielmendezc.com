@@ -3,12 +3,19 @@ import styled from 'styled-components';
 export const Post = styled.article`
   margin-bottom: 3.5rem;
 
-  a {
-    color: black;
-    text-decoration: none;
+  h3 {
+    color: ${props => props.theme.pink};
+  }
 
-    &:first-of-type:hover {
-      text-decoration: underline;
+  a:last-of-type {
+    color: #fff;
+    padding-bottom: 5px;
+    transition: all 300ms ease-in-out;
+    border-bottom: 5px dotted ${props => props.theme.yellow};
+
+    &:hover {
+      color: ${props => props.theme.yellow};
+      border-bottom: 5px dotted ${props => props.theme.pink};
     }
   }
 
@@ -30,6 +37,7 @@ export const Post = styled.article`
   time {
     margin-right: 10px;
     font-size: 1rem;
+    color: #fff;
   }
 
   small {
@@ -37,12 +45,14 @@ export const Post = styled.article`
       margin-right: 10px;
     }
 
+    color: #fff;
     font-size: 1rem;
   }
 
   p {
-    color: ${props => props.theme.colorSecondary};
+    color: ${props => props.theme.vape};
     font-size: 1.15rem;
     margin-right: 5px;
+    margin-bottom: 10px;
   }
 `;

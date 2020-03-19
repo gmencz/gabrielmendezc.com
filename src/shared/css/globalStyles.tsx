@@ -14,14 +14,9 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
 			min-height: 100vh;
-			overflow-y: scroll;
     margin: 0;
-    background-color: rgb(224, 230, 235);
-    background-image: linear-gradient(
-        rgb(245, 245, 245) 0%,
-        rgba(224, 230, 235, 0) 100%
-    );
-    font-family: 'Oxanium', cursive;
+    background-color: #203447;
+    font-family: 'Inter', sans-serif;
     color: rgb(26, 32, 44);
     }
 
@@ -53,12 +48,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     p {
-    font-family: 'Oxanium', cursive;
+    font-family: 'Inter', sans-serif;
     }
 
     a {
     text-decoration: none;
-    font-family: 'Oxanium', cursive;
+    font-family: 'Inter', sans-serif;
     }
 
     progress {
@@ -291,14 +286,14 @@ export const GlobalStyles = createGlobalStyle`
     h1 {
     margin-left: 0;
     margin-right: 0;
+		color: white;
     margin-top: 0;
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
     margin-bottom: 0rem;
-    color: inherit;
-    font-family: 'Oxanium', cursive;
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 2rem;
@@ -314,8 +309,8 @@ export const GlobalStyles = createGlobalStyle`
     padding-right: 0;
     padding-top: 0;
     margin-bottom: 0rem;
-    color: inherit;
-    font-family: 'Oxanium', cursive;
+		color: white;
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.62671rem;
@@ -331,8 +326,9 @@ export const GlobalStyles = createGlobalStyle`
     padding-right: 0;
     padding-top: 0;
     margin-bottom: 0rem;
-    color: inherit;
-    font-family: 'Oxanium', cursive;
+		color: white;
+
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1.38316rem;
@@ -348,8 +344,9 @@ export const GlobalStyles = createGlobalStyle`
     padding-right: 0;
     padding-top: 0;
     margin-bottom: 0rem;
-    color: inherit;
-    font-family: 'Oxanium', cursive;
+		color: white;
+
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 1rem;
@@ -365,8 +362,9 @@ export const GlobalStyles = createGlobalStyle`
     padding-right: 0;
     padding-top: 0;
     margin-bottom: 0rem;
-    color: inherit;
-    font-family: 'Oxanium', cursive;
+		color: white;
+
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.85028rem;
@@ -383,7 +381,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-top: 0;
     margin-bottom: 0rem;
     color: inherit;
-    font-family: 'Oxanium', cursive;
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.78405rem;

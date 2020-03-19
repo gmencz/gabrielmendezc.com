@@ -7,7 +7,7 @@ export const SpinnerWrapper = styled.div`
   & > div {
     width: 13px;
     height: 13px;
-    background-color: ${props => props.theme.colorPrimary};
+    background-color: ${props => props.theme.pink};
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: bouncedelay 1.4s infinite ease-in-out both;

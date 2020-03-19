@@ -36,7 +36,7 @@ export const Burger: React.FC = () => {
         <SC.BurgerNavigation className={isNavigationOpen ? 'open' : undefined}>
           <li>
             <Link onClick={unlockScrollbar} activeClassName="active" to="/">
-              inicio
+              Inicio
             </Link>
           </li>
           <li>
@@ -45,7 +45,7 @@ export const Burger: React.FC = () => {
               activeClassName="active"
               to="/about"
             >
-              sobre mí
+              Sobre mí
             </Link>
           </li>
           <li>
@@ -55,7 +55,7 @@ export const Burger: React.FC = () => {
               activeClassName="active"
               to="/blog"
             >
-              blog
+              Blog
             </Link>
           </li>
           <li>
@@ -64,7 +64,7 @@ export const Burger: React.FC = () => {
               activeClassName="active"
               to="/projects"
             >
-              proyectos
+              Proyectos
             </Link>
           </li>
           <li>
@@ -73,7 +73,7 @@ export const Burger: React.FC = () => {
               activeClassName="active"
               to="/lets-talk"
             >
-              hablemos
+              Hablemos
             </Link>
           </li>
         </SC.BurgerNavigation>

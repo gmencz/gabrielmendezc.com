@@ -8,10 +8,11 @@ export const RepoWrapper = styled.article`
 export const RepoTitle = styled.h2`
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  color: ${props => props.theme.pink};
 `;
 
 export const RepoLink = styled.a`
-  color: ${props => props.theme.colorPrimary};
+  color: ${props => props.theme.vape};
   padding: 1.5rem 0;
   display: block;
 

@@ -1,3 +1,3 @@
-import './src/prism_themes/light.css';
-import 'typeface-oxanium';
-import 'typeface-source-code-pro';
+import 'typeface-inter';
+import 'typeface-inconsolata';
+import './src/prism_themes/cobalt2.css';

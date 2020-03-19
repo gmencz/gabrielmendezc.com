@@ -10,9 +10,9 @@ export const HeaderWrapper = styled.header`
   align-items: center;
 
   & > a {
-    color: ${props => props.theme.colorPrimary};
-    font-size: 1.1rem;
     font-weight: bold;
+    color: ${props => props.theme.pink};
+    font-size: 1.1rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -30,17 +30,16 @@ export const NavigationList = styled.ul`
   }
 
   a {
-    color: ${props => props.theme.colorSecondary};
-    font-size: 1.05rem;
-    transition: color 200ms ease-in-out;
-
-    &:hover {
-      color: ${props => props.theme.subColor};
-    }
+    color: ${props => props.theme.pink};
+    font-size: 1.1rem;
+    position: relative;
 
     &.active {
-      color: ${props => props.theme.linkColor};
-      text-decoration: underline;
+      border-bottom: 5px dotted ${props => props.theme.yellow};
+
+      &::after {
+        display: block;
+      }
     }
   }
 

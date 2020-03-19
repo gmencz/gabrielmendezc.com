@@ -9,17 +9,23 @@ import { CodeIndicatorTitle } from '../mdx/code-indicator-title/code-indicator-t
 import { Footer } from '../footer/footer.component';
 
 interface ThemeProps {
-  colorPrimary: string;
-  colorSecondary: string;
-  subColor: string;
-  linkColor: string;
+  purple: string;
+  blue: string;
+  lightblue: string;
+  blue2: string;
+  yellow: string;
+  pink: string;
+  vape: string;
 }
 
 const theme: ThemeProps = {
-  colorPrimary: '#1a202c',
-  colorSecondary: '#4a5568',
-  subColor: 'rgb(113, 128, 150)',
-  linkColor: '#2b6cb0'
+  purple: '#b066ff',
+  blue: '#203447',
+  lightblue: '#1f4662',
+  blue2: '#1c2f40',
+  yellow: '#ffc600',
+  pink: '#eb4471',
+  vape: '#d7d7d7'
 };
 
 const MainLayout = styled.main`

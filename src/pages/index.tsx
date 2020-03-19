@@ -7,7 +7,7 @@ import Listing from '../components/listing/listing.component';
 import { SEO } from '../components/seo/seo.component';
 
 export const NameHeading = styled.h1`
-  color: rgb(26, 32, 44);
+  color: #fff;
   letter-spacing: -0.03rem;
   font-size: 1.45rem;
   line-height: 1.4;
@@ -16,7 +16,7 @@ export const NameHeading = styled.h1`
 `;
 
 export const DescriptionHeading = styled.div`
-  color: ${props => props.theme.subColor};
+  color: ${props => props.theme.vape};
   letter-spacing: -0.03rem;
   font-size: 1.33rem;
   display: inline;
@@ -25,6 +25,7 @@ export const DescriptionHeading = styled.div`
 
 const StyledTypist = styled(Typist)`
   margin-bottom: 143px;
+  color: ${props => props.theme.yellow};
 
   span.Cursor--blinking {
     animation-name: blinker;
@@ -47,12 +48,11 @@ const StyledTypist = styled(Typist)`
 `;
 
 const BlogHeading = styled.h2`
-  color: ${props => props.theme.colorSecondary};
+  color: #fff;
   font-size: 0.985rem;
   line-height: 1.45rem;
   margin-bottom: 2.65rem;
   font-weight: bold;
-  color: #4a5568;
   text-transform: uppercase;
   -webkit-letter-spacing: 0.12em;
   -moz-letter-spacing: 0.12em;

@@ -11,27 +11,27 @@ const Header: React.FC<HeaderProps> = () => {
   return (
     <Fragment>
       <SC.HeaderWrapper>
-        <Link to="/">@gabrielmendezc</Link>
+        <Link to="/">Gabriel Méndez C.</Link>
         <nav>
           <SC.NavigationList>
             <li>
               <Link activeClassName="active" to="/about">
-                sobre mí
+                Sobre mí
               </Link>
             </li>
             <li>
               <Link partiallyActive activeClassName="active" to="/blog">
-                blog
+                Blog
               </Link>
             </li>
             <li>
               <Link activeClassName="active" to="/projects">
-                proyectos
+                Proyectos
               </Link>
             </li>
             <li>
               <Link activeClassName="active" to="/lets-talk">
-                hablemos
+                Hablemos
               </Link>
             </li>
           </SC.NavigationList>

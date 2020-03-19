@@ -49,25 +49,19 @@ export const BurgerNavigation = styled.ul`
   }
 
   a {
-    color: ${props => props.theme.colorPrimary};
+    color: ${props => props.theme.pink};
     font-weight: 600;
     font-size: 1.6rem;
-    display: block;
 
     &.active {
-      color: ${props => props.theme.linkColor};
-      text-decoration: underline;
+      border-bottom: 5px dotted ${props => props.theme.yellow};
     }
   }
 `;
 
 export const BurgerNavigationWrapper = styled.nav`
   position: fixed;
-  background-color: rgb(245, 245, 245);
-  background-image: linear-gradient(
-    rgb(245, 245, 245) 0%,
-    rgba(224, 230, 235, 0) 100%
-  );
+  background-color: ${props => props.theme.blue};
   width: 100%;
   height: 100vh;
   top: 0;
@@ -106,7 +100,7 @@ export const Burger = styled.button`
     display: block;
     height: 2px;
     width: 22px;
-    background-color: ${props => props.theme.colorPrimary};
+    background-color: ${props => props.theme.pink};
     transition: transform 300ms cubic-bezier(0.36, 0.19, 0.41, 0.97);
     margin-bottom: 5px;
     border: none;
@@ -117,7 +111,7 @@ export const Burger = styled.button`
     display: block;
     height: 2px;
     width: 22px;
-    background-color: ${props => props.theme.colorPrimary};
+    background-color: ${props => props.theme.pink};
     border: none;
     transition: transform 300ms cubic-bezier(0.36, 0.19, 0.41, 0.97);
   }

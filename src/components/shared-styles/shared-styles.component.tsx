@@ -21,7 +21,7 @@ interface TextAreaProps {
 }
 
 export const ParagraphHeading = styled.p<SharedProps>`
-  color: rgb(113, 128, 150);
+  color: ${props => props.theme.vape};
   -webkit-letter-spacing: -0.03rem;
   -moz-letter-spacing: -0.03rem;
   -ms-letter-spacing: -0.03rem;
@@ -34,37 +34,37 @@ export const ParagraphHeading = styled.p<SharedProps>`
 
 export const InternalLink = styled(Link)`
   font-size: 1.15rem;
-  color: ${props => props.theme.linkColor} !important;
-  border-bottom: 1px dotted #2b6cb0;
-  padding-bottom: 0.15rem;
+  color: ${props => props.theme.pink};
 `;
 
 export const Paragraph = styled.p`
-  color: ${props => props.theme.colorSecondary};
+  color: ${props => props.theme.vape};
   font-size: 1.15rem;
+
+  strong {
+    color: #fff;
+  }
 `;
 
 export const ExternalLink = styled.a`
   font-size: 1.15rem;
-  color: ${props => props.theme.linkColor} !important;
-  border-bottom: 1px dotted #2b6cb0;
-  padding-bottom: 0.15rem;
+  color: ${props => props.theme.pink};
   line-height: 1.7;
 `;
 
 export const UnrelatedContent = styled.aside`
-  border-left: 3px solid ${props => props.theme.subColor};
+  border-left: 1px solid ${props => props.theme.yellow};
   padding-left: 1rem;
 
   & > p:first-of-type {
     font-style: italic;
-    color: rgb(26, 32, 44);
     font-size: 1.15rem;
     margin-bottom: 1.25rem;
+    color: #fff;
   }
 
   & > ul {
-    margin-left: 1rem;
+    list-style-type: none;
 
     li {
       font-size: 1.1rem;
@@ -88,7 +88,8 @@ export const TextArea = styled.textarea<TextAreaProps>`
 
 export const ErrorAtInput = styled.strong`
   color: red;
-  margin-top: 0.5rem;
+  display: block;
+  margin-top: 1rem;
   font-weight: 400;
 `;
 
@@ -104,7 +105,7 @@ export const Input = styled.input<InputProps>`
   color: ${props => props.theme.colorPrimary};
 
   &:focus {
-    border-color: ${props => props.theme.subColor};
+    border-color: ${props => props.theme.yellow};
   }
 `;
 
@@ -117,8 +118,8 @@ export const Label = styled.label`
 export const Button = styled.button<ButtonProps>`
   padding: 0.4rem 1rem;
   cursor: pointer;
-  border: 2px solid ${props => props.theme.linkColor};
-  background-color: ${props => props.theme.linkColor};
+  border: 2px solid ${props => props.theme.pink};
+  background-color: ${props => props.theme.pink};
   color: white;
   width: 100%;
   max-width: ${props => (props.fullWidth ? '100%' : '225px')};
@@ -129,17 +130,15 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  transition: border-color 300ms ease-in-out, background-color 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
 
   &:hover {
-    background-color: #0e457f;
-    border-color: #0e457f;
+    transform: scale(1.04);
   }
 
   ${props =>
     props.loading === 'true' &&
     css`
-      background-color: ${props => props.theme.subColor} !important;
       pointer-events: none;
 
       &::after {
@@ -149,7 +148,7 @@ export const Button = styled.button<ButtonProps>`
         height: 20px;
         border-radius: 50%;
         border: 1px solid #fff;
-        border-top-color: ${props => props.theme.linkColor};
+        border-top-color: ${props => props.theme.pink};
         animation: spinner 0.6s linear infinite;
       }
 

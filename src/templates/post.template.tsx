@@ -33,7 +33,7 @@ type PostLayoutProps = {
 const IndividualPost = styled.section`
   & > h1 {
     margin-bottom: 1.5rem;
-    color: rgb(26, 32, 44);
+    color: #fff;
     font-size: 2rem;
   }
 `;
@@ -50,6 +50,7 @@ const IndividualPostBody = styled.article`
     font-size: 1.15rem;
     margin-bottom: 1.5rem;
     line-height: 1.7;
+    color: ${props => props.theme.vape};
   }
 
   pre[class*='language-'] {
@@ -58,8 +59,7 @@ const IndividualPostBody = styled.article`
 
   a {
     font-size: 1.15rem;
-    color: ${props => props.theme.linkColor} !important;
-    border-bottom: 1px dotted #2b6cb0;
+    color: ${props => props.theme.pink};
     padding-bottom: 0.15rem;
   }
 
@@ -70,6 +70,7 @@ const IndividualPostBody = styled.article`
     font-size: 1.15rem;
     li {
       margin-bottom: 0.35rem;
+      color: ${props => props.theme.vape};
     }
   }
 
@@ -85,6 +86,10 @@ const BottomNavigation = styled.nav`
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 3rem;
+
+    a {
+      border-bottom: 5px dotted ${props => props.theme.yellow};
+    }
 
     li:first-of-type {
       margin-bottom: 1.5rem;

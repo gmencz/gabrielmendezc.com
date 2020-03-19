@@ -8,7 +8,7 @@ export const CodeIndicatorTitle = styled.h4`
   & > p {
     border-bottom: 5px dotted #2b6cb0;
     padding: 1rem;
-    background-color: #fafafa;
+    background-color: ${props => props.theme.blue2};
     display: inline;
     margin: 0 !important;
     font-size: 1rem !important;
