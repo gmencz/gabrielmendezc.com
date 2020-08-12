@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState
+} from 'react';
 import axios from 'axios';
 import {
   Paragraph,
@@ -16,7 +19,7 @@ export const GhRepos: React.FC = () => {
     (async () => {
       try {
         const response = await axios.get(
-          'https://api.github.com/users/gabrielmendezc/repos?per_page=7&sort=created_at'
+          'https://api.github.com/users/gmencz/repos?per_page=7&sort=created_at'
         );
 
         setLoading(false);
@@ -28,21 +31,35 @@ export const GhRepos: React.FC = () => {
     })();
   }, []);
 
+  console.log(repos);
+
   if (loading) return <Spinner />;
-  if (error) return <Paragraph style={{ color: 'red' }}>{error}</Paragraph>;
+  if (error)
+    return (
+      <Paragraph style={{ color: 'red' }}>
+        {error}
+      </Paragraph>
+    );
 
   return (
     <section>
-      {repos.map(({ name, html_url, description, language }) => (
-        <GhRepo
-          key={html_url}
-          repoDescription={description}
-          repoName={name}
-          repoUrl={html_url}
-          language={language}
-        />
-      ))}
-      <ExternalLink href="https://github.com/gabrielmendezc?tab=repositories">
+      {repos.map(
+        ({
+          name,
+          html_url,
+          description,
+          language
+        }) => (
+          <GhRepo
+            key={html_url}
+            repoDescription={description}
+            repoName={name}
+            repoUrl={html_url}
+            language={language}
+          />
+        )
+      )}
+      <ExternalLink href='https://github.com/gmencz?tab=repositories'>
         Puedes ver más de mis proyectos en GitHub
       </ExternalLink>
     </section>
