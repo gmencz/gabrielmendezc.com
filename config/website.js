@@ -1,11 +1,12 @@
 module.exports = {
   siteTitle: 'Gabriel Méndez C',
-  siteTitleAlt: 'Página personal de Gabriel Méndez C.',
+  siteTitleAlt:
+    'Página personal de Gabriel Méndez C.',
   siteUrl: 'https://gabrielmendezc.com',
   siteTitleShort: 'gabrielmendezc',
   lang: 'es',
-  github: 'https://github.com/gabrielmendezc',
-  twitter: 'https://twitter.com/gabrielmendezct',
+  github: 'https://github.com/gmencz',
+  twitter: 'https://twitter.com/gabrielmendezco',
   siteLogo: 'static/images/site-logo.jpg',
   ogSiteName: 'Gabriel Méndez C',
   ogLanguage: 'es_ES',
