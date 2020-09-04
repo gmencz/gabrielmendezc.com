@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/gmencz/gabrielmendezc.com/issues"
   },
-  "homepage": "https://github.com/gmencz/gabrielmendezc.com#readme"
+  "homepage": "https://github.com/gmencz/gabrielmendezc.com#readme",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  }
 }
