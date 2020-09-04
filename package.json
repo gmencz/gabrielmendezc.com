@@ -1,0 +1,25 @@
+{
+  "name": "gabrielmendezc.com",
+  "version": "2.0.0",
+  "description": "Gabriel's homepage",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo It works"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmencz/gabrielmendezc.com.git"
+  },
+  "keywords": [
+    "Gatsby",
+    "Typescript",
+    "React",
+    "NodeJS"
+  ],
+  "author": "Gabriel Méndez <yo@gabrielmendezc.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gmencz/gabrielmendezc.com/issues"
+  },
+  "homepage": "https://github.com/gmencz/gabrielmendezc.com#readme"
+}
