@@ -2,10 +2,13 @@
   "name": "gabrielmendezc.com",
   "version": "2.0.0",
   "description": "Gabriel's homepage",
-  "main": "index.ts",
+  "main": "src/pages/index.ts",
   "scripts": {
-    "test": "echo It works",
-    "dev": "gatsby develop"
+    "dev": "gatsby develop",
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "format": "pretty-quick",
+    "check-types": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,12 @@
     "eslint-plugin-jest": "^24.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
+    "husky": "^4.2.5",
+    "jest": "^26.4.2",
+    "lint-staged": "^10.3.0",
     "prettier": "^2.1.1",
+    "pretty-quick": "^3.0.0",
+    "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
   },
   "dependencies": {
