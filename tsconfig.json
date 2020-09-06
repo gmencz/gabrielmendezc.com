@@ -1,15 +1,14 @@
 {
-  "include": ["./src/**/*"],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "jsx": "react",
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
     "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "noEmit": true,
-    "skipLibCheck": true
-  }
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": false
+  },
+  "include": ["src/**/*"]
 }
