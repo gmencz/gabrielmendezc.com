@@ -1,9 +1,16 @@
 import React from 'react'
-
-const a = 10
+import {css} from '@emotion/core'
 
 const Home: React.FC = () => {
-  return <h1>Hello Gatsby!!</h1>
+  return (
+    <h1
+      css={css({
+        color: 'red',
+      })}
+    >
+      Hello Gatsby!!
+    </h1>
+  )
 }
 
 export default Home

@@ -29,6 +29,7 @@
   "devDependencies": {
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "@types/typography": "^0.16.3",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "eslint": "^7.8.1",
@@ -45,9 +46,15 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.35",
     "gatsby": "^2.24.53",
+    "gatsby-plugin-emotion": "^4.3.10",
     "gatsby-plugin-typescript": "^2.4.18",
+    "gatsby-plugin-typography": "^2.5.10",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
+    "typography-theme-fairy-gates": "^0.16.19"
   }
 }
