@@ -1,47 +1,46 @@
 import React from 'react'
-import {css} from '@emotion/core'
+import {useTheme} from 'emotion-theming'
 import Logo from './logo'
 import NavLink from './nav-link'
+import useThemeActions from '../hooks/useThemeActions'
+import {Theme} from '../utils/palette'
 
 const Header: React.FC = () => {
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
+  const theme = useTheme() as Theme
+  const {toggleTheme} = useThemeActions()
 
-  const changeTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'))
-  }
-
-  console.log(theme)
+  console.log(theme.name)
 
   return (
     <>
       <header
-        css={css({
-          display: 'flex',
+        css={{
           maxWidth: 640,
           margin: '0 auto 96px auto',
-          alignItems: 'center',
           minHeight: '70px',
           padding: '72px 0 0',
-        })}
+          display: 'flex',
+          alignItems: 'flex-end',
+        }}
       >
         <Logo theme="light" size={90} />
         <div
-          css={css({
-            marginLeft: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-          })}
+          css={{display: 'flex', flexDirection: 'column', marginLeft: 'auto'}}
         >
           <button
-            onClick={changeTheme}
+            onClick={toggleTheme}
             type="button"
             aria-label={
-              theme === 'light' ? 'Activate Dark Mode' : 'Activate Light Mode'
+              theme.name === 'light'
+                ? 'Activate Dark Mode'
+                : 'Activate Light Mode'
             }
             title={
-              theme === 'light' ? 'Activate Dark Mode' : 'Activate Light Mode'
+              theme.name === 'light'
+                ? 'Activate Dark Mode'
+                : 'Activate Light Mode'
             }
-            css={css({
+            css={{
               margin: '0 0 20px auto',
               opacity: 0.65,
               position: 'relative',
@@ -59,12 +58,12 @@ const Header: React.FC = () => {
               '&:hover': {
                 opacity: 1,
               },
-            })}
+            }}
           >
             <div
               css={
-                theme === 'light'
-                  ? css({
+                theme.name === 'light'
+                  ? (theme: Theme) => ({
                       position: 'relative',
                       width: 24,
                       height: 24,
@@ -74,7 +73,7 @@ const Header: React.FC = () => {
                       transform: 'scale(1)',
                       transition: 'all 0.45s ease',
                       overflow: 'hidden',
-                      boxShadow: 'inset 8px -8px 0px 0px #5f6c80',
+                      boxShadow: `inset 8px -8px 0px 0px ${theme.title}`,
                       '&::before': {
                         content: '""',
                         position: 'absolute',
@@ -100,17 +99,16 @@ const Header: React.FC = () => {
                         borderRadius: '50%',
                         transform: 'scale(0)',
                         transition: 'all 0.35s ease',
-                        boxShadow:
-                          '0 -23px 0 #5f6c80,0 23px 0 #5f6c80,23px 0 0 #5f6c80,-23px 0 0 #5f6c80,15px 15px 0 #5f6c80,-15px 15px 0 #5f6c80,15px -15px 0 #5f6c80,-15px -15px 0 #5f6c80',
+                        boxShadow: `0 -23px 0 ${theme.title},0 23px 0 ${theme.title},23px 0 0 ${theme.title},-23px 0 0 ${theme.title},15px 15px 0 ${theme.title},-15px 15px 0 ${theme.title},15px -15px 0 ${theme.title},-15px -15px 0 ${theme.title}`,
                       },
                     })
-                  : css({
+                  : (theme: Theme) => ({
                       position: 'relative',
                       width: 24,
                       height: 24,
                       borderRadius: '50%',
-                      border: '4px solid #5f6c80',
-                      backgroundColor: '#5f6c80',
+                      border: `4px solid ${theme.title}`,
+                      backgroundColor: theme.title,
                       transform: 'scale(0.55)',
                       transition: 'all 0.45s ease',
                       overflow: 'visible',
@@ -122,7 +120,7 @@ const Header: React.FC = () => {
                         top: -9,
                         height: 24,
                         width: 24,
-                        border: '2px solid #5f6c80',
+                        border: `2px solid ${theme.title}`,
                         borderRadius: '50%',
                         transform: 'translate(14px, -14px)',
                         opacity: 0,
@@ -140,27 +138,23 @@ const Header: React.FC = () => {
                         borderRadius: '50%',
                         transform: 'scale(1)',
                         transition: 'all 0.35s ease',
-                        boxShadow:
-                          '0 -23px 0 #5f6c80,0 23px 0 #5f6c80,23px 0 0 #5f6c80,-23px 0 0 #5f6c80,15px 15px 0 #5f6c80,-15px 15px 0 #5f6c80,15px -15px 0 #5f6c80,-15px -15px 0 #5f6c80',
+                        boxShadow: `0 -23px 0 ${theme.title},0 23px 0 ${theme.title},23px 0 0 ${theme.title},-23px 0 0 ${theme.title},15px 15px 0 ${theme.title},-15px 15px 0 ${theme.title},15px -15px 0 ${theme.title},-15px -15px 0 ${theme.title}`,
                       },
                     })
               }
             ></div>
           </button>
           <nav>
-            <ul
-              css={css({
-                display: 'flex',
-                alignItems: 'center',
-                listStyleType: 'none',
-                margin: 0,
-              })}
-            >
-              <li>
-                <NavLink to="/blog">Blog</NavLink>
+            <ul css={{display: 'flex', margin: 0, listStyleType: 'none'}}>
+              <li css={{marginBottom: 0}}>
+                <NavLink aria-label="View blog page" to="/blog">
+                  Blog
+                </NavLink>
               </li>
-              <li css={css({marginLeft: '40px'})}>
-                <NavLink to="/about">About</NavLink>
+              <li css={{marginBottom: 0, marginLeft: '40px'}}>
+                <NavLink aria-label="View about page" to="/about">
+                  About
+                </NavLink>
               </li>
             </ul>
           </nav>
