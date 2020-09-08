@@ -1,16 +1,14 @@
 import React from 'react'
-import LightLogoSrc from '../assets/img/light-logo.svg'
-import DarkLogoSrc from '../assets/img/dark-logo.svg'
+import LogoSrc from '../../static/img/logo.svg'
 
 interface Props {
-  theme: 'dark' | 'light'
   size?: string | number
 }
 
-const Logo: React.FC<Props> = ({theme, size = 50}) => {
+const Logo: React.FC<Props> = ({size = 50}) => {
   return (
     <img
-      src={theme === 'dark' ? DarkLogoSrc : LightLogoSrc}
+      src={LogoSrc}
       alt="Logo"
       css={{width: size, height: size, margin: 0}}
     />

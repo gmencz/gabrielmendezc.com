@@ -4,26 +4,41 @@ import Logo from './logo'
 import NavLink from './nav-link'
 import useThemeActions from '../hooks/useThemeActions'
 import {Theme} from '../utils/palette'
+import {Link} from 'gatsby'
 
 const Header: React.FC = () => {
   const theme = useTheme() as Theme
   const {toggleTheme} = useThemeActions()
 
-  console.log(theme.name)
-
   return (
     <>
       <header
         css={{
-          maxWidth: 640,
+          maxWidth: 650,
           margin: '0 auto 96px auto',
           minHeight: '70px',
           padding: '72px 0 0',
           display: 'flex',
           alignItems: 'flex-end',
+          '@media (max-width: 768px)': {
+            padding: '50px 30px 0 0px',
+            margin: '0 auto 75px auto',
+          },
         }}
       >
-        <Logo theme="light" size={90} />
+        <Link
+          to="/"
+          aria-label="View home page"
+          css={{
+            display: 'flex',
+            textShadow: 'none',
+            boxShadow: 'none',
+            textDecoration: 'none',
+            backgroundImage: 'none',
+          }}
+        >
+          <Logo size={90} />
+        </Link>
         <div
           css={{display: 'flex', flexDirection: 'column', marginLeft: 'auto'}}
         >
@@ -31,18 +46,14 @@ const Header: React.FC = () => {
             onClick={toggleTheme}
             type="button"
             aria-label={
-              theme.name === 'light'
-                ? 'Activate Dark Mode'
-                : 'Activate Light Mode'
+              theme.name === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'
             }
             title={
-              theme.name === 'light'
-                ? 'Activate Dark Mode'
-                : 'Activate Light Mode'
+              theme.name === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'
             }
             css={{
               margin: '0 0 20px auto',
-              opacity: 0.65,
+              opacity: theme.name === 'light' ? 1 : 0.65,
               position: 'relative',
               width: 40,
               height: 25,
@@ -56,7 +67,7 @@ const Header: React.FC = () => {
               outline: 0,
               padding: 0,
               '&:hover': {
-                opacity: 1,
+                opacity: theme.name === 'light' ? 0.65 : 1,
               },
             }}
           >
@@ -154,6 +165,11 @@ const Header: React.FC = () => {
               <li css={{marginBottom: 0, marginLeft: '40px'}}>
                 <NavLink aria-label="View about page" to="/about">
                   About
+                </NavLink>
+              </li>
+              <li css={{marginBottom: 0, marginLeft: '40px'}}>
+                <NavLink aria-label="View contact page" to="/contact">
+                  Contact
                 </NavLink>
               </li>
             </ul>

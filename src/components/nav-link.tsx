@@ -18,7 +18,7 @@ const NavLink: React.FC<Props> = ({to, children, ...props}) => {
         textDecoration: 'none',
         backgroundImage: 'none',
         textShadow: 'none',
-        fontSize: '.9rem',
+        fontSize: '.925rem',
         '&:hover': {
           textShadow: `0.03em 0 ${theme.background}, -0.03em 0 ${theme.background}, 0 0.03em ${theme.background}, 0 -0.03em ${theme.background}, 0.06em 0 ${theme.background}, -0.06em 0 ${theme.background}, 0.09em 0 ${theme.background}, -0.09em 0 ${theme.background}, 0.12em 0 ${theme.background}, -0.12em 0 ${theme.background}, 0.15em 0 ${theme.background}, -0.15em 0 ${theme.background}`,
           color: '#1ca086',
