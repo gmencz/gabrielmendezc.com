@@ -6,7 +6,7 @@ const Layout: React.FC = ({children}) => {
   return (
     <>
       <Header />
-      <div css={css({margin: '3rem auto', maxWidth: 700})}>{children}</div>
+      <div css={css({margin: '3rem auto', maxWidth: 600})}>{children}</div>
     </>
   )
 }

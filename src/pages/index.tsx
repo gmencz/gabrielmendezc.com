@@ -4,10 +4,11 @@ import Layout from '../components/layout'
 const Home: React.FC = () => {
   return (
     <Layout>
-      <h1>Hi! I&apos;m building a fake Gatsby site as part of a tutorial!</h1>
+      <h1>Hi! I&apos;m Gabriel.</h1>
       <p>
-        What do I like to do? Lots of course but definitely enjoy building
-        websites.
+        I&apos;m a developer living in Vigo, Spain. You&apos;ve found my
+        personal corner of the internet where I like to spread knowledge and
+        share my opinion on random topics from time to time.
       </p>
     </Layout>
   )

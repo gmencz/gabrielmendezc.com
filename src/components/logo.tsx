@@ -1,18 +1,21 @@
 import React from 'react'
-import LightLogo from '../assets/img/light-logo.svg'
-import DarkLogo from '../assets/img/dark-logo.svg'
 import {css} from '@emotion/core'
+import LightLogoSrc from '../assets/img/light-logo.svg'
+import DarkLogoSrc from '../assets/img/dark-logo.svg'
 
 interface Props {
   theme: 'dark' | 'light'
+  size?: string | number
 }
 
-const Logo: React.FC<Props> = ({theme}) => {
-  if (theme === 'dark') {
-    return <img src={DarkLogo} alt="Logo" css={css({width: 60, height: 60})} />
-  }
-
-  return <img src={LightLogo} alt="Logo" css={css({width: 60, height: 60})} />
+const Logo: React.FC<Props> = ({theme, size = 50}) => {
+  return (
+    <img
+      src={theme === 'dark' ? DarkLogoSrc : LightLogoSrc}
+      alt="Logo"
+      css={css({width: size, height: size, margin: 0})}
+    />
+  )
 }
 
 export default Logo
