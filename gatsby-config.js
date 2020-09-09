@@ -20,6 +20,10 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -37,6 +41,20 @@ module.exports = {
         theme_color: config.themeColor,
         display: 'standalone',
         icon: 'static/images/logo.png',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'none',
+        head: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mailchimp`,
+      options: {
+        endpoint:
+          'https://gabrielmendezc.us19.list-manage.com/subscribe/post?u=9fb00bdc2df2e2dd96fe110d8&amp;id=34044d28a4',
       },
     },
   ],

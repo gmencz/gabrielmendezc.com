@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import {Theme} from '../utils/palette'
 import Anchor from '../components/anchor'
 import {Link, graphql} from 'gatsby'
+import {SEO} from '../components/seo'
 
 interface Props {
   data: {
@@ -20,6 +21,10 @@ interface Props {
 const About: React.FC<Props> = ({data}) => {
   return (
     <Layout>
+      <SEO
+        customTitle="Gabriel Méndez C · About"
+        customDescription="All about Gabriel Méndez C."
+      />
       <h1
         css={(theme: Theme) => ({
           color: theme.title,
