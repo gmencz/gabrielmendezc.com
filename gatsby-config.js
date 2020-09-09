@@ -1,16 +1,19 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const config = require('./config/website')
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://gabrielmendezc.com',
-    title: 'Gabriel Méndez',
-    description:
-      'Come check out how Gabriel Méndez can help you level up your career as a developer',
+    siteUrl: config.siteUrl,
+    title: config.siteTitle,
+    description: config.siteDescription,
     keywords:
       'Software, Web development, Front End, Back End, GraphQL, React, Typescript, Javascript, NodeJS, Golang',
-    canonicalUrl: 'https://gabrielmendezc.com',
-    author: 'Gabriel Méndez',
-    image: 'static/img/logo.svg',
+    canonicalUrl: config.siteUrl,
+    author: config.author,
+    image: config.siteLogo,
     social: {
-      github: 'https://github.com/gmencz',
+      github: config.github,
+      twitter: config.twitter,
     },
   },
   plugins: [

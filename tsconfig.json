@@ -2,13 +2,27 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
+    "outDir": "./dist",
     "lib": ["dom", "esnext"],
     "strict": true,
+    "moduleResolution": "node",
+    "removeComments": true,
     "noEmit": true,
     "isolatedModules": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
     "esModuleInterop": true,
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "noImplicitReturns": true
   },
+  "exclude": ["node_modules"],
   "include": ["src/**/*", "images.d.ts"]
 }

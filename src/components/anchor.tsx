@@ -5,7 +5,7 @@ interface Props extends AnchorHTMLAttributes<unknown> {
   internal?: string
 }
 
-const Anchor: React.FC<Props> = ({children, internal, ...props}) => {
+const Anchor: React.FC<Props> = ({children, ...props}) => {
   return (
     <a
       css={(theme: Theme) => ({

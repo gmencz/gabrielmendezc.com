@@ -32,7 +32,9 @@ const About: React.FC<Props> = ({data}) => {
           color: theme.text,
         })}
       >
-        Hi, I&apos;m {data.site.siteMetadata.author}. I&apos;m a{' '}
+        Hi, I&apos;m{' '}
+        {data.site.siteMetadata.author.split(' ').slice(0, 2).join(' ')}.
+        I&apos;m a{' '}
         <strong>developer, writer and data protection consultant</strong> living
         in Vigo, Spain, where I graduated with a degree in computer science.
       </p>
