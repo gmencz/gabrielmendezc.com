@@ -52,6 +52,7 @@
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.24.53",
     "gatsby-plugin-emotion": "^4.3.10",
+    "gatsby-plugin-manifest": "^2.4.28",
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-typescript": "^2.4.18",
     "gatsby-plugin-typography": "^2.5.10",

@@ -1,5 +1,5 @@
 import React from 'react'
-import LogoSrc from '../../static/img/logo.svg'
+import LogoSrc from '../../static/images/logo.svg'
 
 interface Props {
   size?: string | number

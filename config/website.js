@@ -5,13 +5,13 @@ module.exports = {
   siteTitleShort: 'gabrielmendezc',
   lang: 'en',
   github: 'https://github.com/gmencz',
-  twitter: 'https://twitter.com/gabrielmendezco',
+  twitter: 'https://twitter.com/gmencz',
   siteLogo: '/img/logo.svg',
   ogSiteName: 'Gabriel Méndez C',
   ogLanguage: 'en_US',
   author: 'Gabriel Méndez C',
-  themeColor: '#e0e6eb',
-  backgroundColor: '#f5f5f5',
+  themeColor: '#1ca086',
+  backgroundColor: '#ffffff',
   siteDescription:
     'Come check out how Gabriel Méndez can help you level up your career as a developer',
 }

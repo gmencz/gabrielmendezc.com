@@ -24,7 +24,7 @@ const Home: React.FC<Props> = ({data}) => {
         })}
       >
         Hi! I&apos;m{' '}
-        {data.site.siteMetadata.author.split(' ').slice(0, 2).join(' ')}.
+        {data.site.siteMetadata.author.split(' ').slice(0, 1).join(' ')}.
       </h1>
       <p
         css={(theme: Theme) => ({

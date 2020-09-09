@@ -26,5 +26,18 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Gabriel Méndez C',
+        short_name: 'gabrielmendezc',
+        start_url: '/',
+        lang: 'en',
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'standalone',
+        icon: 'static/images/logo.png',
+      },
+    },
   ],
 }
