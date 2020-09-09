@@ -26,8 +26,9 @@ const Layout: React.FC = ({children}) => {
           css={css({
             margin: '0 auto',
             maxWidth: 620,
+            padding: '0 0 30px 0',
             '@media (max-width: 768px)': {
-              padding: '0 20px',
+              padding: '0 20px 30px',
             },
           })}
         >
