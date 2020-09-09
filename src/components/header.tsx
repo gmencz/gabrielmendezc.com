@@ -18,6 +18,7 @@ const Header: React.FC = () => {
           margin: '0 auto 96px auto',
           minHeight: '70px',
           padding: '72px 0 0',
+          width: '100%',
           display: 'flex',
           alignItems: 'flex-end',
           '@media (max-width: 768px)': {
