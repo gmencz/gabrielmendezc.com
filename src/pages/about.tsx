@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import {Theme} from '../utils/palette'
 import Anchor from '../components/anchor'
 import {Link, graphql} from 'gatsby'
+import {SEO} from '../components/seo'
 
 interface Props {
   data: {
@@ -18,10 +19,12 @@ interface Props {
 }
 
 const About: React.FC<Props> = ({data}) => {
-  console.log(data)
-
   return (
     <Layout>
+      <SEO
+        customTitle="Gabriel Méndez C · About"
+        customDescription="All about Gabriel Méndez C."
+      />
       <h1
         css={(theme: Theme) => ({
           color: theme.title,
@@ -60,11 +63,20 @@ const About: React.FC<Props> = ({data}) => {
         <strong>joined an online community of developers</strong> on{' '}
         <Anchor href="https://discord.com">discord</Anchor> and since then
         I&apos;ve helped hundreds of developers achieve their goals and become
-        better at what they do. If you&apos;re interested in joining this
-        amazing community, you can read more about it{' '}
-        <Anchor href="https://theprogrammershangout.com">here</Anchor>.
+        better at what they do,{' '}
+        <Anchor href="https://theprogrammershangout.com">check it out!</Anchor>.
       </p>
-      <blockquote>
+      <p
+        css={(theme: Theme) => ({
+          color: theme.text,
+        })}
+      >
+        Currently working at{' '}
+        <Anchor href="https://confialis.com/">Confialis</Anchor> building
+        internal and external software mostly around data protection which takes
+        care of both our needs and those of our customers.
+      </p>
+      <blockquote css={{margin: 0}}>
         <p
           css={(theme: Theme) => ({
             color: theme.text,

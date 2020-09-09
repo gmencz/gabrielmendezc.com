@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import {Theme} from '../utils/palette'
 import {graphql} from 'gatsby'
+import {SEO} from '../components/seo'
 
 interface Props {
   data: {
@@ -16,12 +17,14 @@ interface Props {
 const Home: React.FC<Props> = ({data}) => {
   return (
     <Layout>
+      <SEO />
       <h1
         css={(theme: Theme) => ({
           color: theme.title,
         })}
       >
-        Hi! I&apos;m {data.site.siteMetadata.author}.
+        Hi! I&apos;m{' '}
+        {data.site.siteMetadata.author.split(' ').slice(0, 1).join(' ')}.
       </h1>
       <p
         css={(theme: Theme) => ({
