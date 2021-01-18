@@ -1,0 +1,11 @@
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+footer {
+  color: #ccc;
+}
