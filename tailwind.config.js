@@ -3,6 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   purge: [
     "./app/**/*.ts",
+    "./app/**/*.tsx",
     "./app/**/*.mdx",
     "./app/**/*.md",
     "./remix.config.js",
