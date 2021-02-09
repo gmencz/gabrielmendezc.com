@@ -1,8 +1,6 @@
-import { Meta, Scripts, Styles, Routes, useGlobalData } from "@remix-run/react";
+import { Meta, Scripts, Styles, Routes } from "@remix-run/react";
 
 export default function App() {
-  let data = useGlobalData();
-
   return (
     <html lang="en">
       <head>
@@ -10,16 +8,8 @@ export default function App() {
         <Meta />
         <Styles />
       </head>
-      <body>
-        <header>
-          <h1>Welcome to your Remix App!!</h1>
-        </header>
-
+      <body className="font-serif">
         <Routes />
-
-        <footer>
-          <p>This page was rendered at {data.date.toLocaleString()}</p>
-        </footer>
 
         <Scripts />
       </body>

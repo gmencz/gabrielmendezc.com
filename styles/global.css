@@ -1,0 +1,13 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+@tailwind screens;
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 100 900;
+  src: url(/fonts/inter.var.woff2) format("woff2");
+}

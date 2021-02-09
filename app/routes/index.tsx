@@ -1,29 +1,19 @@
-import { useRouteData } from "@remix-run/react";
-import type { Loader } from "@remix-run/data";
-
-export let loader: Loader = async () => {
+export function meta() {
   return {
-    message: "this is awesome 😎",
+    title: "Blog",
+    description:
+      "I write about full-stack development and best practices to create production-ready apps.",
   };
-};
-
-export let meta = () => {
-  return {
-    title: "Remix Starter",
-    description: "Welcome to remix!",
-  };
-};
+}
 
 export default function Index() {
-  let data = useRouteData();
-
   return (
-    <div style={{ padding: "20px 0" }}>
+    <>
+      <h1 className="font-bold text-3xl mb-2">Blog</h1>
       <p>
-        <a href="https://remix.run/dashboard/docs">Check out the docs</a> to get
-        started.
+        I write about full-stack development and best practices to create
+        production-ready apps.
       </p>
-      <p>Message from the loader: {data.message}</p>
-    </div>
+    </>
   );
 }
