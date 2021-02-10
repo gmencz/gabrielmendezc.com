@@ -12,7 +12,7 @@ export default function App() {
         <Styles />
       </head>
       <body>
-        <div className="w-full max-w-xl mx-auto px-4 py-28">
+        <div className="w-full max-w-xl mx-auto px-4">
           <Outlet />
         </div>
 
