@@ -49,6 +49,12 @@ export const meta: MetaFunction = (route) => {
   };
 };
 
+export function headers({ loaderHeaders }: { loaderHeaders: Headers }) {
+  return {
+    "cache-control": loaderHeaders.get("cache-control"),
+  };
+}
+
 function BlogPost() {
   const data = useRouteData<MaybePost>();
 
