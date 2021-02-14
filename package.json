@@ -3,7 +3,7 @@
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "vercel",
+    "deploy": "vercel --prod",
     "dev": "npm run css:setup && concurrently \"remix run\" \"vercel dev\"",
     "build": "npm run css:build && remix build",
     "css:build": "postcss styles --base styles --dir app/ --env production",
