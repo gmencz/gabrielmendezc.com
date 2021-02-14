@@ -1,9 +1,16 @@
-schema: http://localhost:8000/___graphql
-documents:
-  - ./src/**/*.{ts,tsx}
-  - ./node_modules/gatsby*/!(node_modules)/**/*.js
+overwrite: true
+schema:
+  - http://localhost:8080/v1beta1/relay:
+      headers:
+        X-Hasura-Admin-Secret: notsecretatallthisisjustfordevelopment
+  
+documents: "app/gql/**/*.ts"
 generates:
-  ./src/graphqlTypes.ts:
+  app/generated/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
+    config:
+      scalars:
+        timestamptz: string
+        date: string

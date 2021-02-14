@@ -1,0 +1,2 @@
+ALTER TABLE posts
+RENAME TO Post;
