@@ -25,6 +25,7 @@ export const PostBySlugDocument = gql`
           title
           excerpt
           body
+          published_at
         }
       }
     }

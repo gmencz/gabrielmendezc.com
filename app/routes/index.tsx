@@ -93,19 +93,19 @@ export default function Index() {
                   <span>Unknown publish date</span>
                 )}
               </p>
-              <Link to={`/blog/${post.slug}`} className="mt-2 block">
+              <a href={`/blog/${post.slug}`} className="mt-2 block">
                 <h2 className="text-xl font-semibold text-gray-900">
                   {post.title}
                 </h2>
                 <p className="mt-3 text-base text-gray-500">{post.excerpt}</p>
-              </Link>
+              </a>
               <div className="mt-3">
-                <Link
-                  to={`/blog/${post.slug}`}
+                <a
+                  href={`/blog/${post.slug}`}
                   className="text-base font-semibold text-pink-800 hover:text-pink-700"
                 >
                   Read full story
-                </Link>
+                </a>
               </div>
             </article>
           ))}

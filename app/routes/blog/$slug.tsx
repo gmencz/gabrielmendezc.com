@@ -1,5 +1,6 @@
-import { json, Loader, redirect } from "@remix-run/data";
+import { json, Loader } from "@remix-run/data";
 import { Link, MetaFunction, useRouteData } from "@remix-run/react";
+import { parseISO, format } from "date-fns";
 import Markdown from "react-markdown";
 import markdownGfm from "remark-gfm";
 import {
@@ -168,12 +169,12 @@ function BlogPost() {
               Oops! we looked everywhere but couldn't find what you were looking
               for, you probably followed a broken link.
             </p>
-            <Link
-              to="/"
+            <a
+              href="/"
               className="text-base font-semibold text-pink-800 hover:text-pink-700"
             >
               Go home
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -289,7 +290,9 @@ function BlogPost() {
         <div className="text-lg max-w-prose mx-auto">
           <h1>
             <span className="block text-base text-center text-pink-800 font-semibold tracking-wide uppercase">
-              Article
+              {data.node.published_at
+                ? format(parseISO(data.node.published_at), "MMM d',' y")
+                : "Unknown publish date"}
             </span>
             <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               {data.node.title}

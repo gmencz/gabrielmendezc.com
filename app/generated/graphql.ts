@@ -770,7 +770,7 @@ export type PostBySlugQuery = (
       { __typename?: 'postsEdge' }
       & { node: (
         { __typename?: 'posts' }
-        & Pick<Posts, 'title' | 'excerpt' | 'body'>
+        & Pick<Posts, 'title' | 'excerpt' | 'body' | 'published_at'>
       ) }
     )> }
   ) }
