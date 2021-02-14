@@ -1,5 +1,10 @@
-import { Meta, Scripts, Styles } from "@remix-run/react";
+import { Links, LinksFunction, Meta, Scripts } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
+import styles from "url:./global.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
 
 export default function App() {
   return (
@@ -9,12 +14,10 @@ export default function App() {
         <meta name="author" content="Gabriel Méndez" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Meta />
-        <Styles />
+        <Links />
       </head>
       <body>
-        <div className="w-full max-w-xl mx-auto px-4">
-          <Outlet />
-        </div>
+        <Outlet />
 
         <Scripts />
       </body>

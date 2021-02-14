@@ -1,0 +1,16 @@
+overwrite: true
+schema:
+  - http://localhost:8080/v1beta1/relay:
+      headers:
+        X-Hasura-Admin-Secret: notsecretatallthisisjustfordevelopment
+  
+documents: "app/gql/**/*.ts"
+generates:
+  app/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      scalars:
+        timestamptz: string
+        date: string

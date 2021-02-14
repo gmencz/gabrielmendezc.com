@@ -1,6 +1,10 @@
 import { createCookieSessionStorage } from "@remix-run/data";
 
-let { getSession, commitSession, destroySession } = createCookieSessionStorage({
+const {
+  getSession,
+  commitSession,
+  destroySession,
+} = createCookieSessionStorage({
   // This is either a Cookie (or a set of CookieOptions) that
   // describe the session cookie to use.
   cookie: {

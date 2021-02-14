@@ -1,19 +1,20 @@
 import { Action, json, Loader } from "@remix-run/data";
 import { redirect } from "@remix-run/data";
-import { useRouteData } from "@remix-run/react";
+import { Form, usePendingFormSubmit, useRouteData } from "@remix-run/react";
 import { commitSession, getSession } from "../sessionStorage";
-import graphql, { gql } from "../lib/graphql";
 import { verify } from "argon2";
+import client, { gql } from "../lib/graphql";
+import { classNames } from "../lib/classNames";
 
-export let loader: Loader = async ({ request }) => {
-  let session = await getSession(request.headers.get("Cookie"));
+export const loader: Loader = async ({ request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
 
   if (session.has("userId")) {
     // Redirect to the home page if they are already signed in.
     return redirect("/");
   }
 
-  let data = { error: session.get("error") };
+  const data = { error: session.get("error") };
 
   return json(data, {
     headers: {
@@ -22,15 +23,15 @@ export let loader: Loader = async ({ request }) => {
   });
 };
 
-export let action: Action = async ({ request }) => {
-  let session = await getSession(request.headers.get("Cookie"));
-  let bodyParams = new URLSearchParams(await request.text());
+export const action: Action = async ({ request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
+  const bodyParams = new URLSearchParams(await request.text());
 
-  let username = bodyParams.get("username");
-  let password = bodyParams.get("password");
+  const username = bodyParams.get("username");
+  const password = bodyParams.get("password");
 
-  let ADMIN_QUERY = gql`
-    query Admin($username: String!) {
+  const ADMIN_QUERY = gql`
+    query AdminByUsername($username: String!) {
       admins_connection(where: { username: { _eq: $username } }) {
         edges {
           node {
@@ -43,16 +44,16 @@ export let action: Action = async ({ request }) => {
     }
   `;
 
-  let variables = {
+  const variables = {
     username,
   };
 
-  let headers = {
+  const headers = {
     "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET as string,
   };
 
-  let data = await graphql.request(ADMIN_QUERY, variables, headers);
-  let [adminEdge] = data.admins_connection.edges;
+  const data = await client.request(ADMIN_QUERY, variables, headers);
+  const [adminEdge] = data.admins_connection.edges;
 
   if (!adminEdge) {
     session.flash("error", "Invalid username/password");
@@ -89,13 +90,14 @@ export let action: Action = async ({ request }) => {
 };
 
 export default function Admin() {
-  let { error } = useRouteData();
+  const { error } = useRouteData();
+  const pendingForm = usePendingFormSubmit();
 
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         {error && <p className="text-red-600">{error}</p>}
-        <form className="mt-8 space-y-6" method="POST">
+        <Form className="mt-8 space-y-6" method="post">
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="username" className="sr-only">
@@ -129,8 +131,9 @@ export default function Admin() {
 
           <div>
             <button
+              disabled={!!pendingForm}
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group disabled:cursor-not-allowed disabled:opacity-50 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg
@@ -147,10 +150,33 @@ export default function Admin() {
                   />
                 </svg>
               </span>
-              Sign in
+              {pendingForm ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              ) : (
+                "Sign in"
+              )}
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );
