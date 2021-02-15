@@ -3,6 +3,7 @@ import { redirect } from "@remix-run/data";
 import { Form, usePendingFormSubmit, useRouteData } from "@remix-run/react";
 import { commitSession, getSession } from "../sessionStorage";
 import { verify } from "argon2";
+import jwt from "jsonwebtoken";
 import client, { gql } from "../lib/graphql";
 
 export const loader: Loader = async ({ request }) => {
@@ -79,7 +80,28 @@ export const action: Action = async ({ request }) => {
     });
   }
 
+  const hasuraJwtContents = {
+    "https://hasura.io/jwt/claims": {
+      "x-hasura-allowed-roles": ["admin"],
+      "x-hasura-default-role": "admin",
+      "x-hasura-user-id": adminEdge.node.id,
+    },
+  };
+
+  const hasuraJwt = await new Promise<string>((res, rej) => {
+    jwt.sign(
+      hasuraJwtContents,
+      process.env.SESSION_SECRET_1 as string,
+      { algorithm: "HS256" },
+      (err, token) => {
+        if (err) return rej(err);
+        return res(token as string);
+      }
+    );
+  });
+
   session.set("userId", adminEdge.node.id);
+  session.set("hasuraJwt", hasuraJwt);
 
   return redirect("/", {
     headers: {

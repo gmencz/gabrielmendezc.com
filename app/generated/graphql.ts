@@ -785,8 +785,22 @@ export type PostBySlugQuery = (
       { __typename?: 'postsEdge' }
       & { node: (
         { __typename?: 'posts' }
-        & Pick<Posts, 'title' | 'excerpt' | 'body' | 'published_at'>
+        & Pick<Posts, 'title' | 'excerpt' | 'body' | 'slug' | 'published' | 'published_at'>
       ) }
     )> }
   ) }
+);
+
+export type EditPostBySlugMutationVariables = Exact<{
+  slug: Scalars['String'];
+  data?: Maybe<Posts_Set_Input>;
+}>;
+
+
+export type EditPostBySlugMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_posts?: Maybe<(
+    { __typename?: 'posts_mutation_response' }
+    & Pick<Posts_Mutation_Response, 'affected_rows'>
+  )> }
 );
