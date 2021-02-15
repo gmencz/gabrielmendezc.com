@@ -1,16 +1,22 @@
 import { json, Loader } from "@remix-run/data";
 import { Link, useRouteData } from "@remix-run/react";
 import { format, parseISO } from "date-fns";
-import { PostsQuery } from "../generated/graphql";
+import { PostsQuery, PostsQueryVariables } from "../generated/graphql";
 import { PostsDocument } from "../gql/posts";
 import graphql from "../lib/graphql";
+import { getSession } from "../sessionStorage";
 
-export const loader: Loader = async () => {
-  const headers = {
-    "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET as string,
-  };
+export const loader: Loader = async ({ request }) => {
+  const session = await getSession(request.headers.get("Cookie"));
 
-  const data = await graphql.request<PostsQuery>(PostsDocument, {}, headers);
+  const data = await graphql.request<PostsQuery, PostsQueryVariables>(
+    PostsDocument,
+    // Fetch only published posts if they aren't an admin
+    session.has("userId") ? {} : { where: { published: { _eq: true } } },
+    {
+      "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET as string,
+    }
+  );
 
   return json(data, {
     headers: {

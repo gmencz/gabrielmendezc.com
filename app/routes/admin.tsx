@@ -4,7 +4,6 @@ import { Form, usePendingFormSubmit, useRouteData } from "@remix-run/react";
 import { commitSession, getSession } from "../sessionStorage";
 import { verify } from "argon2";
 import client, { gql } from "../lib/graphql";
-import { classNames } from "../lib/classNames";
 
 export const loader: Loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
@@ -137,7 +136,7 @@ export default function Admin() {
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg
-                  className="h-5 w-5 text-pink-800 group-hover:text-pink-600"
+                  className="h-5 w-5 text-pink-600 "
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
