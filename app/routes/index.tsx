@@ -14,7 +14,7 @@ export const loader: Loader = async () => {
 
   return json(data, {
     headers: {
-      "cache-control": "max-age=86400",
+      "cache-control": "max-age=86400, public",
     },
   });
 };
@@ -93,19 +93,19 @@ export default function Index() {
                   <span>Unknown publish date</span>
                 )}
               </p>
-              <a href={`/blog/${post.slug}`} className="mt-2 block">
+              <Link to={`/blog/${post.slug}`} className="mt-2 block">
                 <h2 className="text-xl font-semibold text-gray-900">
                   {post.title}
                 </h2>
                 <p className="mt-3 text-base text-gray-500">{post.excerpt}</p>
-              </a>
+              </Link>
               <div className="mt-3">
-                <a
-                  href={`/blog/${post.slug}`}
+                <Link
+                  to={`/blog/${post.slug}`}
                   className="text-base font-semibold text-pink-800 hover:text-pink-700"
                 >
                   Read full story
-                </a>
+                </Link>
               </div>
             </article>
           ))}

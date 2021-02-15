@@ -25,7 +25,7 @@ export const loader: Loader = async ({ params }) => {
 
   return json(post, {
     headers: {
-      "cache-control": "max-age=86400",
+      "cache-control": "max-age=86400, public",
     },
   });
 };
