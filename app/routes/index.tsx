@@ -1,22 +1,40 @@
 import { json, Loader } from "@remix-run/data";
 import { Link, useRouteData } from "@remix-run/react";
 import { format, parseISO } from "date-fns";
-import { PostsQuery, PostsQueryVariables } from "../generated/graphql";
-import { PostsDocument } from "../gql/posts";
+import {
+  AllPostsQuery,
+  AllPostsQueryVariables,
+  PublishedPostsQuery,
+  PublishedPostsQueryVariables,
+} from "../generated/graphql";
+import { AllPostsDocument, PublishedPostsDocument } from "../gql/posts";
 import graphql from "../lib/graphql";
 import { getSession } from "../sessionStorage";
 
 export const loader: Loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
 
-  const data = await graphql.request<PostsQuery, PostsQueryVariables>(
-    PostsDocument,
-    // Fetch only published posts if they aren't an admin
-    session.has("userId") ? {} : { where: { published: { _eq: true } } },
-    {
-      "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET as string,
-    }
-  );
+  let data;
+  if (session.has("userId")) {
+    data = await graphql.request<AllPostsQuery, AllPostsQueryVariables>(
+      AllPostsDocument,
+      {},
+      {
+        "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET as string,
+      }
+    );
+  } else {
+    data = await graphql.request<
+      PublishedPostsQuery,
+      PublishedPostsQueryVariables
+    >(
+      PublishedPostsDocument,
+      {},
+      {
+        "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET as string,
+      }
+    );
+  }
 
   return json(data, {
     headers: {
@@ -40,7 +58,7 @@ export function headers({ loaderHeaders }: { loaderHeaders: Headers }) {
 }
 
 export default function Index() {
-  const data = useRouteData<PostsQuery>();
+  const data = useRouteData<AllPostsQuery | PublishedPostsQuery>();
 
   return (
     <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">

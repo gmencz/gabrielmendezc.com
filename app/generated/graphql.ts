@@ -738,12 +738,27 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
-export type PostsQueryVariables = Exact<{
-  where?: Maybe<Posts_Bool_Exp>;
-}>;
+export type PublishedPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsQuery = (
+export type PublishedPostsQuery = (
+  { __typename?: 'query_root' }
+  & { posts_connection: (
+    { __typename?: 'postsConnection' }
+    & { edges: Array<(
+      { __typename?: 'postsEdge' }
+      & { node: (
+        { __typename?: 'posts' }
+        & Pick<Posts, 'id' | 'title' | 'excerpt' | 'body' | 'slug' | 'published_at'>
+      ) }
+    )> }
+  ) }
+);
+
+export type AllPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllPostsQuery = (
   { __typename?: 'query_root' }
   & { posts_connection: (
     { __typename?: 'postsConnection' }
