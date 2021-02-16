@@ -2,7 +2,7 @@
   "name": "remix-starter-vercel",
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "rm -rf ./app-build && npm run build",
     "deploy": "vercel --prod",
     "dev": "npm run css:setup && concurrently \"remix run\" \"vercel dev\"",
     "build": "npm run css:build && remix build",
