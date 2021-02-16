@@ -1,27 +1,38 @@
 import { json, Loader, MetaFunction, redirect } from "@remix-run/data";
-import { useRouteData, useSubmit } from "@remix-run/react";
-import { useEffect, useMemo, useState } from "react";
 import {
+  Action,
+  Form,
+  usePendingFormSubmit,
+  useRouteData,
+  useSubmit,
+} from "@remix-run/react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  EditPostBySlugMutation,
+  EditPostBySlugMutationVariables,
   PostBySlugQuery,
   PostBySlugQueryVariables,
-} from "../../../generated/graphql";
+} from "../../generated/graphql";
 import Markdown from "react-markdown";
 import markdownGfm from "remark-gfm";
-import { PostBySlugDocument } from "../../../gql/posts";
-import graphql from "../../../lib/graphql";
-import { getSession } from "../../../sessionStorage";
+import { EditPostBySlugDocument, PostBySlugDocument } from "../../gql/posts";
+import graphql, { ClientError } from "../../lib/graphql";
+import {
+  commitSession,
+  destroySession,
+  getSession,
+} from "../../sessionStorage";
 import { createEditor, Node } from "slate";
 import { Slate, Editable, withReact } from "slate-react";
 import markdownBreaks from "remark-breaks";
-import CodeBlock from "../../../components/CodeBlock";
+import CodeBlock from "../../components/CodeBlock";
+import { useDebouncedCallback } from "use-debounce";
 
 export const loader: Loader = async ({ params, request }) => {
   const session = await getSession(request.headers.get("Cookie"));
 
   if (!session.has("userId")) {
-    // Redirect to the actual blog post if the user
-    // tries to go to this page.
-    return redirect(`/blog/${params.slug}`);
+    return redirect("/admin");
   }
 
   const data = await graphql.request<PostBySlugQuery, PostBySlugQueryVariables>(
@@ -36,7 +47,12 @@ export const loader: Loader = async ({ params, request }) => {
 
   const [post] = data.posts_connection.edges;
   const routeData = { error: session.get("error"), post };
-  return json(routeData);
+
+  return json(routeData, {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
 };
 
 type Post = PostBySlugQuery["posts_connection"]["edges"][number];
@@ -55,12 +71,60 @@ export const meta: MetaFunction = (route) => {
   };
 };
 
+export const action: Action = async ({ request, params }) => {
+  const session = await getSession(request.headers.get("Cookie"));
+
+  const bodyParams = new URLSearchParams(await request.text());
+  const postBody = bodyParams.get("postBody");
+  const postTitle = bodyParams.get("postTitle");
+
+  if (!session.has("hasuraJwt")) {
+    const destroyedSession = await destroySession(session);
+    return redirect("/admin", {
+      headers: {
+        "Set-Cookie": destroyedSession,
+      },
+    });
+  }
+
+  const hasuraJwt = session.get("hasuraJwt");
+
+  try {
+    await graphql.request<
+      EditPostBySlugMutation,
+      EditPostBySlugMutationVariables
+    >(
+      EditPostBySlugDocument,
+      { slug: params.slug, data: { body: postBody, title: postTitle } },
+      {
+        Authorization: `Bearer ${hasuraJwt}`,
+      }
+    );
+  } catch (error) {
+    if (error instanceof ClientError) {
+      session.flash("error", error.message);
+    }
+
+    session.flash("error", "Something went wrong auto-saving the post");
+  }
+
+  return redirect(`/admin/${params.slug}`, {
+    headers: {
+      "Set-Cookie": await commitSession(session),
+    },
+  });
+};
+
 function EditBlogPost() {
   const { post, error } = useRouteData<RouteData>();
   const editor = useMemo(() => withReact(createEditor()), []);
-  const [autoSaving, setAutoSaving] = useState(false);
-
+  const formRef = useRef<HTMLFormElement>(null);
   const submit = useSubmit();
+  const pendingSubmit = usePendingFormSubmit();
+  const [postTitle, setPostTitle] = useState(post.node.title);
+  const autoSave = useDebouncedCallback(() => {
+    submit(formRef.current);
+  }, 2000);
 
   const [value, setValue] = useState<Node[]>(() => {
     return post.node.body.split("\n").map((paragraph) => ({
@@ -74,34 +138,10 @@ function EditBlogPost() {
   }, [value]);
 
   useEffect(() => {
-    if (markdown !== post.node.body) {
-      const autoSaveTimeout = setTimeout(async () => {
-        // const formData = new FormData();
-        // formData.append("postBody", markdown);
-
-        submit(null, {
-          action: `http://localhost:3000/blog/${post.node.slug}/autoSave`,
-          method: "post",
-        });
-
-        // setAutoSaving(true);
-
-        // await fetch(`/blog/${post.node.slug}/autoSave`, {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     postBody: markdown,
-        //   }),
-        // });
-
-        // setAutoSaving(false);
-      }, 2000);
-
-      return () => {
-        clearTimeout(autoSaveTimeout);
-      };
+    if (post.node.body !== markdown) {
+      autoSave.callback();
+    } else {
+      autoSave.cancel();
     }
   }, [markdown]);
 
@@ -110,11 +150,15 @@ function EditBlogPost() {
       <div className="md:flex md:items-center md:justify-between">
         <div className="flex-1 min-w-0 space-y-2">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-            {post.node.title}
+            {postTitle}
           </h2>
-          <span className="block text-sm text-gray-500">
-            {autoSaving ? "Saving..." : "Changes are saved as you edit"}
-          </span>
+          {error ? (
+            <span className="block text-sm text-red-500">{error}</span>
+          ) : (
+            <span className="block text-sm text-gray-500">
+              {!!pendingSubmit ? "Saving..." : "Changes are saved as you edit"}
+            </span>
+          )}
         </div>
         <div className="mt-4 flex md:mt-0 md:ml-4 space-x-3">
           {post.node.published ? (
@@ -181,26 +225,75 @@ function EditBlogPost() {
 
       <div className="flex flex-1 space-x-8 mt-12">
         <div className="flex-1">
-          <div className="h-full w-full border-none p-4 bg-gray-100">
-            <Slate
-              editor={editor}
-              value={value}
-              onChange={(newValue) => setValue(newValue)}
-            >
-              <Editable className="break-all prose prose-pink" />
-            </Slate>
-          </div>
+          <Form
+            ref={formRef}
+            action={`/admin/${post.node.slug}`}
+            method="post"
+            className="h-full w-full space-y-4"
+            onChange={() => autoSave.callback()}
+          >
+            <div>
+              <label
+                htmlFor="postTitle"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Title
+              </label>
+              <div className="mt-1">
+                <input
+                  type="text"
+                  name="postTitle"
+                  id="postTitle"
+                  required
+                  maxLength={70}
+                  value={postTitle}
+                  onChange={(e) => setPostTitle(e.target.value)}
+                  className="shadow-sm focus:ring-pink-800 focus:border-pink-800 block w-full sm:text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="postExcerpt"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Excerpt
+              </label>
+              <div className="mt-1">
+                <textarea
+                  name="postExcerpt"
+                  id="postExcerpt"
+                  required
+                  rows={5}
+                  maxLength={300}
+                  defaultValue={post.node.excerpt}
+                  className="shadow-sm focus:ring-pink-800 focus:border-pink-800 block w-full sm:text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <div className="h-full w-full border-none p-4 bg-gray-100">
+              <input type="hidden" name="postBody" value={markdown} />
+              <Slate editor={editor} value={value} onChange={setValue}>
+                <Editable className="break-all prose prose-pink h-full" />
+              </Slate>
+            </div>
+          </Form>
         </div>
 
-        <div className="flex-1 py-4 break-all prose prose-pink">
-          <Markdown
-            plugins={[markdownGfm, markdownBreaks]}
-            renderers={{
-              code: CodeBlock,
-            }}
-          >
-            {markdown}
-          </Markdown>
+        <div className="flex-1 sticky top-5 self-start">
+          <span className="font-medium pb-2 text-gray-900 block border-b border-gray-200">
+            Preview
+          </span>
+          <div className="break-all prose prose-pink mt-2 overflow-auto">
+            <Markdown
+              plugins={[markdownGfm, markdownBreaks]}
+              renderers={{
+                code: CodeBlock,
+              }}
+            >
+              {markdown}
+            </Markdown>
+          </div>
         </div>
       </div>
     </div>

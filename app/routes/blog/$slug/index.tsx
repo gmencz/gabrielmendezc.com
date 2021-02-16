@@ -1,5 +1,5 @@
 import { json, Loader, redirect } from "@remix-run/data";
-import { Link, MetaFunction, useRouteData } from "@remix-run/react";
+import { MetaFunction, useRouteData } from "@remix-run/react";
 import { parseISO, format } from "date-fns";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
@@ -66,8 +66,8 @@ function BlogPost() {
     <ContentWrapper>
       {data.isAdmin && (
         <div className="fixed bottom-10 left-10 flex space-x-4">
-          <Link
-            to={`/blog/${data.post.node.slug}/edit`}
+          <a
+            href={`/admin/${data.post.node.slug}`}
             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-pink-700 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
           >
             <svg
@@ -79,7 +79,7 @@ function BlogPost() {
               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
             </svg>
             Edit
-          </Link>
+          </a>
         </div>
       )}
       <h1>
