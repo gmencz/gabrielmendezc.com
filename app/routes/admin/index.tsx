@@ -91,7 +91,7 @@ export const action: Action = async ({ request }) => {
   const hasuraJwt = await new Promise<string>((res, rej) => {
     jwt.sign(
       hasuraJwtContents,
-      process.env.SESSION_SECRET_1 as string,
+      process.env.HASURA_JWT_SECRET as string,
       { algorithm: "HS256" },
       (err, token) => {
         if (err) return rej(err);
