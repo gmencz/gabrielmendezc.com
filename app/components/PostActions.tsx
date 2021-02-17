@@ -12,7 +12,11 @@ function PostActions({ post }: PostActionsProps) {
   return (
     <>
       {post.node.published ? (
-        <Form method="post" action={`/admin/${post.node.slug}/unpublish`}>
+        <Form
+          method="post"
+          replace
+          action={`/admin/${post.node.slug}/unpublish`}
+        >
           <input type="hidden" name="_action" value="unpublish" />
           <button
             type="submit"
@@ -59,7 +63,7 @@ function PostActions({ post }: PostActionsProps) {
           </button>
         </Form>
       ) : (
-        <Form method="post" action={`/admin/${post.node.slug}/publish`}>
+        <Form method="post" replace action={`/admin/${post.node.slug}/publish`}>
           <input type="hidden" name="_action" value="publish" />
           <button
             type="submit"
@@ -106,7 +110,7 @@ function PostActions({ post }: PostActionsProps) {
           </button>
         </Form>
       )}
-      <Form method="post" action={`/admin/${post.node.slug}/delete`}>
+      <Form method="post" replace action={`/admin/${post.node.slug}/delete`}>
         <input type="hidden" name="_action" value="delete" />
         <button
           type="submit"
