@@ -66,7 +66,7 @@ function EditBlogPost() {
   const [postTitle, setPostTitle] = useState(post.node.title);
 
   return (
-    <div className="py-10 px-8 min-h-screen flex flex-col">
+    <div className="py-8 md:py-10 px-4 md:px-8 min-h-screen flex flex-col">
       <div className="md:flex md:items-center md:justify-between">
         <div className="flex-1 min-w-0 space-y-2">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">

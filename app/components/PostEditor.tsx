@@ -51,8 +51,8 @@ function PostEditor({
   }, [autoSave, markdown, post.node.body]);
 
   return (
-    <div className="flex flex-1 space-x-8 mt-12">
-      <div className="flex-1">
+    <div className="md:flex md:flex-1 md:space-x-8 mt-12">
+      <div className="md:flex-1 mb-12">
         <Form
           ref={formRef}
           action={`/admin/${post.node.slug}/auto-save`}

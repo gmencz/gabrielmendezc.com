@@ -9,7 +9,7 @@ interface PostPreviewProps {
 
 function PostPreview({ markdown }: PostPreviewProps) {
   return (
-    <div className="flex-1 sticky top-5 self-start">
+    <div className="md:flex-1 md:sticky md:top-5 md:self-start">
       <span className="font-medium text-lg pb-2 text-gray-900 block border-b border-gray-200">
         Preview
       </span>
