@@ -16,7 +16,16 @@ jobs:
         id: vercel-deployment-staging
         if: github.event_name == 'pull_request_target'
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # Required
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      - uses: amondnet/vercel-action@v20
+        id: vercel-deployment-production
+        if: github.event_name == 'push'
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: "--prod"
