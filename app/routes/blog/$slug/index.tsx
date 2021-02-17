@@ -28,14 +28,7 @@ export const loader: Loader = async ({ params, request }) => {
 
   const [post] = data.posts_connection.edges;
 
-  return json(
-    { post, isAdmin: session.has("userId") },
-    {
-      headers: {
-        "cache-control": "max-age=86400, public",
-      },
-    }
-  );
+  return json({ post, isAdmin: session.has("userId") });
 };
 
 type Post = PostBySlugQuery["posts_connection"]["edges"][number];
@@ -52,12 +45,6 @@ export const meta: MetaFunction = (route) => {
     description: post.node.excerpt,
   };
 };
-
-export function headers({ loaderHeaders }: { loaderHeaders: Headers }) {
-  return {
-    "cache-control": loaderHeaders.get("cache-control"),
-  };
-}
 
 function BlogPost() {
   const data = useRouteData<LoaderData>();

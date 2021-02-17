@@ -1,10 +1,9 @@
 import { Links, LinksFunction, Meta, Scripts } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
-import styles from "url:./global.css";
-import useWindowScrollRestoration from "./util/useWindowScrollRestoration";
+import tailwind from "css:./styles/tailwind.css";
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: styles }];
+  return [{ rel: "stylesheet", href: tailwind }];
 };
 
 export default function App() {

@@ -36,11 +36,7 @@ export const loader: Loader = async ({ request }) => {
     );
   }
 
-  return json(data, {
-    headers: {
-      "cache-control": "max-age=86400, public",
-    },
-  });
+  return json(data);
 };
 
 export function meta() {
@@ -48,12 +44,6 @@ export function meta() {
     title: "Blog",
     description:
       "I write about full-stack development and best practices to create production-ready apps.",
-  };
-}
-
-export function headers({ loaderHeaders }: { loaderHeaders: Headers }) {
-  return {
-    "cache-control": loaderHeaders.get("cache-control"),
   };
 }
 
