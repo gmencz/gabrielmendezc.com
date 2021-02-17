@@ -7,7 +7,6 @@ interface PostActionsProps {
 
 function PostActions({ post }: PostActionsProps) {
   const pendingSubmit = usePendingFormSubmit();
-  const action = pendingSubmit?.data.get("_action");
 
   return (
     <>
@@ -17,13 +16,12 @@ function PostActions({ post }: PostActionsProps) {
           replace
           action={`/admin/${post.node.slug}/unpublish`}
         >
-          <input type="hidden" name="_action" value="unpublish" />
           <button
             type="submit"
-            disabled={action === "unpublish"}
+            disabled={!!pendingSubmit?.action.match(/unpublish/i)}
             className="inline-flex disabled:cursor-not-allowed disabled:opacity-50 items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-700"
           >
-            {action === "unpublish" ? (
+            {!!pendingSubmit?.action.match(/unpublish/i) ? (
               <svg
                 className="-ml-1 mr-2 animate-spin h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,13 +62,12 @@ function PostActions({ post }: PostActionsProps) {
         </Form>
       ) : (
         <Form method="post" replace action={`/admin/${post.node.slug}/publish`}>
-          <input type="hidden" name="_action" value="publish" />
           <button
             type="submit"
-            disabled={action === "publish"}
+            disabled={!!pendingSubmit?.action.match(/publish/i)}
             className="inline-flex disabled:cursor-not-allowed disabled:opacity-50 items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-pink-700 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
           >
-            {action === "publish" ? (
+            {!!pendingSubmit?.action.match(/publish/i) ? (
               <svg
                 className="-ml-1 mr-2 animate-spin h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,13 +108,12 @@ function PostActions({ post }: PostActionsProps) {
         </Form>
       )}
       <Form method="post" replace action={`/admin/${post.node.slug}/delete`}>
-        <input type="hidden" name="_action" value="delete" />
         <button
           type="submit"
-          disabled={action === "delete"}
+          disabled={!!pendingSubmit?.action.match(/delete/i)}
           className="inline-flex disabled:cursor-not-allowed disabled:opacity-50 items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-base font-medium text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
         >
-          {action === "delete" ? (
+          {!!pendingSubmit?.action.match(/delete/i) ? (
             <svg
               className="-ml-1 mr-2 animate-spin h-5 w-5"
               xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-import { json, Loader, redirect } from "@remix-run/data";
+import { json, Loader } from "@remix-run/data";
 import { MetaFunction, useRouteData } from "@remix-run/react";
 import { parseISO, format } from "date-fns";
 import { ReactNode } from "react";
@@ -23,7 +23,9 @@ export const loader: Loader = async ({ params, request }) => {
   );
 
   if (data.posts_connection.edges.length === 0) {
-    return redirect("/404");
+    return new Response(null, {
+      status: 404,
+    });
   }
 
   const [post] = data.posts_connection.edges;

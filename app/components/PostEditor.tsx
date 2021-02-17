@@ -61,7 +61,6 @@ function PostEditor({
           className="h-full w-full space-y-4 flex flex-col"
           onChange={() => autoSave.callback()}
         >
-          <input type="hidden" name="_action" value="auto-save" />
           <div>
             <label
               htmlFor="postTitle"

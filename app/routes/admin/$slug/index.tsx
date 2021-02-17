@@ -25,7 +25,9 @@ export const loader: Loader = async ({ params, request }) => {
   );
 
   if (data.posts_connection.edges.length === 0) {
-    return redirect("/404");
+    return new Response(null, {
+      status: 404,
+    });
   }
 
   const [post] = data.posts_connection.edges;
@@ -57,7 +59,6 @@ export const meta: MetaFunction = (route) => {
 function EditBlogPost() {
   const { post, error } = useRouteData<RouteData>();
   const pendingSubmit = usePendingFormSubmit();
-  const action = pendingSubmit?.data.get("_action");
 
   // We need to control the title separately because we
   // show it to the user in more places than just the form
@@ -75,7 +76,7 @@ function EditBlogPost() {
             <span className="block text-sm text-red-500">{error}</span>
           ) : (
             <span className="block text-sm text-gray-500">
-              {action === "auto-save"
+              {!!pendingSubmit?.action.match(/auto-save/i)
                 ? "Saving..."
                 : "Changes are saved as you edit"}
             </span>
