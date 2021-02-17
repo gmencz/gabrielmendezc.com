@@ -804,3 +804,43 @@ export type EditPostBySlugMutation = (
     & Pick<Posts_Mutation_Response, 'affected_rows'>
   )> }
 );
+
+export type UnpublishPostBySlugMutationVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type UnpublishPostBySlugMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_posts?: Maybe<(
+    { __typename?: 'posts_mutation_response' }
+    & Pick<Posts_Mutation_Response, 'affected_rows'>
+  )> }
+);
+
+export type PublishPostBySlugMutationVariables = Exact<{
+  slug: Scalars['String'];
+  now: Scalars['date'];
+}>;
+
+
+export type PublishPostBySlugMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_posts?: Maybe<(
+    { __typename?: 'posts_mutation_response' }
+    & Pick<Posts_Mutation_Response, 'affected_rows'>
+  )> }
+);
+
+export type DeletePostBySlugMutationVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type DeletePostBySlugMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_posts?: Maybe<(
+    { __typename?: 'posts_mutation_response' }
+    & Pick<Posts_Mutation_Response, 'affected_rows'>
+  )> }
+);

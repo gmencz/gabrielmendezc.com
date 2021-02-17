@@ -1,6 +1,7 @@
 import { Links, LinksFunction, Meta, Scripts } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
 import styles from "url:./global.css";
+import useWindowScrollRestoration from "./util/useWindowScrollRestoration";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];

@@ -1,4 +1,4 @@
-import { gql } from "../lib/graphql";
+import { gql } from "../util/graphql";
 
 export const PublishedPostsDocument = gql`
   query PublishedPosts {
@@ -57,6 +57,33 @@ export const PostBySlugDocument = gql`
 export const EditPostBySlugDocument = gql`
   mutation EditPostBySlug($slug: String!, $data: posts_set_input) {
     update_posts(where: { slug: { _eq: $slug } }, _set: $data) {
+      affected_rows
+    }
+  }
+`;
+
+export const UnpublishPostBySlugDocument = gql`
+  mutation UnpublishPostBySlug($slug: String!) {
+    update_posts(where: { slug: { _eq: $slug } }, _set: { published: false }) {
+      affected_rows
+    }
+  }
+`;
+
+export const PublishPostBySlugDocument = gql`
+  mutation PublishPostBySlug($slug: String!, $now: date!) {
+    update_posts(
+      where: { slug: { _eq: $slug } }
+      _set: { published: true, published_at: $now }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+export const DeletePostBySlugDocument = gql`
+  mutation DeletePostBySlug($slug: String!) {
+    delete_posts(where: { slug: { _eq: $slug } }) {
       affected_rows
     }
   }

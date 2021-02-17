@@ -10,7 +10,7 @@ import {
   PostBySlugQueryVariables,
 } from "../../../generated/graphql";
 import { PostBySlugDocument } from "../../../gql/posts";
-import graphql from "../../../lib/graphql";
+import graphql from "../../../util/graphql";
 import { getSession } from "../../../sessionStorage";
 import markdownBreaks from "remark-breaks";
 

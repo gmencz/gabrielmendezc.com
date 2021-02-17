@@ -8,7 +8,7 @@ import {
   PublishedPostsQueryVariables,
 } from "../generated/graphql";
 import { AllPostsDocument, PublishedPostsDocument } from "../gql/posts";
-import graphql from "../lib/graphql";
+import graphql from "../util/graphql";
 import { getSession } from "../sessionStorage";
 
 export const loader: Loader = async ({ request }) => {
