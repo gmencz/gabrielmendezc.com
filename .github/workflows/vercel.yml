@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Build Remix
+        run: npm run build
+
       - uses: amondnet/vercel-action@v20
         id: vercel-deployment-staging
         if: github.event_name == 'pull_request_target'
