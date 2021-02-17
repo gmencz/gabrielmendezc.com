@@ -1,6 +1,4 @@
 {
-  "name": "remix-starter-vercel",
-  "main": "index.js",
   "scripts": {
     "predeploy": "remix build",
     "deploy": "vercel",
