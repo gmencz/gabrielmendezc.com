@@ -44,4 +44,6 @@ export const action: Action = async ({ request, params }) => {
   return redirect(`/admin/${params.slug}`);
 };
 
-export default () => null;
+export default function Unpublish() {
+  return null;
+}

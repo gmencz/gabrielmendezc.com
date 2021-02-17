@@ -9,9 +9,9 @@ import {
 } from "react";
 import { createEditor, Node } from "slate";
 import { Editable, Slate, withReact } from "slate-react";
-import { useDebouncedCallback } from "use-debounce";
 import { PostBySlugQuery } from "../generated/graphql";
 import PostPreview from "./PostPreview";
+import { useDebouncedCallback } from "use-debounce";
 
 interface PostEditorProps {
   post: PostBySlugQuery["posts_connection"]["edges"][number];
@@ -48,7 +48,7 @@ function PostEditor({
     } else {
       autoSave.cancel();
     }
-  }, [markdown]);
+  }, [autoSave, markdown, post.node.body]);
 
   return (
     <div className="flex flex-1 space-x-8 mt-12">

@@ -55,4 +55,6 @@ export const action: Action = async ({ request, params }) => {
   });
 };
 
-export default () => null;
+export default function AutoSave() {
+  return null;
+}
