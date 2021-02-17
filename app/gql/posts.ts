@@ -1,4 +1,4 @@
-import { gql } from "../util/graphql";
+import { gql } from "../utils/graphql";
 
 export const PublishedPostsDocument = gql`
   query PublishedPosts {

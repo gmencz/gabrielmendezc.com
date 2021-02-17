@@ -7,7 +7,7 @@ import {
 } from "../../../generated/graphql";
 import { PostBySlugDocument } from "../../../gql/posts";
 import { commitSession, getSession } from "../../../sessionStorage";
-import graphql from "../../../util/graphql";
+import graphql from "../../../utils/graphql";
 import PostEditor from "../../../components/PostEditor";
 import PostActions from "../../../components/PostActions";
 

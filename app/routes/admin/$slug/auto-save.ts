@@ -4,7 +4,7 @@ import {
   EditPostBySlugMutationVariables,
 } from "../../../generated/graphql";
 import { EditPostBySlugDocument } from "../../../gql/posts";
-import graphql, { ClientError } from "../../../util/graphql";
+import graphql, { ClientError } from "../../../utils/graphql";
 import {
   commitSession,
   destroySession,

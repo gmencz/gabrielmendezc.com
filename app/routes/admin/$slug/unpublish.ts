@@ -6,7 +6,7 @@ import {
 } from "../../../generated/graphql";
 import { UnpublishPostBySlugDocument } from "../../../gql/posts";
 import { destroySession, getSession } from "../../../sessionStorage";
-import graphql from "../../../util/graphql";
+import graphql from "../../../utils/graphql";
 
 export const action: Action = async ({ request, params }) => {
   const session = await getSession(request.headers.get("Cookie"));

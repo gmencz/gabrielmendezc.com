@@ -4,7 +4,7 @@ import { Form, usePendingFormSubmit, useRouteData } from "@remix-run/react";
 import { commitSession, getSession } from "../../sessionStorage";
 import { verify } from "argon2";
 import jwt from "jsonwebtoken";
-import client, { gql } from "../../util/graphql";
+import client, { gql } from "../../utils/graphql";
 
 export const loader: Loader = async ({ request }) => {
   const session = await getSession(request.headers.get("Cookie"));
