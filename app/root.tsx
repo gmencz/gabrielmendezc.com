@@ -9,7 +9,8 @@ export const links: LinksFunction = () => {
 };
 
 export default function App() {
-  useWindowScrollRestoration();
+  const pendingLocation = useWindowScrollRestoration();
+
   return (
     <html lang="en">
       <head>
@@ -19,7 +20,13 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body
+        style={{
+          opacity: !!pendingLocation ? "0.25" : "1",
+          transition: "opacity 500ms ease-in-out",
+          transitionDelay: "300ms",
+        }}
+      >
         <Outlet />
 
         <Scripts />

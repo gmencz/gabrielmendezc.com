@@ -18,4 +18,6 @@ export default function useWindowScrollRestoration() {
     const y = positions.get(location.key) || 0;
     window.scrollTo(0, y);
   }, [location]);
+
+  return pendingLocation;
 }
