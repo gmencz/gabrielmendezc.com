@@ -2,12 +2,14 @@ import { Links, LinksFunction, Meta, Scripts } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
 // @ts-expect-error
 import tailwind from "css:./styles/tailwind.css";
+import useWindowScrollRestoration from "./utils/use-window-scroll-restoration";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: tailwind }];
 };
 
 export default function App() {
+  useWindowScrollRestoration();
   return (
     <html lang="en">
       <head>
