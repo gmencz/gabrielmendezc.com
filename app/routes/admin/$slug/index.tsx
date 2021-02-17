@@ -57,6 +57,7 @@ export const meta: MetaFunction = (route) => {
 function EditBlogPost() {
   const { post, error } = useRouteData<RouteData>();
   const pendingSubmit = usePendingFormSubmit();
+  const action = pendingSubmit?.data.get("_action");
 
   // We need to control the title separately because we
   // show it to the user in more places than just the form
@@ -74,7 +75,9 @@ function EditBlogPost() {
             <span className="block text-sm text-red-500">{error}</span>
           ) : (
             <span className="block text-sm text-gray-500">
-              {!!pendingSubmit ? "Saving..." : "Changes are saved as you edit"}
+              {action === "auto-save"
+                ? "Saving..."
+                : "Changes are saved as you edit"}
             </span>
           )}
         </div>
