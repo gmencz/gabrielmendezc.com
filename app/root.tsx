@@ -1,5 +1,6 @@
 import { Links, LinksFunction, Meta, Scripts } from "@remix-run/react";
 import { Outlet } from "react-router-dom";
+// @ts-expect-error
 import tailwind from "css:./styles/tailwind.css";
 
 export const links: LinksFunction = () => {
