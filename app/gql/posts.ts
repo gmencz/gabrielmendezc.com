@@ -57,7 +57,9 @@ export const PostBySlugDocument = gql`
 export const EditPostBySlugDocument = gql`
   mutation EditPostBySlug($slug: String!, $data: posts_set_input) {
     update_posts(where: { slug: { _eq: $slug } }, _set: $data) {
-      affected_rows
+      returning {
+        slug
+      }
     }
   }
 `;

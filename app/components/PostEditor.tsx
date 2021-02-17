@@ -83,6 +83,26 @@ function PostEditor({
           </div>
           <div>
             <label
+              htmlFor="postSlug"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Slug
+            </label>
+            <div className="mt-1 flex rounded-md shadow-sm">
+              <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                /
+              </span>
+              <input
+                type="text"
+                name="postSlug"
+                id="postSlug"
+                defaultValue={post.node.slug}
+                className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-pink-800 focus:border-pink-800 sm:text-sm border-gray-300"
+              />
+            </div>
+          </div>
+          <div>
+            <label
               htmlFor="postExcerpt"
               className="block text-sm font-medium text-gray-700"
             >
@@ -100,10 +120,10 @@ function PostEditor({
               />
             </div>
           </div>
-          <div className="flex-1 w-full border-none p-4 bg-gray-100  rounded-md">
+          <div className="flex-1 w-full border-none p-4 bg-gray-100 rounded-md">
             <input type="hidden" name="postBody" value={markdown} />
             <Slate editor={editor} value={value} onChange={setValue}>
-              <Editable className="break-all prose prose-pink h-full" />
+              <Editable className="break-all prose prose-pink max-w-full h-full" />
             </Slate>
           </div>
         </Form>

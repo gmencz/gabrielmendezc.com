@@ -17,10 +17,6 @@
         slug: { _eq: $slug } }) {\r\n      edges {\r\n        node {\r\n          title\r\n
         \         excerpt\r\n          body\r\n          slug\r\n          published\r\n
         \         published_at\r\n        }\r\n      }\r\n    }\r\n  }"
-    - name: EditPostBySlug
-      query: "  mutation EditPostBySlug($slug: String!, $data: posts_set_input) {\r\n
-        \   update_posts(where: { slug: { _eq: $slug } }, _set: $data) {\r\n      affected_rows\r\n
-        \   }\r\n  }"
     - name: UnpublishPostBySlug
       query: "  mutation UnpublishPostBySlug($slug: String!) {\r\n    update_posts(where:
         { slug: { _eq: $slug } }, _set: { published: false }) {\r\n      affected_rows\r\n
@@ -32,3 +28,7 @@
     - name: DeletePostBySlug
       query: "  mutation DeletePostBySlug($slug: String!) {\r\n    delete_posts(where:
         { slug: { _eq: $slug } }) {\r\n      affected_rows\r\n    }\r\n  }"
+    - name: EditPostBySlug
+      query: "  mutation EditPostBySlug($slug: String!, $data: posts_set_input) {\r\n
+        \   update_posts(where: { slug: { _eq: $slug } }, _set: $data) {\r\n      returning
+        {\r\n        slug\r\n      }\r\n    }\r\n  }"

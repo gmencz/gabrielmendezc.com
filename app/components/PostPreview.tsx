@@ -9,11 +9,11 @@ interface PostPreviewProps {
 
 function PostPreview({ markdown }: PostPreviewProps) {
   return (
-    <div className="md:flex-1 md:sticky md:top-5 md:self-start">
+    <div className="md:flex-1 md:self-start">
       <span className="font-medium text-lg pb-2 text-gray-900 block border-b border-gray-200">
         Preview
       </span>
-      <div className="break-all prose prose-pink mt-2 overflow-auto">
+      <div className="break-all prose prose-pink max-w-full mt-2 overflow-auto">
         <Markdown
           plugins={[markdownGfm, markdownBreaks]}
           renderers={{

@@ -801,7 +801,10 @@ export type EditPostBySlugMutation = (
   { __typename?: 'mutation_root' }
   & { update_posts?: Maybe<(
     { __typename?: 'posts_mutation_response' }
-    & Pick<Posts_Mutation_Response, 'affected_rows'>
+    & { returning: Array<(
+      { __typename?: 'posts' }
+      & Pick<Posts, 'slug'>
+    )> }
   )> }
 );
 

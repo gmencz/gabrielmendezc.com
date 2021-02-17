@@ -17,6 +17,8 @@ export const action: Action = async ({ request, params }) => {
   const bodyParams = new URLSearchParams(await request.text());
   const postBody = bodyParams.get("postBody");
   const postTitle = bodyParams.get("postTitle");
+  const postSlug = bodyParams.get("postSlug");
+  const postExcerpt = bodyParams.get("postExcerpt");
 
   if (!session.has("hasuraJwt")) {
     const destroyedSession = await destroySession(session);
@@ -29,13 +31,22 @@ export const action: Action = async ({ request, params }) => {
 
   const hasuraJwt = session.get("hasuraJwt");
 
+  let postMutation: EditPostBySlugMutation | null = null;
   try {
-    await graphql.request<
+    postMutation = await graphql.request<
       EditPostBySlugMutation,
       EditPostBySlugMutationVariables
     >(
       EditPostBySlugDocument,
-      { slug: params.slug, data: { body: postBody, title: postTitle } },
+      {
+        slug: params.slug,
+        data: {
+          body: postBody,
+          title: postTitle,
+          slug: postSlug,
+          excerpt: postExcerpt,
+        },
+      },
       {
         Authorization: `Bearer ${hasuraJwt}`,
       }
@@ -48,7 +59,8 @@ export const action: Action = async ({ request, params }) => {
     session.flash("error", "Something went wrong auto-saving the post");
   }
 
-  return redirect(`/admin/${params.slug}`, {
+  const slug = postMutation?.update_posts?.returning[0].slug ?? params.slug;
+  return redirect(`/admin/${slug}`, {
     headers: {
       "Set-Cookie": await commitSession(session),
     },
