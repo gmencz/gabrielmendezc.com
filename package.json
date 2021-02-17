@@ -2,12 +2,11 @@
   "name": "remix-starter-vercel",
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "remix build",
     "deploy": "vercel",
     "dev": "concurrently \"remix run\" \"vercel dev\"",
-    "build": "remix build",
     "codegen": "graphql-codegen --config codegen.yml",
-    "hasura-console": "cd hasura && npx hasura console --admin-secret notsecretatallthisisjustfordevelopment"
+    "hasura": "cd hasura && npx hasura console --admin-secret notsecretatallthisisjustfordevelopment"
   },
   "dependencies": {
     "@remix-run/cli": "^0.13.0",
