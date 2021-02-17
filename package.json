@@ -3,7 +3,7 @@
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "vercel --prod",
+    "deploy": "vercel",
     "dev": "concurrently \"remix run\" \"vercel dev\"",
     "build": "remix build",
     "codegen": "graphql-codegen --config codegen.yml",
