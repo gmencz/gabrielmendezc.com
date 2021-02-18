@@ -1,5 +1,5 @@
 import { json, Loader } from "@remix-run/data";
-import { Link, MetaFunction, useRouteData } from "@remix-run/react";
+import { MetaFunction, useRouteData } from "@remix-run/react";
 import { parseISO, format } from "date-fns";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
@@ -11,12 +11,20 @@ import {
 } from "../../../generated/graphql";
 import { PostBySlugDocument } from "../../../gql/posts";
 import graphql from "../../../utils/graphql";
-import { getSession } from "../../../sessionStorage";
 import markdownBreaks from "remark-breaks";
-import useWindowScrollRestoration from "../../../utils/use-window-scroll-restoration";
 
-export const loader: Loader = async ({ params, request }) => {
-  const session = await getSession(request.headers.get("Cookie"));
+function getMaxAge(publishedAt: string) {
+  // If the post was recently published (less than a day ago)
+  // let's give the author a chance to make edits, but after
+  // the first day, we'll aggresively cache this for a month
+  const oneDayMs = 86400000;
+  const millisecondsSincePublished = Date.now() - Date.parse(publishedAt);
+  return millisecondsSincePublished < oneDayMs
+    ? "1800" // 30 minutes
+    : "2592000000"; // one month;
+}
+
+export const loader: Loader = async ({ params }) => {
   const data = await graphql.request<PostBySlugQuery, PostBySlugQueryVariables>(
     PostBySlugDocument,
     { slug: params.slug },
@@ -31,13 +39,27 @@ export const loader: Loader = async ({ params, request }) => {
 
   const [post] = data.posts_connection.edges;
 
-  return json({ post, isAdmin: session.has("userId") });
+  if (!post.node.published_at) {
+    // The post is not published so we
+    // will not cache it
+    return json({ post });
+  }
+
+  const maxAge = getMaxAge(post.node.published_at);
+
+  return json(
+    { post },
+    {
+      headers: {
+        "Cache-Control": `public, max-age=600, s-maxage=${maxAge}, stale-while-revalidate=31556952`,
+      },
+    }
+  );
 };
 
 type Post = PostBySlugQuery["posts_connection"]["edges"][number];
 interface LoaderData {
   post: Post;
-  isAdmin: boolean;
 }
 
 export const meta: MetaFunction = (route) => {
@@ -54,24 +76,6 @@ function BlogPost() {
 
   return (
     <ContentWrapper>
-      {data.isAdmin && (
-        <div className="fixed bottom-10 left-10 flex space-x-4">
-          <Link
-            to={`/admin/${data.post.node.slug}`}
-            className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-pink-700 hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-          >
-            <svg
-              className="-ml-1 mr-3 h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-            </svg>
-            Edit
-          </Link>
-        </div>
-      )}
       <h1>
         <span className="block text-base text-center text-pink-800 font-semibold tracking-wide uppercase">
           {data.post.node.published_at

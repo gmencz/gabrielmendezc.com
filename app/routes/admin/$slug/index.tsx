@@ -1,5 +1,9 @@
 import { json, Loader, MetaFunction, redirect } from "@remix-run/data";
-import { usePendingFormSubmit, useRouteData } from "@remix-run/react";
+import {
+  HeadersFunction,
+  usePendingFormSubmit,
+  useRouteData,
+} from "@remix-run/react";
 import { useState } from "react";
 import {
   PostBySlugQuery,
@@ -53,6 +57,12 @@ export const meta: MetaFunction = (route) => {
   return {
     title: `Editing ${post.node.title}`,
     description: post.node.excerpt,
+  };
+};
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => {
+  return {
+    "Cache-Control": loaderHeaders.get("Cache-Control"),
   };
 };
 

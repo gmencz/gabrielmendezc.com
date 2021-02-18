@@ -1,5 +1,5 @@
 import { json, Loader } from "@remix-run/data";
-import { Link, useRouteData } from "@remix-run/react";
+import { HeadersFunction, Link, useRouteData } from "@remix-run/react";
 import { format, parseISO } from "date-fns";
 import {
   AllPostsQuery,
@@ -36,7 +36,12 @@ export const loader: Loader = async ({ request }) => {
     );
   }
 
-  return json(data);
+  return json(data, {
+    headers: {
+      "Cache-Control":
+        "public, max-age=1200, s-maxage=86400, stale-while-revalidate=604800",
+    },
+  });
 };
 
 export function meta() {
@@ -46,6 +51,12 @@ export function meta() {
       "I write about full-stack development and best practices to create production-ready apps.",
   };
 }
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => {
+  return {
+    "Cache-Control": loaderHeaders.get("Cache-Control"),
+  };
+};
 
 export default function Index() {
   const data = useRouteData<AllPostsQuery | PublishedPostsQuery>();
