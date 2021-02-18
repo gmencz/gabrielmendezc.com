@@ -1,5 +1,5 @@
 import { json, Loader } from "@remix-run/data";
-import { MetaFunction, useRouteData } from "@remix-run/react";
+import { HeadersFunction, MetaFunction, useRouteData } from "@remix-run/react";
 import { parseISO, format } from "date-fns";
 import { ReactNode } from "react";
 import Markdown from "react-markdown";
@@ -68,6 +68,12 @@ export const meta: MetaFunction = (route) => {
   return {
     title: post.node.title,
     description: post.node.excerpt,
+  };
+};
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => {
+  return {
+    "Cache-Control": loaderHeaders.get("Cache-Control"),
   };
 };
 
