@@ -34,11 +34,7 @@ export const action: Action = async ({ request, params }) => {
       }
     );
   } catch (error) {
-    if (error instanceof ClientError) {
-      session.flash("error", error.message);
-    }
-
-    session.flash("error", "Something went wrong publishing the post");
+    session.flash("error", error.message);
   }
 
   return redirect(`/admin/${params.slug}`);

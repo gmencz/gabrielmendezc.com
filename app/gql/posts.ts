@@ -90,3 +90,11 @@ export const DeletePostBySlugDocument = gql`
     }
   }
 `;
+
+export const CreatePostDocument = gql`
+  mutation CreatePost($data: posts_insert_input!) {
+    insert_posts_one(object: $data) {
+      slug
+    }
+  }
+`;

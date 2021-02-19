@@ -63,26 +63,6 @@ function PostEditor({
         >
           <div>
             <label
-              htmlFor="postTitle"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Title
-            </label>
-            <div className="mt-1">
-              <input
-                type="text"
-                name="postTitle"
-                id="postTitle"
-                required
-                maxLength={70}
-                value={controlledPostTitle}
-                onChange={(e) => setControlledPostTitle(e.target.value)}
-                className="shadow-sm focus:ring-pink-800 focus:border-pink-800 block w-full sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-          </div>
-          <div>
-            <label
               htmlFor="postSlug"
               className="block text-sm font-medium text-gray-700"
             >
@@ -98,6 +78,26 @@ function PostEditor({
                 id="postSlug"
                 defaultValue={post.node.slug}
                 className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-pink-800 focus:border-pink-800 sm:text-sm border-gray-300"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="postTitle"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Title
+            </label>
+            <div className="mt-1">
+              <input
+                type="text"
+                name="postTitle"
+                id="postTitle"
+                required
+                maxLength={70}
+                value={controlledPostTitle}
+                onChange={(e) => setControlledPostTitle(e.target.value)}
+                className="shadow-sm focus:ring-pink-800 focus:border-pink-800 block w-full sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>

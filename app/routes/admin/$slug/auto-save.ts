@@ -52,11 +52,7 @@ export const action: Action = async ({ request, params }) => {
       }
     );
   } catch (error) {
-    if (error instanceof ClientError) {
-      session.flash("error", error.message);
-    }
-
-    session.flash("error", "Something went wrong auto-saving the post");
+    session.flash("error", error.message);
   }
 
   const slug = postMutation?.update_posts?.returning[0].slug ?? params.slug;

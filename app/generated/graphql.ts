@@ -847,3 +847,16 @@ export type DeletePostBySlugMutation = (
     & Pick<Posts_Mutation_Response, 'affected_rows'>
   )> }
 );
+
+export type CreatePostMutationVariables = Exact<{
+  data: Posts_Insert_Input;
+}>;
+
+
+export type CreatePostMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_posts_one?: Maybe<(
+    { __typename?: 'posts' }
+    & Pick<Posts, 'slug'>
+  )> }
+);

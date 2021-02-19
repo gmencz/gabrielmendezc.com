@@ -1,0 +1,1 @@
+ALTER TABLE "public"."posts" ALTER COLUMN "slug" DROP DEFAULT;

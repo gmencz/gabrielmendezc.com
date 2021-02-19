@@ -86,7 +86,7 @@ function BlogPost() {
         <span className="block text-base text-center text-pink-800 font-semibold tracking-wide uppercase">
           {data.post.node.published_at
             ? format(parseISO(data.post.node.published_at), "MMM d',' y")
-            : "Unknown publish date"}
+            : "Not published"}
         </span>
         <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           {data.post.node.title}

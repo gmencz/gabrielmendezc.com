@@ -115,7 +115,7 @@ export default function Index() {
                     {format(parseISO(post.published_at), "MMM d',' y")}
                   </time>
                 ) : (
-                  <span>Unknown publish date</span>
+                  <span>Not published</span>
                 )}
               </p>
               <Link to={`/blog/${post.slug}`} className="mt-2 block">

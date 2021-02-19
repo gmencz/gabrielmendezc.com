@@ -32,3 +32,6 @@
       query: "  mutation EditPostBySlug($slug: String!, $data: posts_set_input) {\r\n
         \   update_posts(where: { slug: { _eq: $slug } }, _set: $data) {\r\n      returning
         {\r\n        slug\r\n      }\r\n    }\r\n  }"
+    - name: CreatePost
+      query: "  mutation CreatePost($data: posts_insert_input!) {\r\n    insert_posts_one(object:
+        $data) {\r\n      slug\r\n    }\r\n  }"
