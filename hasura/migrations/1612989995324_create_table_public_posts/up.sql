@@ -1,1 +1,0 @@
-CREATE TABLE "public"."posts"("id" text NOT NULL DEFAULT gen_random_uuid(), "title" text NOT NULL, "body" text NOT NULL, "published" boolean NOT NULL DEFAULT False, "published_at" date, PRIMARY KEY ("id") , UNIQUE ("title"));

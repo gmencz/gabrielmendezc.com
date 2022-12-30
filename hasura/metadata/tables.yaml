@@ -1,6 +1,0 @@
-- table:
-    schema: public
-    name: admins
-- table:
-    schema: public
-    name: posts

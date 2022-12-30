@@ -1,3 +1,0 @@
-# Blog built with [Remix](https://remix.run)
-
-I've been wanting to make a blog for a while so here it is...
