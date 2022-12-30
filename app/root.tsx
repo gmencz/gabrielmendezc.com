@@ -7,10 +7,17 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { Layout } from "./components/Layout";
+import { Nav } from "./components/Nav";
+import styles from "./styles/app.css";
+
+export function links() {
+  return [{ rel: "stylesheet", href: styles }];
+}
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Gabriel Mendez",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -21,8 +28,12 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className="bg-slate-900">
+        <Layout>
+          <Nav />
+          <Outlet />
+        </Layout>
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
