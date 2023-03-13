@@ -23,7 +23,7 @@ const navigation = [
 
 export function Nav() {
   return (
-    <header className="px-10 py-4 border-b dark:border-b-neutral-700 border-b-neutral-200">
+    <header className="px-10 py-4 border-b dark:border-b-neutral-700 border-b-neutral-300">
       <div className="max-w-5xl w-full mx-auto flex items-center justify-between">
         <Link
           to="/"

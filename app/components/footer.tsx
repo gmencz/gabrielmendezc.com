@@ -2,7 +2,7 @@ import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 export function Footer() {
   return (
-    <footer className="px-10 py-4 border-t dark:border-t-neutral-700 border-t-neutral-200 text-sm">
+    <footer className="px-10 py-4 border-t dark:border-t-neutral-700 border-t-neutral-300">
       <div className="max-w-5xl w-full mx-auto flex items-center justify-between">
         <div className="flex gap-2">
           <span>©</span>
