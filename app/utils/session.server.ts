@@ -11,6 +11,7 @@ const sessionStorage = createCookieSessionStorage({
     sameSite: "lax",
     path: "/",
     httpOnly: true,
+    maxAge: 60 * 60 * 24 * (365 * 10), // 10 years
   },
 });
 

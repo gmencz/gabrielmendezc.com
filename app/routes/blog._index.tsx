@@ -75,7 +75,7 @@ export default function Blog() {
               <li key={tag.name}>
                 <Link
                   className={clsx(
-                    "dark:hover:bg-neutral-800 font-medium text-sm rounded-xl py-2 px-3 border border-neutral-300 dark:border-neutral-700",
+                    "dark:hover:bg-neutral-800 font-medium text-sm rounded-xl py-2 px-3 border border-neutral-400 dark:border-neutral-700",
                     currentTagId === tag.urlFriendlyId
                       ? "dark:bg-neutral-800 bg-neutral-300"
                       : "dark:bg-neutral-900 bg-neutral-100"

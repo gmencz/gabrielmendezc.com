@@ -5,25 +5,47 @@ import {
   HomeIcon,
   EyeIcon,
 } from "@heroicons/react/24/outline";
+import {
+  FolderOpenIcon as FolderOpenIconSolid,
+  BookOpenIcon as BookOpenIconSolid,
+  HomeIcon as HomeIconSolid,
+  EyeIcon as EyeIconSolid,
+} from "@heroicons/react/24/solid";
 import { GithubIcon } from "./icons";
 import { ThemeSwitch } from "./theme-switch";
 import clsx from "clsx";
+import type { SVGProps } from "react";
 
 const navigation = [
   {
     name: "Blog",
     to: "/blog",
-    icon: () => <BookOpenIcon className="h-6 w-6" />,
+    inactiveIcon: (props: SVGProps<SVGSVGElement>) => (
+      <BookOpenIcon className="h-6 w-6" {...props} />
+    ),
+    activeIcon: (props: SVGProps<SVGSVGElement>) => (
+      <BookOpenIconSolid className="h-6 w-6" {...props} />
+    ),
   },
   {
     name: "Projects",
     to: "/projects",
-    icon: () => <FolderOpenIcon className="h-6 w-6" />,
+    inactiveIcon: (props: SVGProps<SVGSVGElement>) => (
+      <FolderOpenIcon className="h-6 w-6" {...props} />
+    ),
+    activeIcon: (props: SVGProps<SVGSVGElement>) => (
+      <FolderOpenIconSolid className="h-6 w-6" {...props} />
+    ),
   },
   {
     name: "KG",
     to: "/kg",
-    icon: () => <EyeIcon className="h-6 w-6" />,
+    inactiveIcon: (props: SVGProps<SVGSVGElement>) => (
+      <EyeIcon className="h-6 w-6" {...props} />
+    ),
+    activeIcon: (props: SVGProps<SVGSVGElement>) => (
+      <EyeIconSolid className="h-6 w-6" {...props} />
+    ),
   },
 ];
 
@@ -31,7 +53,12 @@ const mobileNavigation = [
   {
     name: "Home",
     to: "/",
-    icon: () => <HomeIcon className="h-6 w-6" />,
+    inactiveIcon: (props: SVGProps<SVGSVGElement>) => (
+      <HomeIcon className="h-6 w-6" {...props} />
+    ),
+    activeIcon: (props: SVGProps<SVGSVGElement>) => (
+      <HomeIconSolid className="h-6 w-6" {...props} />
+    ),
   },
   ...navigation,
 ];
@@ -56,13 +83,8 @@ export function Nav() {
               >
                 {({ isActive }) => (
                   <>
-                    <item.icon />
-                    <span
-                      className={clsx(
-                        "font-semibold group-hover:underline group-hover:underline-offset-2 group-hover:decoration-1 dark:group-hover:text-neutral-300 group-hover:text-neutral-700",
-                        isActive ? "underline" : null
-                      )}
-                    >
+                    {isActive ? <item.activeIcon /> : <item.inactiveIcon />}
+                    <span className="font-semibold group-hover:underline group-hover:underline-offset-2 group-hover:decoration-1 dark:group-hover:text-neutral-300 group-hover:text-neutral-700">
                       {item.name}
                     </span>
                   </>
@@ -110,8 +132,12 @@ export function MobileNav() {
                   )
                 }
               >
-                <item.icon />
-                <span className="text-sm font-semibold">{item.name}</span>
+                {({ isActive }) => (
+                  <>
+                    {isActive ? <item.activeIcon /> : <item.inactiveIcon />}
+                    <span className="text-sm font-semibold">{item.name}</span>
+                  </>
+                )}
               </NavLink>
             </li>
           ))}
