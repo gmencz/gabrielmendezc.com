@@ -11,18 +11,32 @@ datasource db {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  title     String   @db.VarChar(255)
-  content   String
-  published Boolean  @default(false)
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  title         String    @db.VarChar(255)
+  urlFriendlyId String    @unique @map("url_friendly_id")
+  markdown      String
+  tags          PostTag[]
+  description   String
+  published     Boolean   @default(false)
+  publishedAt   DateTime? @map("published_at")
+  views         Int       @default(0)
+}
+
+model PostTag {
+  id            Int    @id @default(autoincrement())
+  urlFriendlyId String @unique @map("url_friendly_id")
+  name          String @unique
+  post          Post?  @relation(fields: [postId], references: [id])
+  postId        Int?   @map("post_id")
 }
 
 model Project {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  name        String   @db.VarChar(255)
-  description String
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  name      String   @db.VarChar(255)
+  markdown  String
+  logo      String
 }

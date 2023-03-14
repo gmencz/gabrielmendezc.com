@@ -1,9 +1,9 @@
 import { json, redirect } from "@remix-run/node";
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import type { ActionArgs } from "@remix-run/node";
 import { getThemeSession } from "~/utils/session.server";
 import { isTheme } from "~/utils/theme-provider";
 
-export const action: ActionFunction = async ({ request }) => {
+export async function action({ request }: ActionArgs) {
   const themeSession = await getThemeSession(request);
   const requestText = await request.text();
   const form = new URLSearchParams(requestText);
@@ -24,6 +24,8 @@ export const action: ActionFunction = async ({ request }) => {
     { success: true },
     { headers: { "Set-Cookie": await themeSession.commit() } }
   );
-};
+}
 
-export const loader: LoaderFunction = () => redirect("/", { status: 404 });
+export function loader() {
+  return redirect("/", { status: 404 });
+}

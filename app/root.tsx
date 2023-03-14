@@ -1,8 +1,4 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import {
   Links,
@@ -18,59 +14,53 @@ import stylesheet from "~/tailwind.css";
 import { Footer } from "./components/footer";
 import { MobileNav, Nav } from "./components/nav";
 import { getThemeSession } from "./utils/session.server";
-import type { Theme } from "./utils/theme-provider";
 import {
   NonFlashOfWrongThemeEls,
   ThemeProvider,
   useTheme,
 } from "./utils/theme-provider";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
+export function links() {
+  return [{ rel: "stylesheet", href: stylesheet }];
+}
 
 const title = "Gabriel Mendez";
 const description = "Developer / Bodybuilder";
 const baseURL = "https://gabrielmendezc.com";
 
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title,
-  viewport: "width=device-width,initial-scale=1",
-  description,
-  author: title,
-  language: "en",
-  robots: "index, follow",
-  "twitter:card": "summary_large_image",
-  "twitter:image": baseURL + "/robot.png",
-  "twitter:description": description,
-  "X-UA-Compatible": "IE=edge,chrome=1",
-  "og:title": title,
-  "og:url": baseURL,
-  "og:image": baseURL + "/robot.png",
-  "og:description": description,
-});
+export function meta() {
+  return {
+    charset: "utf-8",
+    title,
+    viewport: "width=device-width,initial-scale=1",
+    description,
+    author: title,
+    language: "en",
+    robots: "index, follow",
+    "twitter:card": "summary_large_image",
+    "twitter:image": baseURL + "/robot.png",
+    "twitter:description": description,
+    "X-UA-Compatible": "IE=edge,chrome=1",
+    "og:title": title,
+    "og:url": baseURL,
+    "og:image": baseURL + "/robot.png",
+    "og:description": description,
+  };
+}
 
-export type LoaderData = {
-  theme: Theme | null;
-  year: number;
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
+export async function loader({ request }: LoaderArgs) {
   const themeSession = await getThemeSession(request);
   const now = new Date();
 
-  const data: LoaderData = {
+  return json({
     theme: themeSession.getTheme(),
     year: now.getUTCFullYear(),
-  };
-
-  return json(data);
-};
+  });
+}
 
 function App() {
   const [theme] = useTheme();
-  const data = useLoaderData<LoaderData>();
+  const data = useLoaderData<typeof loader>();
 
   return (
     <html lang="en" className={clsx("h-full", theme)}>
@@ -93,7 +83,7 @@ function App() {
 }
 
 export default function AppWithProviders() {
-  const data = useLoaderData<LoaderData>();
+  const data = useLoaderData<typeof loader>();
 
   return (
     <ThemeProvider specifiedTheme={data.theme}>

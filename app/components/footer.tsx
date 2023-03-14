@@ -1,9 +1,12 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
-import type { LoaderData } from "~/root";
 import { useMatchesData } from "~/utils/shared";
 
+type RootData = {
+  year: number;
+};
+
 export function Footer() {
-  const rootData = useMatchesData<LoaderData>("root");
+  const rootData = useMatchesData<RootData>("root");
 
   return (
     <footer className="px-6 pt-4 pb-24 md:pb-4 border-t dark:border-t-neutral-700 border-t-neutral-300">
