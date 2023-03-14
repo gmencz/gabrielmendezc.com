@@ -24,7 +24,7 @@ const navigation = [
 export function Nav() {
   return (
     <header className="px-10 py-4 border-b dark:border-b-neutral-700 border-b-neutral-300">
-      <div className="max-w-5xl w-full mx-auto flex items-center justify-between">
+      <div className="max-w-4xl w-full mx-auto flex items-center justify-between">
         <Link
           to="/"
           className="font-bold text-xl hover:underline hover:underline-offset-2 hover:decoration-1 dark:hover:text-neutral-300 hover:text-neutral-700"
