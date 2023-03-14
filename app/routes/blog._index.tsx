@@ -1,10 +1,9 @@
-import { CalendarIcon, EyeIcon } from "@heroicons/react/24/outline";
 import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
 import clsx from "clsx";
-import { format } from "date-fns";
 import { linkClassName } from "~/class-names";
+import { PostDate, PostViews } from "~/components/post";
 import { prisma } from "~/utils/prisma.server";
 
 export function meta() {
@@ -106,28 +105,13 @@ export default function Blog() {
                   </Link>
                 </h1>
 
-                <p className="dark:text-neutral-200 text-neutral-800">
+                <p className="dark:text-neutral-300 text-neutral-700">
                   {post.description}
                 </p>
 
                 <div className="flex gap-6">
-                  <div className="flex gap-2 items-center text dark:text-neutral-300 text-neutral-700">
-                    <CalendarIcon className="h-4 w-4" />
-                    <time
-                      className="text-sm"
-                      dateTime={format(
-                        new Date(post.publishedAt!),
-                        "yyyy'-'M'-'d"
-                      )}
-                    >
-                      {format(new Date(post.publishedAt!), "do' 'MMMM' 'yyyy")}
-                    </time>
-                  </div>
-
-                  <div className="flex gap-2 items-center text dark:text-neutral-300 text-neutral-800">
-                    <EyeIcon className="h-4 w-4" />
-                    <span className="text-sm">{post.views} views</span>
-                  </div>
+                  <PostDate date={new Date(post.publishedAt!)} />
+                  <PostViews views={post.views} />
                 </div>
               </article>
             </li>

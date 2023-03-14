@@ -4,5 +4,5 @@ import * as React from "react";
 type Props = { content: RenderableTreeNodes };
 
 export function Markdown({ content }: Props) {
-  return <>{renderers.react(content, React)}</>;
+  return <div className="leading-7">{renderers.react(content, React)}</div>;
 }
