@@ -5,4 +5,6 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["production", "development", "test"]),
 });
 
-export const env = envSchema.parse(process.env);
+const env = envSchema.parse(process.env);
+
+export { env };

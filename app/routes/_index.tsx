@@ -3,7 +3,7 @@ import { linkClassName } from "~/class-names";
 
 export default function Index() {
   return (
-    <div className="flex-1 flex items-center p-10">
+    <div className="flex-1 flex items-center px-6 py-10">
       <div className="flex flex-col md:flex-row gap-16 max-w-4xl w-full mx-auto">
         <figure className="flex order-2 md:order-1 flex-col gap-4 flex-shrink-0">
           <img

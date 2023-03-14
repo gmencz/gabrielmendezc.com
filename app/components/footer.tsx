@@ -1,12 +1,16 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import type { LoaderData } from "~/root";
+import { useMatchesData } from "~/utils/shared";
 
 export function Footer() {
+  const rootData = useMatchesData<LoaderData>("root");
+
   return (
-    <footer className="px-10 py-4 border-t dark:border-t-neutral-700 border-t-neutral-300">
+    <footer className="px-6 pt-4 pb-24 md:pb-4 border-t dark:border-t-neutral-700 border-t-neutral-300">
       <div className="max-w-4xl w-full mx-auto flex items-center justify-between">
         <div className="flex gap-2">
           <span>©</span>
-          <span>2023</span>
+          <span>{rootData.year}</span>
           <span>Gabriel Mendez</span>
         </div>
 

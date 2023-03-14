@@ -3,6 +3,7 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -15,7 +16,7 @@ import {
 import clsx from "clsx";
 import stylesheet from "~/tailwind.css";
 import { Footer } from "./components/footer";
-import { Nav } from "./components/nav";
+import { MobileNav, Nav } from "./components/nav";
 import { getThemeSession } from "./utils/session.server";
 import type { Theme } from "./utils/theme-provider";
 import {
@@ -52,16 +53,19 @@ export const meta: MetaFunction = () => ({
 
 export type LoaderData = {
   theme: Theme | null;
+  year: number;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
   const themeSession = await getThemeSession(request);
+  const now = new Date();
 
   const data: LoaderData = {
     theme: themeSession.getTheme(),
+    year: now.getUTCFullYear(),
   };
 
-  return data;
+  return json(data);
 };
 
 function App() {
@@ -79,6 +83,7 @@ function App() {
         <Nav />
         <Outlet />
         <Footer />
+        <MobileNav />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

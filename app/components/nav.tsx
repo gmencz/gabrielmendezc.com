@@ -1,30 +1,45 @@
 import { Link, NavLink } from "@remix-run/react";
-import { FolderOpenIcon, BookOpenIcon } from "@heroicons/react/24/outline";
-import { GithubIcon } from "./github-icon";
+import {
+  FolderOpenIcon,
+  BookOpenIcon,
+  HomeIcon,
+  EyeIcon,
+} from "@heroicons/react/24/outline";
+import { GithubIcon } from "./icons";
 import { ThemeSwitch } from "./theme-switch";
+import clsx from "clsx";
 
 const navigation = [
   {
     name: "Blog",
     to: "/blog",
-    icon: () => <BookOpenIcon className="h-5 w-5" />,
+    icon: () => <BookOpenIcon className="h-6 w-6" />,
   },
   {
     name: "Projects",
     to: "/projects",
-    icon: () => <FolderOpenIcon className="h-5 w-5" />,
+    icon: () => <FolderOpenIcon className="h-6 w-6" />,
   },
   {
     name: "KG",
     to: "/kg",
-    icon: () => <span className="h-4 w-4 flex items-center mr-1">🤖</span>,
+    icon: () => <EyeIcon className="h-6 w-6" />,
   },
+];
+
+const mobileNavigation = [
+  {
+    name: "Home",
+    to: "/",
+    icon: () => <HomeIcon className="h-6 w-6" />,
+  },
+  ...navigation,
 ];
 
 export function Nav() {
   return (
-    <header className="px-10 py-4 border-b dark:border-b-neutral-700 border-b-neutral-300">
-      <div className="max-w-4xl w-full mx-auto flex items-center justify-between">
+    <header className="bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-xl sticky inset-x-0 top-0 px-6 py-4 border-b dark:border-b-neutral-700 border-b-neutral-300">
+      <nav className="max-w-4xl w-full mx-auto flex items-center justify-between">
         <Link
           to="/"
           className="font-bold text-xl hover:underline hover:underline-offset-2 hover:decoration-1 dark:hover:text-neutral-300 hover:text-neutral-700"
@@ -34,19 +49,30 @@ export function Nav() {
 
         <ul className="flex items-center gap-4">
           {navigation.map((item) => (
-            <li key={item.name}>
+            <li className="hidden md:flex" key={item.name}>
               <NavLink
                 to={item.to}
                 className="flex items-center gap-2 group p-2 rounded-xl"
               >
-                <item.icon />
-                <span className="font-semibold group-hover:underline group-hover:underline-offset-2 group-hover:decoration-1 dark:group-hover:text-neutral-300 group-hover:text-neutral-700">
-                  {item.name}
-                </span>
+                {({ isActive }) => (
+                  <>
+                    <item.icon />
+                    <span
+                      className={clsx(
+                        "font-semibold group-hover:underline group-hover:underline-offset-2 group-hover:decoration-1 dark:group-hover:text-neutral-300 group-hover:text-neutral-700",
+                        isActive ? "underline" : null
+                      )}
+                    >
+                      {item.name}
+                    </span>
+                  </>
+                )}
               </NavLink>
             </li>
           ))}
+        </ul>
 
+        <ul className="flex items-center gap-2">
           <li>
             <a
               href="https://github.com/gmencz"
@@ -61,7 +87,36 @@ export function Nav() {
             <ThemeSwitch />
           </li>
         </ul>
-      </div>
+      </nav>
     </header>
+  );
+}
+
+export function MobileNav() {
+  return (
+    <div className="px-6 block md:hidden backdrop-blur-xl pt-2 pb-1 fixed inset-x-0 bottom-0 border-t dark:border-t-neutral-700 border-t-neutral-300 bg-neutral-100/80 dark:bg-neutral-900/80 text-neutral-900 dark:text-neutral-100">
+      <nav className="w-full max-w-xs mx-auto flex items-center justify-center">
+        <ul className="w-full flex items-center justify-between">
+          {mobileNavigation.map((item) => (
+            <li key={item.name}>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) =>
+                  clsx(
+                    "flex flex-col items-center gap-1 group p-2 rounded-xl dark:hover:text-neutral-300 hover:text-neutral-700",
+                    isActive
+                      ? "text-neutral-900 dark:text-neutral-100"
+                      : "text-neutral-600 dark:text-neutral-400"
+                  )
+                }
+              >
+                <item.icon />
+                <span className="text-sm font-semibold">{item.name}</span>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 }
