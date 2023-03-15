@@ -3,13 +3,13 @@ import {
   FolderOpenIcon,
   BookOpenIcon,
   HomeIcon,
-  EyeIcon,
+  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import {
   FolderOpenIcon as FolderOpenIconSolid,
   BookOpenIcon as BookOpenIconSolid,
   HomeIcon as HomeIconSolid,
-  EyeIcon as EyeIconSolid,
+  QuestionMarkCircleIcon as QuestionMarkCircleIconSolid,
 } from "@heroicons/react/24/solid";
 import { GithubIcon } from "./icons";
 import { ThemeSwitch } from "./theme-switch";
@@ -41,10 +41,10 @@ const navigation = [
     name: "KG",
     to: "/kg",
     inactiveIcon: (props: SVGProps<SVGSVGElement>) => (
-      <EyeIcon className="h-6 w-6" {...props} />
+      <QuestionMarkCircleIcon className="h-6 w-6" {...props} />
     ),
     activeIcon: (props: SVGProps<SVGSVGElement>) => (
-      <EyeIconSolid className="h-6 w-6" {...props} />
+      <QuestionMarkCircleIconSolid className="h-6 w-6" {...props} />
     ),
   },
 ];

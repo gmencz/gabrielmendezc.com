@@ -31,7 +31,7 @@ export default function Projects() {
       <div className="max-w-4xl w-full mx-auto flex flex-col gap-10">
         <div className="flex flex-col gap-4">
           <h1 className="font-bold text-2xl md:text-3xl">Projects</h1>
-          <p className="dark:text-neutral-300 text-neutral-700">
+          <p className="dark:text-neutral-300 text-neutral-700 leading-7">
             Feast your eyes on a list of my best work, and marvel at the fact
             that I actually finished something for once. I know, I'm shocked
             too. But hey, let's enjoy this moment while it lasts. And if you're
@@ -50,24 +50,24 @@ export default function Projects() {
         </div>
 
         {data.projects.length > 0 ? (
-          <ul className="flex gap-16">
+          <ul className="flex flex-col md:flex-row gap-16">
             {data.projects.map((project) => (
-              <li key={project.id} className="flex flex-col gap-4">
+              <li key={project.id} className="flex flex-col gap-4 flex-wrap">
                 <img
                   src={project.logo}
                   alt=""
-                  className="object-cover rounded-xl max-h-72"
+                  className="object-cover rounded-xl max-h-96 md:max-h-80"
                 />
 
                 <div className="flex flex-col gap-1">
-                  <p className="font-bold text-lg">{project.name}</p>
+                  <p className="font-bold text-lg leading-7">{project.name}</p>
                   <Markdown content={project.markdown} />
                 </div>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="dark:text-neutral-300 text-neutral-700">
+          <p className="dark:text-neutral-300 text-neutral-700 leading-7">
             Nothing here yet.
           </p>
         )}

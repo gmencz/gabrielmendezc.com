@@ -105,7 +105,7 @@ export default function BlogPost() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4 border-b dark:border-b-neutral-700 border-b-neutral-300 pb-4">
             <h1 className="font-bold text-2xl md:text-3xl">{post.title}</h1>
-            <p className="dark:text-neutral-300 text-neutral-700">
+            <p className="leading-7 dark:text-neutral-300 text-neutral-700">
               {post.description}
             </p>
           </div>
