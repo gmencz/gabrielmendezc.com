@@ -9,7 +9,6 @@ import {
   FolderOpenIcon as FolderOpenIconSolid,
   BookOpenIcon as BookOpenIconSolid,
   HomeIcon as HomeIconSolid,
-  QuestionMarkCircleIcon as QuestionMarkCircleIconSolid,
 } from "@heroicons/react/24/solid";
 import { GithubIcon } from "./icons";
 import { ThemeSwitch } from "./theme-switch";
@@ -35,16 +34,6 @@ const navigation = [
     ),
     activeIcon: (props: SVGProps<SVGSVGElement>) => (
       <FolderOpenIconSolid className="h-6 w-6" {...props} />
-    ),
-  },
-  {
-    name: "KG",
-    to: "/kg",
-    inactiveIcon: (props: SVGProps<SVGSVGElement>) => (
-      <QuestionMarkCircleIcon className="h-6 w-6" {...props} />
-    ),
-    activeIcon: (props: SVGProps<SVGSVGElement>) => (
-      <QuestionMarkCircleIconSolid className="h-6 w-6" {...props} />
     ),
   },
 ];
